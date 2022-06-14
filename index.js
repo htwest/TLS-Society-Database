@@ -107,16 +107,26 @@ app.get("/users", (req, res) => {
 });
 
 // Create a New User
-app.post("/users", async (req, res) => {
+app.post("/signup", async (req, res) => {
+  // **
+  // CHECK IF USER ALREADY EXISTS HERE
+  // **
+
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const hashedPassword = await bcrypt.hash(req.body.user_password, 10);
     // console.log(salt);
     // console.log(hashedPassword);
-    const user = {
-      name: req.body.name,
-      password: hashedPassword,
-    };
-    testUsers.push(user); // Pushes to Test File
+
+    const name = req.body.user_name;
+    const email = req.body.user_email;
+    const password = hashedPassword;
+    const approved = false;
+    const mod = false;
+
+    const newTodo = await pool.query(
+      "INSERT INTO users (user_name,  user_email, user_password, user_approved,  user_mod) VALUES($1, $2, $3, $4, $5) RETURNING *",
+      [name, email, password, approved, mod]
+    );
     res.sendStatus(200);
   } catch (err) {
     status.send(500);
@@ -141,6 +151,10 @@ app.post("/users/login", async (req, res) => {
     console.log(err);
   }
 });
+
+// **** MODERATION ****
+
+// Approve a user (update user_approved)
 
 // **** CATCH ALL ****
 

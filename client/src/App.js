@@ -6,7 +6,6 @@ import "./App.css";
 // import ListTodos from "./components/ListTodos";
 
 // Components (NEW)
-
 import Home from "./components/Home";
 
 // Boostrap
