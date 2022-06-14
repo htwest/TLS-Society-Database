@@ -108,10 +108,6 @@ app.get("/users", (req, res) => {
 
 // Create a New User
 app.post("/signup", async (req, res) => {
-  // **
-  // CHECK IF USER ALREADY EXISTS HERE
-  // **
-
   try {
     //  Password Hash
     const hashedPassword = await bcrypt.hash(req.body.user_password, 10);
@@ -125,13 +121,22 @@ app.post("/signup", async (req, res) => {
     const approved = false;
     const mod = false;
 
-    const newUser = await pool.query(
-      "INSERT INTO users (user_name, user_fname, user_lname, user_email, user_password, user_approved,  user_mod) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *",
-      [name, fname, lname, email, password, approved, mod]
+    // Check if Username is Taken
+    const userCheck = await pool.query(
+      `SELECT * FROM users WHERE user_name = '${name}'`
     );
-    res.sendStatus(200);
+    if (userCheck.rows.length > 0) {
+      res.send("User Name Already Taken");
+    } else {
+      // Add User to DB
+      const newUser = await pool.query(
+        "INSERT INTO users (user_name, user_fname, user_lname, user_email, user_password, user_approved,  user_mod) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+        [name, fname, lname, email, password, approved, mod]
+      );
+      res.sendStatus(200);
+    }
   } catch (err) {
-    status.send(500);
+    res.sendStatus(500);
     console.log(err);
   }
 });
