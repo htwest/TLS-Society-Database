@@ -8,15 +8,15 @@ const path = require("path");
 
 const testUsers = require("./testUsers");
 
-// ************
-// ENV
-// ************
+//         ************************
+//                  ENV
+//         ************************
 
 const PORT = process.env.PORT || 5000;
 
-// ************
-// MIDDLEWARE
-// ************
+//         ************************
+//                  MIDDLEWARE
+//         ************************
 
 app.use(cors());
 app.use(express.json());
@@ -25,14 +25,13 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
 }
 
-// ************
-// ROUTES
-// ************
+//         ************************
+//                  ROUTES
+//         ************************
 
 // **** TODOS ****
 
 // Create Todo
-
 app.post("/todos", async (req, res) => {
   try {
     const description = req.body.descripiton;
@@ -48,7 +47,6 @@ app.post("/todos", async (req, res) => {
 });
 
 // Get All Todo's
-
 app.get("/todos", async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM todo");
@@ -59,7 +57,6 @@ app.get("/todos", async (req, res) => {
 });
 
 // Get a Todo
-
 app.get("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -73,7 +70,6 @@ app.get("/todos/:id", async (req, res) => {
 });
 
 // Update a Todo
-
 app.put("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -90,7 +86,6 @@ app.put("/todos/:id", async (req, res) => {
 });
 
 // Delete a Todo
-
 app.delete("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -106,23 +101,45 @@ app.delete("/todos/:id", async (req, res) => {
 
 // **** AUTHENTICATION ****
 
+// Get All Users
 app.get("/users", (req, res) => {
   res.json(testUsers);
 });
 
+// Create a New User
 app.post("/users", async (req, res) => {
   try {
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    console.log(salt);
-    console.log(hashedPassword);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    // console.log(salt);
+    // console.log(hashedPassword);
     const user = {
       name: req.body.name,
-      password: req.body.password,
+      password: hashedPassword,
     };
-    testUsers.push(user);
-    res.status(201).send();
+    testUsers.push(user); // Pushes to Test File
+    res.sendStatus(200);
   } catch (err) {
+    status.send(500);
+    console.log(err);
+  }
+});
+
+// Log In
+app.post("/users/login", async (req, res) => {
+  const user = testUsers.find((user) => (user.name = req.body.name));
+  if (user === null) {
+    return res.status(400).send("Cannnot find user");
+  }
+  try {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      res.send("Logged In");
+    } else {
+      res.send("Not Allowed");
+    }
+
+    // res.send(user);
+  } catch (err) {
+    res.sendStatus(500);
     console.log(err);
   }
 });
@@ -133,9 +150,9 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 
-// ************
-// SERVER
-// ************
+//         ************************
+//                  SERVER
+//         ************************
 
 app.listen(PORT, () => {
   console.log(`Server started on ${PORT}`);
