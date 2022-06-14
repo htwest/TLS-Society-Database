@@ -1,8 +1,0 @@
-CREATE DATABASE
-
-CREATE TABLE user(
-  user_id SERIAL PRIMARY KEY,
-  name VARCHAR(255),
-  email VARCHAR(255),
-  mod BOOLEAN,
-)
