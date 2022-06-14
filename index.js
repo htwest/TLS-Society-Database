@@ -6,8 +6,6 @@ const app = express();
 const pool = require("./db");
 const path = require("path");
 
-const testUsers = require("./testUsers");
-
 //         ************************
 //                  ENV
 //         ************************
@@ -101,11 +99,6 @@ app.delete("/todos/:id", async (req, res) => {
 
 // **** AUTHENTICATION ****
 
-// Get All Users
-app.get("/users", (req, res) => {
-  res.json(testUsers);
-});
-
 // Create a New User
 app.post("/signup", async (req, res) => {
   try {
@@ -123,7 +116,8 @@ app.post("/signup", async (req, res) => {
 
     // Check if Username is Taken
     const userCheck = await pool.query(
-      `SELECT * FROM users WHERE user_name = '${name}'`
+      `SELECT * FROM users WHERE user_name = $1`,
+      [name]
     );
     if (userCheck.rows.length > 0) {
       res.send("User Name Already Taken");
@@ -147,9 +141,10 @@ app.post("/login", async (req, res) => {
   const password = req.body.user_password;
 
   // Check if User Exists
-  const user = await pool.query(
-    `SELECT * FROM users WHERE user_name = '${name}'`
-  );
+  const user = await pool.query("SELECT * FROM users WHERE user_name = $1", [
+    name,
+  ]);
+
   if (user.rows.length === 0) {
     return res.status(400).send("Cannnot find user");
   }
@@ -170,7 +165,36 @@ app.post("/login", async (req, res) => {
 
 // **** MODERATION ****
 
-// Approve a user (update user_approved)
+// Approve a User
+app.put("/users/:user_name", async (req, res) => {
+  try {
+    const { user_name } = req.params;
+
+    const updateUser = await pool.query(
+      "UPDATE users SET user_approved = $1 WHERE user_name = $2",
+      [true, user_name]
+    );
+    res.send("User Approved");
+  } catch (err) {
+    console.error(err.message);
+    res.sendStatus(500);
+  }
+});
+
+// Delete a User
+app.delete("/users/:user_name", async (req, res) => {
+  try {
+    const { user_name } = req.params;
+    const deleteUser = await pool.query(
+      "DELETE FROM users WHERE user_name = $1",
+      [user_name]
+    );
+    res.send("User was Deleted");
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
 
 // **** CATCH ALL ****
 
