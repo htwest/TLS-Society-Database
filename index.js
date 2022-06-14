@@ -113,10 +113,10 @@ app.post("/signup", async (req, res) => {
   // **
 
   try {
+    //  Password Hash
     const hashedPassword = await bcrypt.hash(req.body.user_password, 10);
-    // console.log(salt);
-    // console.log(hashedPassword);
 
+    // Sing Up Info
     const name = req.body.user_name;
     const fname = req.body.user_fname;
     const lname = req.body.user_lname;
@@ -125,7 +125,7 @@ app.post("/signup", async (req, res) => {
     const approved = false;
     const mod = false;
 
-    const newTodo = await pool.query(
+    const newUser = await pool.query(
       "INSERT INTO users (user_name, user_fname, user_lname, user_email, user_password, user_approved,  user_mod) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *",
       [name, fname, lname, email, password, approved, mod]
     );
@@ -137,14 +137,22 @@ app.post("/signup", async (req, res) => {
 });
 
 // Log In
-app.post("login", async (req, res) => {
-  const user = testUsers.find((user) => (user.name = req.body.name));
-  if (user === null) {
+app.post("/login", async (req, res) => {
+  const name = req.body.user_name;
+  const password = req.body.user_password;
+
+  // Check if User Exists
+  const user = await pool.query(
+    `SELECT * FROM users WHERE user_name = '${name}'`
+  );
+  if (user.rows.length === 0) {
     return res.status(400).send("Cannnot find user");
   }
 
+  // Compare Passwords
+  const hashedPassword = user.rows[0].user_password;
   try {
-    if (await bcrypt.compare(req.body.password, user.password)) {
+    if (await bcrypt.compare(password, hashedPassword)) {
       res.send("Logged In");
     } else {
       res.send("Not Allowed");
