@@ -1,9 +1,12 @@
 const express = require("express");
 const cors = require("cors");
+const bcrypt = require("bcrypt");
 
 const app = express();
 const pool = require("./db");
 const path = require("path");
+
+const testUsers = require("./testUsers");
 
 // ************
 // ENV
@@ -23,16 +26,10 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // ************
-// SERVER
-// ************
-
-app.listen(PORT, () => {
-  console.log(`Server started on ${PORT}`);
-});
-
-// ************
 // ROUTES
 // ************
+
+// **** TODOS ****
 
 // Create Todo
 
@@ -102,11 +99,44 @@ app.delete("/todos/:id", async (req, res) => {
     ]);
 
     res.json("Todo was deleted");
-  } catch {
+  } catch (err) {
     console.error(err.message);
   }
 });
 
+// **** AUTHENTICATION ****
+
+app.get("/users", (req, res) => {
+  res.json(testUsers);
+});
+
+app.post("/users", async (req, res) => {
+  try {
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    console.log(salt);
+    console.log(hashedPassword);
+    const user = {
+      name: req.body.name,
+      password: req.body.password,
+    };
+    testUsers.push(user);
+    res.status(201).send();
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// **** CATCH ALL ****
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
+});
+
+// ************
+// SERVER
+// ************
+
+app.listen(PORT, () => {
+  console.log(`Server started on ${PORT}`);
 });
