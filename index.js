@@ -136,8 +136,6 @@ app.post("/users/login", async (req, res) => {
     } else {
       res.send("Not Allowed");
     }
-
-    // res.send(user);
   } catch (err) {
     res.sendStatus(500);
     console.log(err);

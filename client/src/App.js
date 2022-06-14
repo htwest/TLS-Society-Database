@@ -1,9 +1,13 @@
 import { Fragment } from "react";
 import "./App.css";
 
-// Components
-import InputTodo from "./components/InputTodo";
-import ListTodos from "./components/ListTodos";
+// Components (OLD)
+// import InputTodo from "./components/InputTodo";
+// import ListTodos from "./components/ListTodos";
+
+// Components (NEW)
+
+import Home from "./components/Home";
 
 // Boostrap
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -13,8 +17,7 @@ function App() {
   return (
     <Fragment>
       <Container>
-        <InputTodo />
-        <ListTodos />
+        <Home />
       </Container>
     </Fragment>
   );
