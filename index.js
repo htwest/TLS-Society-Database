@@ -118,14 +118,16 @@ app.post("/signup", async (req, res) => {
     // console.log(hashedPassword);
 
     const name = req.body.user_name;
+    const fname = req.body.user_fname;
+    const lname = req.body.user_lname;
     const email = req.body.user_email;
     const password = hashedPassword;
     const approved = false;
     const mod = false;
 
     const newTodo = await pool.query(
-      "INSERT INTO users (user_name,  user_email, user_password, user_approved,  user_mod) VALUES($1, $2, $3, $4, $5) RETURNING *",
-      [name, email, password, approved, mod]
+      "INSERT INTO users (user_name, user_fname, user_lname, user_email, user_password, user_approved,  user_mod) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+      [name, fname, lname, email, password, approved, mod]
     );
     res.sendStatus(200);
   } catch (err) {
@@ -135,11 +137,12 @@ app.post("/signup", async (req, res) => {
 });
 
 // Log In
-app.post("/users/login", async (req, res) => {
+app.post("login", async (req, res) => {
   const user = testUsers.find((user) => (user.name = req.body.name));
   if (user === null) {
     return res.status(400).send("Cannnot find user");
   }
+
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
       res.send("Logged In");
