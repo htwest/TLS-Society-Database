@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { BrowserRouter, Routes, Route, Switch } from "react-router-dom";
 import "./App.css";
 
 // Components (OLD)
@@ -6,19 +6,21 @@ import "./App.css";
 // import ListTodos from "./components/ListTodos";
 
 // Components (NEW)
-import Home from "./components/Home";
+import { LandingPage } from "./components/Landing.page";
+// import Home from "./components/Home";
 
 // Boostrap
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Container from "react-bootstrap/Container";
 
 function App() {
   return (
-    <Fragment>
-      <Container>
-        <Home />
-      </Container>
-    </Fragment>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

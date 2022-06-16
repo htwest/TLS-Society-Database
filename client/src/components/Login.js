@@ -11,7 +11,6 @@ const Login = () => {
   const [pwd, setPwd] = useState("");
   const [errDisplay, setErrDisplay] = useState(false);
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
 
   // Effects
   useEffect(() => {
@@ -29,15 +28,11 @@ const Login = () => {
     userLogin([user, pwd])
       .then((data) => {
         console.log(data);
+
+        setUser("");
+        setPwd("");
       })
       .catch((err) => console.log(err));
-
-    // setSuccess(true);
-    // console.log(user, pwd);
-
-    // setUser("");
-    // setPwd("");
-    // console.log(success);
   };
 
   return (
