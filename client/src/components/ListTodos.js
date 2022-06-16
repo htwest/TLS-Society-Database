@@ -1,21 +1,16 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditTodo from "./EditTodo";
+import { fetchTodos } from "../api/fetchLogin";
 
 const ListTodos = () => {
   // States
   const [todos, setTodos] = useState([]);
 
   // Functions
-  const getTodos = async () => {
-    try {
-      // console.log("message recieved");
-      const response = await fetch("/todos");
-      const jsonData = await response.json();
-
-      setTodos(jsonData);
-    } catch (err) {
-      console.log(err);
-    }
+  const getTodos = () => {
+    fetchTodos().then((data) => {
+      setTodos(data);
+    });
   };
 
   const deleteTodo = async (id) => {
