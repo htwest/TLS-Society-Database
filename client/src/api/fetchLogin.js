@@ -17,8 +17,13 @@ const fetchTodos = () => {
   return axios.get("/todos").then((response) => response.data);
 };
 
-const userLogin = () => {
-  axios.post("/login").then((response) => response.data);
+const userLogin = (data) => {
+  return axios
+    .post("/login", {
+      user_name: data[0],
+      user_password: data[1],
+    })
+    .then((response) => response.data);
 };
 
 // const userSignup = () => {};

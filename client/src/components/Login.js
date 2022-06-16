@@ -1,6 +1,9 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 
+import { userLogin } from "../api/fetchLogin";
+
 const Login = () => {
+  // Refs and States
   const userRef = useRef();
   const errRef = useRef();
 
@@ -10,23 +13,31 @@ const Login = () => {
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
+  // Effects
   useEffect(() => {
-    // userRef.current.focus();
+    userRef.current.focus();
   }, []);
 
   useEffect(() => {
     setErrMsg("");
   }, [user, pwd]);
 
+  // User Functions
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setSuccess(true);
-    console.log(user, pwd);
+    userLogin([user, pwd])
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
 
-    setUser("");
-    setPwd("");
-    console.log(success);
+    // setSuccess(true);
+    // console.log(user, pwd);
+
+    // setUser("");
+    // setPwd("");
+    // console.log(success);
   };
 
   return (
@@ -55,6 +66,7 @@ const Login = () => {
           <input
             type="password"
             id="password"
+            autoComplete="current-password"
             onChange={(e) => {
               setPwd(e.target.value);
             }}
