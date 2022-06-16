@@ -1,6 +1,6 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 
-import { userLogin } from "../api/fetchLogin";
+import { userLogin } from "../../api/fetchLogin";
 
 const Login = () => {
   // Refs and States
@@ -31,6 +31,7 @@ const Login = () => {
 
         setUser("");
         setPwd("");
+        setErrDisplay(false);
       })
       .catch((err) => console.log(err));
   };

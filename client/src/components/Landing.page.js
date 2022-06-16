@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Login from "./Login";
+import Login from "../components/landing/Login";
 
 export const LandingPage = () => {
   return (
