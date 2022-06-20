@@ -151,7 +151,7 @@ app.post("/signup", async (req, res) => {
         "INSERT INTO users (user_name, user_fname, user_lname, user_email, user_password, user_approved,  user_mod) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *",
         [name, fname, lname, email, password, approved, mod]
       );
-      res.sendStatus(200);
+      res.send("User Created");
     }
   } catch (err) {
     res.sendStatus(500);
