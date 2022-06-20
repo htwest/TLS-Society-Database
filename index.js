@@ -105,7 +105,7 @@ app.post("/signup", async (req, res) => {
     //  Password Hash
     const hashedPassword = await bcrypt.hash(req.body.user_password, 10);
 
-    // Sing Up Info
+    // Sign Up Info
     const name = req.body.user_name;
     const fname = req.body.user_fname;
     const lname = req.body.user_lname;
@@ -119,6 +119,7 @@ app.post("/signup", async (req, res) => {
       `SELECT * FROM users WHERE user_name = $1`,
       [name]
     );
+
     if (userCheck.rows.length > 0) {
       res.send("User Name Already Taken");
     } else {
