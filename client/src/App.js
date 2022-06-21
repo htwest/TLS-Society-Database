@@ -7,6 +7,7 @@ import "./App.css";
 
 // Pages
 import { LandingPage } from "./components/Landing.page";
+import { LoginPage } from "./components/Login.page";
 import { ProfilePage } from "./components/Profile.page";
 import { ErrorPage } from "./components/Error.page";
 
@@ -18,6 +19,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
