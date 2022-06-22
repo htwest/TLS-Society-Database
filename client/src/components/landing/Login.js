@@ -46,10 +46,10 @@ const Login = () => {
         ) : null}
         <h1>Sign In</h1>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="login-username">Username:</label>
           <input
             type="text"
-            id="username"
+            id="login-username"
             ref={userRef}
             autoComplete="off"
             onChange={(e) => {
@@ -58,10 +58,10 @@ const Login = () => {
             value={user}
             required
           />
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="login-password">Password:</label>
           <input
             type="password"
-            id="password"
+            id="login-password"
             autoComplete="current-password"
             onChange={(e) => {
               setPwd(e.target.value);
