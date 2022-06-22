@@ -43,10 +43,17 @@ const Register = () => {
         ) : null}
         <h1>Sign Up</h1>
         <form onSubmit={handleSubmit}>
+<<<<<<< HEAD
           <label htmlFor="username">Username:</label>
           <input
             type="text"
             id="username"
+=======
+          <label htmlFor="register-username">Username:</label>
+          <input
+            type="text"
+            id="register-username"
+>>>>>>> login
             autoComplete="off"
             onChange={(e) => {
               setUser(e.target.value);
@@ -54,10 +61,17 @@ const Register = () => {
             value={user}
             required
           />
+<<<<<<< HEAD
           <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
+=======
+          <label htmlFor="register-password">Password:</label>
+          <input
+            type="password"
+            id="register-password"
+>>>>>>> login
             autoComplete="current-password"
             onChange={(e) => {
               setPwd(e.target.value);
