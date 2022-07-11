@@ -206,11 +206,20 @@ app.put("/users/:user_name", async (req, res) => {
 app.delete("/users/:user_name", async (req, res) => {
   try {
     const { user_name } = req.params;
+
     const deleteUser = await pool.query(
       "DELETE FROM users WHERE user_name = $1",
-      [user_name]
+      [user_name],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+          res.sendStatus(500);
+        } else {
+          console.log(result);
+          res.send("User was Deleted");
+        }
+      }
     );
-    res.send("User was Deleted");
   } catch (err) {
     console.log(err);
     res.sendStatus(500);
