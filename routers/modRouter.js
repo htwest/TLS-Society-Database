@@ -12,9 +12,16 @@ router.put("/approve/:user_name", async (req, res) => {
 
     const updateUser = await pool.query(
       "UPDATE users SET user_approved = $1 WHERE user_name = $2",
-      [true, user_name]
+      [true, user_name],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+          res.sendStatus(500);
+        } else {
+          res.send("User Approved");
+        }
+      }
     );
-    res.send("User Approved");
   } catch (err) {
     console.error(err.message);
     res.sendStatus(500);
@@ -35,7 +42,6 @@ router.delete("/delete/:user_name", async (req, res) => {
           console.log(err);
           res.sendStatus(500);
         } else {
-          console.log(result);
           res.send("User was Deleted");
         }
       }
