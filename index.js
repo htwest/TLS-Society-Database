@@ -15,6 +15,10 @@ const app = express();
 const pool = require("./db");
 const path = require("path");
 
+const authRouter = require("./routers/authRouter");
+const todoRouter = require("./routers/todoRouter");
+const modRouter = require("./routers/modRouter");
+
 //         ************************
 //                  ENV
 //         ************************
@@ -32,16 +36,6 @@ app.use(
 );
 app.use(express.json());
 
-app.use(
-  session({
-    secret: "secretcode",
-    resave: true,
-    saveUninitialized: true,
-  })
-);
-
-app.use(cookieParser("secretcode"));
-
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
 }
@@ -50,141 +44,14 @@ if (process.env.NODE_ENV === "production") {
 //                  ROUTES
 //         ************************
 
-// **** TODOS ****
-
-// Create Todo
-app.post("/todos", async (req, res) => {
-  try {
-    const description = req.body.descripiton;
-    const newTodo = await pool.query(
-      "INSERT INTO todo (description) VALUES($1) RETURNING *",
-      [description]
-    );
-
-    res.json(newTodo.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-// Get All Todo's
-app.get("/todos", async (req, res) => {
-  try {
-    const allTodos = await pool.query("SELECT * FROM todo");
-    res.json(allTodos.rows);
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-// Get a Todo
-app.get("/todos/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const todo = await pool.query("SELECT * FROM todo WHERE todo_id = $1", [
-      id,
-    ]);
-    res.json(todo.rows[0]);
-  } catch (err) {
-    console.log(error);
-  }
-});
-
-// Update a Todo
-app.put("/todos/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { description } = req.body;
-
-    const updateTodo = await pool.query(
-      "UPDATE todo SET description = $1 WHERE todo_id = $2",
-      [description, id]
-    );
-    res.json("Todo was Updated");
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-// Delete a Todo
-app.delete("/todos/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deleteTodo = await pool.query("DELETE FROM todo WHERE todo_id = $1", [
-      id,
-    ]);
-
-    res.json("Todo was deleted");
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
 // **** AUTHENTICATION ****
+app.use("/auth", authRouter);
 
-// Create a New User
-app.post("/signup", async (req, res) => {
-  try {
-    //  Password Hash
-    const hashedPassword = await bcrypt.hash(req.body.user_password, 10);
-
-    // Sign Up Info
-    const name = req.body.user_name;
-    const fname = req.body.user_fname;
-    const lname = req.body.user_lname;
-    const email = req.body.user_email;
-    const password = hashedPassword;
-    const approved = false;
-    const mod = false;
-
-    // Check if Username is Taken
-    const userCheck = await pool.query(
-      `SELECT * FROM users WHERE user_name = $1`,
-      [name]
-    );
-
-    if (userCheck.rows.length > 0) {
-      res.send("User Name Already Taken");
-    } else {
-      // Add User to DB
-      const newUser = await pool.query(
-        "INSERT INTO users (user_name, user_fname, user_lname, user_email, user_password, user_approved,  user_mod) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *",
-        [name, fname, lname, email, password, approved, mod]
-      );
-      res.send("User Created");
-    }
-  } catch (err) {
-    res.sendStatus(500);
-    console.log(err);
-  }
-});
-
-// Log In
-app.post("/login", async (req, res) => {
-  const name = req.body.user_name;
-  const password = req.body.user_password;
-
-  const user = await pool.query("SELECT * FROM users WHERE user_name = $1", [
-    name,
-  ]);
-
-  if (user.rows.length > 0) {
-    try {
-      if (await bcrypt.compare(password, user.rows[0].user_password)) {
-        res.send("Logged In");
-      } else {
-        res.send("Wrong Username/Password");
-      }
-    } catch (err) {
-      res.sendStatus(500);
-      console.log(err);
-    }
-  } else {
-    res.send("Not a user");
-  }
-});
+// **** TODOS ****
+app.use("/todo", todoRouter);
 
 // **** MODERATION ****
+<<<<<<< HEAD
 
 // Approve a User
 app.put("/users/:user_name", async (req, res) => {
@@ -225,9 +92,11 @@ app.delete("/users/:user_name", async (req, res) => {
     res.sendStatus(500);
   }
 });
+=======
+app.use("/user", modRouter);
+>>>>>>> sessionV2
 
 // **** CATCH ALL ****
-
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
