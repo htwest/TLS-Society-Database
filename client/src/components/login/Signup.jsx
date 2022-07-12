@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import validateSignUp from "../../hooks/validateSignUp";
-import postRegister from "../../api/postRegister";
+
+// import postRegister from "../../api/postRegister";
+import testRegister from "../../api/testRegister";
 
 import {
   VStack,
@@ -35,7 +37,7 @@ const SignUp = () => {
       setErrMsg
     );
     if (validate) {
-      await postRegister(user, pass, fName, lName, email).then((data) => {
+      await testRegister(user, pass, fName, lName, email).then((data) => {
         console.log(data);
       });
     }

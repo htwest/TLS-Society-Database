@@ -9,13 +9,13 @@ const bcrypt = require("bcrypt");
 router.post("/register", async (req, res) => {
   try {
     //  Password Hash
-    const hashedPassword = await bcrypt.hash(req.body.user_password, 10);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
     // Sign Up Info
-    const name = req.body.user_name;
-    const fname = req.body.user_fname;
-    const lname = req.body.user_lname;
-    const email = req.body.user_email;
+    const name = req.body.username;
+    const fname = req.body.fname;
+    const lname = req.body.lname;
+    const email = req.body.email;
     const password = hashedPassword;
     const approved = false;
     const mod = false;
@@ -46,8 +46,8 @@ router.post("/register", async (req, res) => {
 //   LOG IN
 // ************
 router.post("/login", async (req, res) => {
-  const name = req.body.user_name;
-  const password = req.body.user_password;
+  const name = req.body.username;
+  const password = req.body.password;
 
   const user = await pool.query("SELECT * FROM users WHERE user_name = $1", [
     name,
