@@ -1,14 +1,21 @@
-const validateSignUp = (username, password, setUsrErr, setPassErr) => {
+const validateSignUp = (
+  username,
+  password,
+  fName,
+  lName,
+  email,
+  setErr,
+  setErrMsg
+) => {
   if (
-    (username.length === 0 || !username) &&
-    (password.length === 0 || !password)
+    username.length === 0 ||
+    password.length === 0 ||
+    fName.length === 0 ||
+    lName.length === 0 ||
+    email.length === 0
   ) {
-    setUsrErr("Enter a valid username");
-    setPassErr("Enter a valid password");
-  } else if (!username || username.length === 0) {
-    setUsrErr("Enter a valid username");
-  } else if (!password || password.length === 0) {
-    setPassErr("Enter a valid password");
+    setErr(true);
+    setErrMsg("Please Fill Out All Boxes");
   } else {
     return true;
   }

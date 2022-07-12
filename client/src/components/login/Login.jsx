@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import validateLogIn from "../../hooks/validateLogIn";
-import postLogIn from "../../hooks/postLogIn";
+import postLogin from "../../api/postLogIn";
 
 import {
   VStack,
@@ -26,7 +26,7 @@ const Login = () => {
     e.preventDefault();
     const validate = validateLogIn(user, pass, setUsrErr, setPassErr);
     if (validate) {
-      await postLogIn(user, pass).then((data) => {
+      await postLogin(user, pass).then((data) => {
         console.log(data);
       });
     }

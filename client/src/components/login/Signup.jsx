@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import validateSignUp from "../../hooks/validateLogIn";
-import postSignUp from "../../hooks/postSignUp";
+import validateSignUp from "../../hooks/validateSignUp";
+import postRegister from "../../api/postRegister";
 
 import {
   VStack,
@@ -16,15 +16,26 @@ import {
 
 const SignUp = () => {
   const [user, setUser] = useState("");
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
+  const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [usrErr, setUsrErr] = useState(false);
-  const [passErr, setPassErr] = useState(false);
+  const [err, setErr] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validate = validateSignUp(user, pass, setUsrErr, setPassErr);
+    const validate = validateSignUp(
+      user,
+      pass,
+      fName,
+      lName,
+      email,
+      setErr,
+      setErrMsg
+    );
     if (validate) {
-      await postSignUp(user, pass).then((data) => {
+      await postRegister(user, pass, fName, lName, email).then((data) => {
         console.log(data);
       });
     }
@@ -45,7 +56,7 @@ const SignUp = () => {
       spacing="1rem"
     >
       <Heading>Sign Up</Heading>
-      <FormControl isInvalid={usrErr}>
+      <FormControl isInvalid={err}>
         <FormLabel>Username</FormLabel>
         <Input
           type="text"
@@ -55,15 +66,14 @@ const SignUp = () => {
           autoComplete="off"
           size="lg"
           onChange={(e) => {
-            setUsrErr(false);
-            setPassErr(false);
+            setErr(false);
             setUser(e.target.value);
           }}
         />
-        <FormErrorMessage>{usrErr}</FormErrorMessage>
+        <FormErrorMessage>{errMsg}</FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={passErr}>
+      <FormControl isInvalid={err}>
         <FormLabel>Password</FormLabel>
         <Input
           type="password"
@@ -72,12 +82,62 @@ const SignUp = () => {
           autoComplete="off"
           size="lg"
           onChange={(e) => {
-            setUsrErr(false);
-            setPassErr(false);
+            setErr(false);
             setPass(e.target.value);
           }}
         />
-        <FormErrorMessage>{passErr}</FormErrorMessage>
+        <FormErrorMessage>{errMsg}</FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={err}>
+        <FormLabel>First Name</FormLabel>
+        <Input
+          type="text"
+          name="fname"
+          value={fName}
+          placeholder="First Name"
+          autoComplete="off"
+          size="lg"
+          onChange={(e) => {
+            setErr(false);
+            setFName(e.target.value);
+          }}
+        />
+        <FormErrorMessage>{errMsg}</FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={err}>
+        <FormLabel>Last Name</FormLabel>
+        <Input
+          type="text"
+          name="lname"
+          value={lName}
+          placeholder="Last Name"
+          autoComplete="off"
+          size="lg"
+          onChange={(e) => {
+            setErr(false);
+            setLName(e.target.value);
+          }}
+        />
+        <FormErrorMessage>{errMsg}</FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={err}>
+        <FormLabel>Email</FormLabel>
+        <Input
+          type="text"
+          name="email"
+          value={email}
+          placeholder="Last Name"
+          autoComplete="off"
+          size="lg"
+          onChange={(e) => {
+            setErr(false);
+            setEmail(e.target.value);
+          }}
+        />
+        <FormErrorMessage>{errMsg}</FormErrorMessage>
       </FormControl>
 
       <ButtonGroup pt="1rem">

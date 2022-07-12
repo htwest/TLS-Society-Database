@@ -1,12 +1,15 @@
 const axios = require("axios");
 
-const postSignUp = (user, pass) => {
+const postRegister = (user, pass, fName, lName, email) => {
   return axios
     .post(
       "/auth/register",
       {
-        username: user,
-        password: pass,
+        user_name: user,
+        user_password: pass,
+        user_fName: fName,
+        user_lName: lName,
+        user_email: email,
       },
       { withCredentials: true }
     )
@@ -16,4 +19,4 @@ const postSignUp = (user, pass) => {
     .then((response) => response.data);
 };
 
-export default postSignUp;
+export default postRegister;
