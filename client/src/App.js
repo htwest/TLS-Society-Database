@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 // Components (OLD)
-// import InputTodo from "./components/InputTodo";
-// import ListTodos from "./components/ListTodos";
+// import InputTodo from "./components/todo/InputTodo";
+// import ListTodos from "./components/todo/ListTodos";
 
 // Pages
 import { LandingPage } from "./components/Landing.page";
