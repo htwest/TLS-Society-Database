@@ -1,25 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
-
-// Pages
-import { LandingPage } from "./components/Landing.page";
-import { LoginPage } from "./components/Login.page";
-import { ProfilePage } from "./components/Profile.page";
-import { ErrorPage } from "./components/Error.page";
-
-// Boostrap
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import ToggleColorMode from "./components/ToggleColorMode";
+import Views from "./components/Views";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-    </Router>
+    <div className="App">
+      <Views />
+      <ToggleColorMode />
+    </div>
   );
 }
 
