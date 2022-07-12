@@ -1,6 +1,6 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 
-import { userLogin } from "../../api/fetchLogin";
+import { postLogin } from "../../api/postLogin";
 
 const Login = () => {
   // Refs and States
@@ -25,7 +25,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    userLogin([user, pwd])
+    postLogin([user, pwd])
       .then((data) => {
         console.log(data);
 
