@@ -1,21 +1,16 @@
-import React, { Fragment, useRef, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 
 import { postLogin } from "../../api/postLogin";
+import LoginError from "../error/LoginError";
 
 const Login = () => {
   // Refs and States
-  const userRef = useRef();
-  const errRef = useRef();
-
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
   const [errDisplay, setErrDisplay] = useState(false);
   const [errMsg, setErrMsg] = useState("");
 
   // Effects
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
 
   useEffect(() => {
     setErrMsg("");
@@ -39,18 +34,13 @@ const Login = () => {
   return (
     <Fragment>
       <section>
-        {errDisplay ? (
-          <p ref={errRef} aria-live="assertive">
-            {errMsg}
-          </p>
-        ) : null}
         <h1>Sign In</h1>
+        {errDisplay ? <LoginError errMsg={errMsg} /> : null}
         <form onSubmit={handleSubmit}>
           <label htmlFor="login-username">Username:</label>
           <input
             type="text"
             id="login-username"
-            ref={userRef}
             autoComplete="off"
             onChange={(e) => {
               setUser(e.target.value);
