@@ -1,6 +1,6 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 
-import { userRegister } from "../../api/fetchRegister";
+import { postRegister } from "../../api/postRegister";
 
 const Register = () => {
   // Refs and States
@@ -24,7 +24,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    userRegister([user, pwd, fName, lName, email])
+    postRegister([user, pwd, fName, lName, email])
       .then((data) => {
         console.log(data);
 

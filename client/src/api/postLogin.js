@@ -1,10 +1,6 @@
 const axios = require("axios");
 
-const fetchTodos = () => {
-  return axios.get("/todos").then((response) => response.data);
-};
-
-const userLogin = (data) => {
+const postLogin = (data) => {
   return axios
     .post("/userlogin", {
       user_name: data[0],
@@ -13,4 +9,4 @@ const userLogin = (data) => {
     .then((response) => response.data);
 };
 
-export { fetchTodos, userLogin };
+export { postLogin };
