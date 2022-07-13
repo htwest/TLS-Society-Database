@@ -17,6 +17,7 @@ const path = require("path");
 const authRouter = require("./routers/authRouter");
 const todoRouter = require("./routers/todoRouter");
 const modRouter = require("./routers/modRouter");
+const dbRouter = require("./routers/dbRouter");
 
 //         ************************
 //                  ENV
@@ -35,8 +36,6 @@ app.use(
 );
 app.use(express.json());
 
-// Session stuff
-// START
 app.use(
   session({
     secret: process.env.SECRET,
@@ -50,8 +49,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 require("./passportConfig")(passport);
 
-// END
-
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
 }
@@ -62,6 +59,9 @@ if (process.env.NODE_ENV === "production") {
 
 // **** AUTHENTICATION ****
 app.use("/auth", authRouter);
+
+// **** DB ****
+app.use("/db", dbRouter);
 
 // **** TODOS ****
 app.use("/todo", todoRouter);

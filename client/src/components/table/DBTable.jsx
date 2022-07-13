@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Table,
   Thead,
@@ -10,9 +10,22 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 
+import getList from "../../api/getList";
+
 import TableItem from "./TableItem";
 
 const DBTable = () => {
+  const [dbList, setDbList] = useState();
+
+  useEffect(() => {
+    const fetchList = async () => {
+      await getList().then((res) => {
+        setDbList(res);
+      });
+    };
+    fetchList();
+  }, []);
+
   return (
     <TableContainer>
       <Table variant="simple">
@@ -27,7 +40,9 @@ const DBTable = () => {
           </Tr>
         </Thead>
         <Tbody>
-          <TableItem />
+          {dbList.map((item) => (
+            <TableItem item={item} key={item.id} />
+          ))}
         </Tbody>
         <Tfoot>
           <Tr>
