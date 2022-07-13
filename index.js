@@ -71,50 +71,7 @@ app.use("/auth", authRouter);
 app.use("/todo", todoRouter);
 
 // **** MODERATION ****
-<<<<<<< HEAD
-
-// Approve a User
-app.put("/users/:user_name", async (req, res) => {
-  try {
-    const { user_name } = req.params;
-
-    const updateUser = await pool.query(
-      "UPDATE users SET user_approved = $1 WHERE user_name = $2",
-      [true, user_name]
-    );
-    res.send("User Approved");
-  } catch (err) {
-    console.error(err.message);
-    res.sendStatus(500);
-  }
-});
-
-// Delete a User
-app.delete("/users/:user_name", async (req, res) => {
-  try {
-    const { user_name } = req.params;
-
-    const deleteUser = await pool.query(
-      "DELETE FROM users WHERE user_name = $1",
-      [user_name],
-      (err, result) => {
-        if (err) {
-          console.log(err);
-          res.sendStatus(500);
-        } else {
-          console.log(result);
-          res.send("User was Deleted");
-        }
-      }
-    );
-  } catch (err) {
-    console.log(err);
-    res.sendStatus(500);
-  }
-});
-=======
 app.use("/user", modRouter);
->>>>>>> sessionV2
 
 // **** CATCH ALL ****
 app.get("*", (req, res) => {
