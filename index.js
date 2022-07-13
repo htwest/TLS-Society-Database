@@ -6,7 +6,6 @@ const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
-const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const bodyParser = require("body-parser");
@@ -48,6 +47,9 @@ app.use(
 );
 
 app.use(cookieParser("secretcode"));
+app.use(passport.initialize());
+app.use(passport.session());
+require("./passportConfig")(passport);
 
 // END
 

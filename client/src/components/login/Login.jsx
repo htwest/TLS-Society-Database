@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import validateLogIn from "../../hooks/validateLogIn";
-
-// import postLogin from "../../api/postLogIn";
-import testLogin from "../../api/testLogIn";
-
 import {
   VStack,
   ButtonGroup,
@@ -15,6 +11,9 @@ import {
   Heading,
   FormErrorMessage,
 } from "@chakra-ui/react";
+
+// import postLogin from "../../api/postLogIn";
+import testLogin from "../../api/testLogIn";
 
 const Login = () => {
   // States
@@ -32,8 +31,7 @@ const Login = () => {
         console.log(data);
       });
     }
-    setUser("");
-    setPass("");
+    navigate("/profile");
   };
 
   const navigate = useNavigate();

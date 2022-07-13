@@ -2,9 +2,31 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../db");
 const bcrypt = require("bcrypt");
+const passport = require("passport");
 
-router.post("/login", (req, res) => {
-  console.log(req.body);
+// ************
+//   LOG IN
+// ************
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      console.log("LOGIN PASSPORT AUTHENTICATION ERROR [STAGE 1]:");
+      console.log(err);
+    }
+    if (!user) {
+      res.send("No User Exists");
+    } else {
+      req.logIn(user, (err) => {
+        if (err) {
+          console.log("LOGIN PASSPORT AUTHENTICATION ERROR [STAGE 2]:");
+          console.log(err);
+        } else {
+          res.send("Succesfully Authenticated");
+          console.log(req.user);
+        }
+      });
+    }
+  })(req, res, next);
 });
 
 // ************
@@ -46,8 +68,11 @@ router.post("/register", async (req, res) => {
   }
 });
 
+// ************
+//   GET USER
+// ************
 router.get("/user", (req, res) => {
-  console.log(req.body);
+  res.send(req.user);
 });
 
 module.exports = router;

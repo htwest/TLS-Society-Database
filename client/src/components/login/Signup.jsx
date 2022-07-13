@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import validateSignUp from "../../hooks/validateSignUp";
-
-// import postRegister from "../../api/postRegister";
-import testRegister from "../../api/testRegister";
-
 import {
   VStack,
   ButtonGroup,
@@ -15,6 +11,9 @@ import {
   Heading,
   FormErrorMessage,
 } from "@chakra-ui/react";
+
+// import postRegister from "../../api/postRegister";
+import testRegister from "../../api/testRegister";
 
 const SignUp = () => {
   const [user, setUser] = useState("");

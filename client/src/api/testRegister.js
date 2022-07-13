@@ -16,7 +16,7 @@ const testRegister = (user, pass, fName, lName, email) => {
     .catch((err) => {
       console.log(err);
     })
-    .then((response) => response.data);
+    .then((response) => response);
 };
 
 export default testRegister;
