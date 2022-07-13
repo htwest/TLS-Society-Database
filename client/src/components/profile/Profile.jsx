@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { VStack, ButtonGroup, Button } from "@chakra-ui/react";
 
 import getUser from "../../api/getUser";
+import postLogout from "../../api/postLogout";
 
 import UserHeader from "./UserHeader";
 
@@ -18,6 +19,14 @@ const Profile = () => {
     fetchUser();
   }, []);
 
+  const handleLogout = async () => {
+    await postLogout().then((res) => {
+      console.log(res.data);
+      setUser();
+      navigate("/");
+    });
+  };
+
   const navigate = useNavigate();
 
   return (
@@ -30,7 +39,7 @@ const Profile = () => {
     >
       {user ? <UserHeader userData={user} /> : null}
       <ButtonGroup pt="1rem">
-        <Button onClick={() => navigate("/")}>Back</Button>
+        <Button onClick={() => handleLogout()}>Log Out</Button>
       </ButtonGroup>
     </VStack>
   );

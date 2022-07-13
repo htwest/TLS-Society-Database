@@ -60,7 +60,14 @@ module.exports = function (passport) {
       ]);
       // If user was found
       if (user.rows.length > 0) {
-        cb(null, user.rows[0]);
+        const userInformation = {
+          user_name: user.rows[0].user_name,
+          user_approved: user.rows[0].user_approved,
+          user_mod: user.rows[0].user_mod,
+          user_fname: user.rows[0].user_fname,
+          user_lname: user.rows[0].user_lname,
+        };
+        cb(null, userInformation);
       } else {
         // If User was not found
         cb("User not Found", null);

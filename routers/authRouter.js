@@ -22,11 +22,26 @@ router.post("/login", (req, res, next) => {
           console.log(err);
         } else {
           res.send("Succesfully Authenticated");
-          console.log(req.user);
+          // console.log(req.user);
         }
       });
     }
   })(req, res, next);
+});
+
+// ************
+//   LOG OUT
+// ************
+
+router.post("/logout", (req, res, next) => {
+  if (req.user) {
+    req.logout((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.send("logged out");
+    });
+  }
 });
 
 // ************

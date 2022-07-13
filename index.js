@@ -39,7 +39,7 @@ app.use(express.json());
 // START
 app.use(
   session({
-    secret: "secretcode",
+    secret: process.env.SECRET,
     resave: true,
     saveUninitialized: true,
   })
