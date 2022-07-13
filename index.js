@@ -17,7 +17,6 @@ const path = require("path");
 const authRouter = require("./routers/authRouter");
 const todoRouter = require("./routers/todoRouter");
 const modRouter = require("./routers/modRouter");
-const testRouter = require("./routers/testRouter");
 
 //         ************************
 //                  ENV
