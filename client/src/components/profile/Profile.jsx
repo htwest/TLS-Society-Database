@@ -5,7 +5,7 @@ import { VStack, ButtonGroup, Button } from "@chakra-ui/react";
 import getUser from "../../api/getUser";
 import postLogout from "../../api/postLogout";
 
-import UserHeader from "./UserHeader";
+import UserBox from "./UserBox";
 
 const Profile = () => {
   const [user, setUser] = useState();
@@ -37,7 +37,7 @@ const Profile = () => {
       h="100vh"
       spacing="1rem"
     >
-      {user ? <UserHeader userData={user} /> : null}
+      {user ? <UserBox userData={user} /> : null}
       <ButtonGroup pt="1rem">
         <Button onClick={() => handleLogout()}>Log Out</Button>
       </ButtonGroup>
