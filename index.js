@@ -61,9 +61,6 @@ if (process.env.NODE_ENV === "production") {
 //                  ROUTES
 //         ************************
 
-// **** SESSION TESTING ****
-app.use("/test", testRouter);
-
 // **** AUTHENTICATION ****
 app.use("/auth", authRouter);
 

@@ -12,8 +12,7 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
-// import postRegister from "../../api/postRegister";
-import testRegister from "../../api/testRegister";
+import postRegister from "../../api/postRegister";
 
 const SignUp = () => {
   const [user, setUser] = useState("");
@@ -36,7 +35,7 @@ const SignUp = () => {
       setErrMsg
     );
     if (validate) {
-      await testRegister(user, pass, fName, lName, email).then((data) => {
+      await postRegister(user, pass, fName, lName, email).then((data) => {
         console.log(data);
       });
     }

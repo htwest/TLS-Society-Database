@@ -12,8 +12,7 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
-// import postLogin from "../../api/postLogIn";
-import testLogin from "../../api/testLogIn";
+import postLogin from "../../api/postLogIn";
 
 const Login = () => {
   // States
@@ -27,7 +26,7 @@ const Login = () => {
     e.preventDefault();
     const validate = validateLogIn(user, pass, setUsrErr, setPassErr);
     if (validate) {
-      await testLogin(user, pass).then((data) => {
+      await postLogin(user, pass).then((data) => {
         console.log(data);
       });
     }

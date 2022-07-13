@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const postLogIn = (user, pass) => {
+const postLogin = (user, pass) => {
   return axios
     .post(
       "/auth/login",
@@ -16,4 +16,4 @@ const postLogIn = (user, pass) => {
     .then((response) => response);
 };
 
-export default postLogIn;
+export default postLogin;

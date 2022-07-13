@@ -2,6 +2,32 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../db");
 const bcrypt = require("bcrypt");
+const passport = require("passport");
+
+// ************
+//   LOG IN
+// ************
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      console.log("LOGIN PASSPORT AUTHENTICATION ERROR [STAGE 1]:");
+      console.log(err);
+    }
+    if (!user) {
+      res.send("No User Exists");
+    } else {
+      req.logIn(user, (err) => {
+        if (err) {
+          console.log("LOGIN PASSPORT AUTHENTICATION ERROR [STAGE 2]:");
+          console.log(err);
+        } else {
+          res.send("Succesfully Authenticated");
+          console.log(req.user);
+        }
+      });
+    }
+  })(req, res, next);
+});
 
 // ************
 //   SIGN UP
@@ -43,30 +69,10 @@ router.post("/register", async (req, res) => {
 });
 
 // ************
-//   LOG IN
+//   GET USER
 // ************
-router.post("/login", async (req, res) => {
-  const name = req.body.username;
-  const password = req.body.password;
-
-  const user = await pool.query("SELECT * FROM users WHERE user_name = $1", [
-    name,
-  ]);
-
-  if (user.rows.length > 0) {
-    try {
-      if (await bcrypt.compare(password, user.rows[0].user_password)) {
-        res.send("Logged In");
-      } else {
-        res.send("Wrong Username/Password");
-      }
-    } catch (err) {
-      res.sendStatus(500);
-      console.log(err);
-    }
-  } else {
-    res.send("Not a user");
-  }
+router.get("/user", (req, res) => {
+  res.send(req.user);
 });
 
 module.exports = router;
