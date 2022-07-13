@@ -2,7 +2,7 @@ const axios = require("axios");
 
 const getUser = () => {
   return axios
-    .get("/test/user", { withCredentials: true })
+    .get("/auth/user", { withCredentials: true })
     .catch((err) => {
       console.log(err);
     })
