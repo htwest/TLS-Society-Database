@@ -1,9 +1,9 @@
 const axios = require("axios");
 
-const postRegister = (user, pass, fName, lName, email) => {
+const testRegister = (user, pass, fName, lName, email) => {
   return axios
     .post(
-      "/auth/register",
+      "/test/register",
       {
         username: user,
         password: pass,
@@ -16,7 +16,7 @@ const postRegister = (user, pass, fName, lName, email) => {
     .catch((err) => {
       console.log(err);
     })
-    .then((response) => response.data);
+    .then((response) => response);
 };
 
-export default postRegister;
+export default testRegister;
