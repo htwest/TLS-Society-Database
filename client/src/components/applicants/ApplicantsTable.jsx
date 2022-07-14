@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Table,
   Thead,
@@ -6,12 +6,23 @@ import {
   Tfoot,
   Tr,
   Th,
-  Td,
   TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
 
-const ApplicantsTable = () => {
+// Hooks
+import fetchUnapproved from "../../hooks/fetchUnapproved";
+
+// Components
+import ApplicantsItem from "./ApplicantsItem";
+
+const ApplicantsTable = ({ onOpen }) => {
+  const [unnapproved, setUnapproved] = useState();
+
+  useEffect(() => {
+    fetchUnapproved(setUnapproved);
+  }, []);
+
   return (
     <TableContainer>
       <Table variant="simple">
@@ -25,31 +36,22 @@ const ApplicantsTable = () => {
           </Tr>
         </Thead>
         <Tbody>
-          <Tr>
-            <Td>Han Solo</Td>
-            <Td>millimetres (mm)</Td>
-            <Td>inches</Td>
-            <Td>millimetres (mm)</Td>
-          </Tr>
-          <Tr>
-            <Td>Han Solo</Td>
-            <Td>millimetres (mm)</Td>
-            <Td>inches</Td>
-            <Td>millimetres (mm)</Td>
-          </Tr>
-          <Tr>
-            <Td>Han Solo</Td>
-            <Td>millimetres (mm)</Td>
-            <Td>inches</Td>
-            <Td>millimetres (mm)</Td>
-          </Tr>
+          {unnapproved
+            ? unnapproved.map((item) => (
+                <ApplicantsItem
+                  item={item}
+                  key={item.user_name}
+                  onOpen={onOpen}
+                />
+              ))
+            : null}
         </Tbody>
         <Tfoot>
           <Tr>
-            <Td>Han Solo</Td>
-            <Td>millimetres (mm)</Td>
-            <Td>inches</Td>
-            <Td>millimetres (mm)</Td>
+            <Th>Name</Th>
+            <Th>Application</Th>
+            <Th>Approve</Th>
+            <Th>Reject</Th>
           </Tr>
         </Tfoot>
       </Table>

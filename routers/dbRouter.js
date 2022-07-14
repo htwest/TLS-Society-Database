@@ -19,7 +19,7 @@ router.get("/list", async (req, res) => {
 //   GET ALL UNAPPROVED APPLICANTS
 // ************************************
 
-router.get("/applicants/unapproved", async (req, res) => {
+router.get("/unapproved", async (req, res) => {
   try {
     const list = await pool.query(
       "SELECT user_name, user_fname, user_lname FROM users WHERE user_approved = false"
