@@ -41,7 +41,7 @@ const ModDrawer = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
+          <DrawerHeader>Navigation</DrawerHeader>
 
           <DrawerBody>
             <Input placeholder="Type here..." />
