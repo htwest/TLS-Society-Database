@@ -1,6 +1,7 @@
 import React from "react";
 import { VStack, Text, Heading } from "@chakra-ui/react";
 
+// Components
 import UserUnapproved from "./UserUnapproved";
 import DBTable from "../table/DBTable";
 import ModDrawer from "../mod/ModDrawer";
