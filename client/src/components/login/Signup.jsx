@@ -34,6 +34,7 @@ const SignUp = () => {
       setErr,
       setErrMsg
     );
+
     if (validate) {
       await postRegister(user, pass, fName, lName, email).then((data) => {
         navigate("/");

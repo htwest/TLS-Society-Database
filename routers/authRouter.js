@@ -54,8 +54,8 @@ router.post("/register", async (req, res) => {
 
     // Sign Up Info
     const name = req.body.username;
-    const fname = req.body.fname;
-    const lname = req.body.lname;
+    const fname = req.body.fName;
+    const lname = req.body.lName;
     const email = req.body.email;
     const password = hashedPassword;
     const approved = false;
@@ -72,7 +72,7 @@ router.post("/register", async (req, res) => {
     } else {
       // Add User to DB
       const newUser = await pool.query(
-        "INSERT INTO users (user_name, user_fname, user_lname, user_email, user_password, user_approved,  user_mod) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+        "INSERT INTO users (user_name, user_fname, user_lname, user_email, user_password, user_approved, user_mod) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *",
         [name, fname, lname, email, password, approved, mod]
       );
       res.send("User Created");

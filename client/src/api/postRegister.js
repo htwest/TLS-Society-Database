@@ -1,6 +1,8 @@
 const axios = require("axios");
 
 const postRegister = (user, pass, fName, lName, email) => {
+  console.log(fName);
+
   return axios
     .post(
       "/auth/register",
