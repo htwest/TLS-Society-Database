@@ -40,9 +40,9 @@ const DBTable = () => {
           </Tr>
         </Thead>
         <Tbody>
-          {dbList.map((item) => (
-            <TableItem item={item} key={item.id} />
-          ))}
+          {dbList
+            ? dbList.map((item) => <TableItem item={item} key={item.id} />)
+            : null}
         </Tbody>
         <Tfoot>
           <Tr>

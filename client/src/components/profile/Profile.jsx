@@ -38,7 +38,7 @@ const Profile = () => {
       spacing="1rem"
     >
       {user ? <UserBox userData={user} /> : null}
-      <ButtonGroup pt="1rem">
+      <ButtonGroup pos="absolute" top="0" right="20" m="1rem">
         <Button onClick={() => handleLogout()}>Log Out</Button>
       </ButtonGroup>
     </VStack>

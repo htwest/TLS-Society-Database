@@ -2,7 +2,6 @@ import React from "react";
 import { Tr, Td } from "@chakra-ui/react";
 
 const TableItem = ({ item }) => {
-  console.log(item);
   return (
     <Tr>
       <Td>{item.institute}</Td>
