@@ -9,6 +9,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Heading,
 } from "@chakra-ui/react";
 
 // Components
@@ -43,6 +44,7 @@ const UnapprovedBox = ({ userData }) => {
         </ModalContent>
       </Modal>
 
+      <Heading>Unapproved Users</Heading>
       <UnapprovedTable />
       <ModDrawer />
     </>

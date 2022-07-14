@@ -6,6 +6,7 @@ import fetchUser from "../../hooks/fetchUser";
 
 // Components
 import UnapprovedBox from "./UnapprovedBox";
+import UserLogout from "../profile/UserLogout";
 
 const UnapprovedPage = () => {
   const [user, setUser] = useState();
@@ -22,8 +23,8 @@ const UnapprovedPage = () => {
       h="100vh"
       spacing="1rem"
     >
-      <Heading>Unapproved Users</Heading>
-      <UnapprovedBox userData={user} />
+      {user ? <UnapprovedBox userData={user} /> : null}
+      {user ? <UserLogout setUser={setUser} /> : null}
     </VStack>
   );
 };
