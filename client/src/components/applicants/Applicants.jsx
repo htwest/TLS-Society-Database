@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { VStack, Heading } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 
 // Hooks
 import fetchUser from "../../hooks/fetchUser";
 
 // Components
-import UnapprovedBox from "./UnapprovedBox";
+import ApplicantsBox from "./ApplicantsBox";
 import UserLogout from "../profile/UserLogout";
 
-const UnapprovedPage = () => {
+const Applicants = () => {
   const [user, setUser] = useState();
 
   useEffect(() => {
@@ -23,10 +23,10 @@ const UnapprovedPage = () => {
       h="100vh"
       spacing="1rem"
     >
-      {user ? <UnapprovedBox userData={user} /> : null}
+      {user ? <ApplicantsBox userData={user} /> : null}
       {user ? <UserLogout setUser={setUser} /> : null}
     </VStack>
   );
 };
 
-export default UnapprovedPage;
+export default Applicants;

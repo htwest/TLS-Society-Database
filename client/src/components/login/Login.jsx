@@ -27,10 +27,9 @@ const Login = () => {
     const validate = validateLogIn(user, pass, setUsrErr, setPassErr);
     if (validate) {
       await postLogin(user, pass).then((data) => {
-        console.log(data);
+        navigate("/profile");
       });
     }
-    navigate("/profile");
   };
 
   const navigate = useNavigate();

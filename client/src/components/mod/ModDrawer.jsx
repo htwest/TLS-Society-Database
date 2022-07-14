@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Drawer,
   DrawerBody,
@@ -10,7 +11,6 @@ import {
   ButtonGroup,
   Button,
   useDisclosure,
-  Input,
 } from "@chakra-ui/react";
 
 const ModDrawer = () => {
@@ -44,7 +44,7 @@ const ModDrawer = () => {
           <DrawerHeader>Navigation</DrawerHeader>
 
           <DrawerBody>
-            <Input placeholder="Type here..." />
+            <Link to="/unapproved">Applicants</Link>
           </DrawerBody>
 
           <DrawerFooter>

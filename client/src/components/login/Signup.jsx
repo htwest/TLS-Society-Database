@@ -36,11 +36,9 @@ const SignUp = () => {
     );
     if (validate) {
       await postRegister(user, pass, fName, lName, email).then((data) => {
-        console.log(data);
+        navigate("/");
       });
     }
-    setUser("");
-    setPass("");
   };
 
   const navigate = useNavigate();

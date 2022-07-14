@@ -14,6 +14,7 @@ const UserLogout = ({ setUser }) => {
   };
 
   const navigate = useNavigate();
+
   return (
     <ButtonGroup pos="absolute" top="0" right="20" m="1rem">
       <Button onClick={() => handleLogout()}>Log Out</Button>

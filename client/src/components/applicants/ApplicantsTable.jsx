@@ -11,7 +11,7 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 
-const UnapprovedTable = () => {
+const ApplicantsTable = () => {
   return (
     <TableContainer>
       <Table variant="simple">
@@ -57,4 +57,4 @@ const UnapprovedTable = () => {
   );
 };
 
-export default UnapprovedTable;
+export default ApplicantsTable;

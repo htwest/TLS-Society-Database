@@ -13,10 +13,10 @@ import {
 } from "@chakra-ui/react";
 
 // Components
-import UnapprovedTable from "./UnapprovedTable";
+import ApplicantsTable from "./ApplicantsTable";
 import ModDrawer from "../mod/ModDrawer";
 
-const UnapprovedBox = ({ userData }) => {
+const ApplicantsBox = ({ userData }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -45,10 +45,10 @@ const UnapprovedBox = ({ userData }) => {
       </Modal>
 
       <Heading>Unapproved Users</Heading>
-      <UnapprovedTable />
+      <ApplicantsTable />
       <ModDrawer />
     </>
   );
 };
 
-export default UnapprovedBox;
+export default ApplicantsBox;
