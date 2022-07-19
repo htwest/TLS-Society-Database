@@ -21,7 +21,7 @@ const ApplicantsTable = ({ onOpen }) => {
 
   useEffect(() => {
     fetchUnapproved(setUnapproved);
-  }, []);
+  }, [unnapproved]);
 
   return (
     <TableContainer>

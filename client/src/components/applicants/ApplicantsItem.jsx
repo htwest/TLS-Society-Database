@@ -1,7 +1,14 @@
 import React from "react";
 import { Tr, Td, Button } from "@chakra-ui/react";
 
+import putApproveUser from "../../api/putApproveUser";
+
 const ApplicantsItem = ({ item, onOpen }) => {
+  const handleApprove = async () => {
+    await putApproveUser(item.user_name);
+    console.log("User Approved");
+  };
+
   return (
     <Tr>
       <Td>{item.user_name}</Td>
@@ -11,7 +18,7 @@ const ApplicantsItem = ({ item, onOpen }) => {
         </Button>
       </Td>
       <Td>
-        <Button>Accept</Button>
+        <Button onClick={handleApprove}>Accept</Button>
       </Td>
       <Td>
         <Button>Reject</Button> (mm)

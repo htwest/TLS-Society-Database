@@ -18,7 +18,7 @@ router.put("/approve/:user_name", async (req, res) => {
           console.log(err);
           res.sendStatus(500);
         } else {
-          res.send("User Approved");
+          res.sendStatus(200);
         }
       }
     );
