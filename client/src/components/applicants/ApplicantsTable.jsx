@@ -21,7 +21,13 @@ const ApplicantsTable = ({ onOpen }) => {
 
   useEffect(() => {
     fetchUnapproved(setUnapproved);
-  }, [unnapproved]);
+  }, []);
+
+  useEffect(() => {}, [unnapproved]);
+
+  const refreshComp = () => {
+    fetchUnapproved(setUnapproved);
+  };
 
   return (
     <TableContainer>
@@ -42,6 +48,7 @@ const ApplicantsTable = ({ onOpen }) => {
                   item={item}
                   key={item.user_name}
                   onOpen={onOpen}
+                  refreshComp={refreshComp}
                 />
               ))
             : null}

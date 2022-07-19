@@ -17,7 +17,7 @@ const Applicants = () => {
 
   return (
     <VStack
-      w={{ base: "90%", md: "500px" }}
+      w={{ base: "90%", md: "800px" }}
       m="auto"
       justify="center"
       h="100vh"
