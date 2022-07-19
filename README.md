@@ -4,25 +4,78 @@ This website allows authenticated users to access a registry of Internship infor
 
 ## Installation
 
-- Fork and Download the Repo
+###### Prerequisites
 
-- Navigate to the project folder
+- Node Package Manager
+- Postgres
 
-- Use Node Package Manager to install all server dependencies
+###### Steps
 
-```bash
-npm install
-```
+1. Fork and Download the Repo
 
-- Navigtate to client folder and install all client dependencies
+2. Navigate to the project folder
 
-```bash
-cd client
-```
+3. Use Node Package Manager to install all server dependencies
 
 ```bash
-npm install
+$ npm install
 ```
+
+4. Navigtate to client folder and install all client dependencies
+
+```bash
+$ cd client
+```
+
+```bash
+$ npm install
+```
+
+5. Log into postgres through portal hub or terminal
+
+```
+$ psql username - U
+```
+
+6. Create Database, and select it for use
+
+```
+# CREATE DATABASE database-name
+```
+
+```
+# \connect database-name
+```
+
+7. Create necessary schemas and add to Database
+
+```
+# CREATE TABLE schema_name (
+  ...schema_info...
+)
+```
+
+8. Create .env file and fill in necessary data
+
+9. Navigate back to project directory
+
+10. Start development server
+
+```
+$ npm run server
+```
+
+11. Navigate to client directory and run client
+
+```
+$ cd client
+```
+
+```
+$ npm run start
+```
+
+12. In your browser, navigate to [localhost:3000](http://localhost:3000/)
 
 ## License
 
