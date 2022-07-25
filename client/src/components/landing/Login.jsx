@@ -15,7 +15,7 @@ import {
 import UserContext from "../../UserContext";
 import postLogin from "../../api/postLogIn";
 
-const Login = () => {
+const Login = ({ setRegister }) => {
   // Context
   const msg = useContext(UserContext);
 
@@ -89,7 +89,7 @@ const Login = () => {
         <Button colorScheme="teal" type="submit">
           Log In
         </Button>
-        <Button onClick={() => navigate("/register")}>Create Account</Button>
+        <Button onClick={() => setRegister(true)}>Create Account</Button>
       </ButtonGroup>
     </VStack>
   );

@@ -14,7 +14,7 @@ import {
 
 import postRegister from "../../api/postRegister";
 
-const SignUp = () => {
+const SignUp = ({ setRegister }) => {
   const [user, setUser] = useState("");
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
@@ -143,7 +143,7 @@ const SignUp = () => {
         <Button colorScheme="teal" type="submit">
           Create Account
         </Button>
-        <Button onClick={() => navigate("/")}>Back</Button>
+        <Button onClick={() => setRegister(false)}>Back</Button>
       </ButtonGroup>
     </VStack>
   );
