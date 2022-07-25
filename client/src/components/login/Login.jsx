@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import validateLogIn from "../../hooks/validateLogIn";
 import {
@@ -12,9 +12,13 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
+import UserContext from "../../UserContext";
 import postLogin from "../../api/postLogIn";
 
 const Login = () => {
+  // Context
+  const msg = useContext(UserContext);
+
   // States
   const [user, setUser] = useState();
   const [pass, setPass] = useState();
@@ -45,6 +49,7 @@ const Login = () => {
       spacing="1rem"
     >
       <Heading>Log In</Heading>
+      <p>{msg}</p>
       <FormControl isInvalid={usrErr}>
         <FormLabel>Username</FormLabel>
         <Input
