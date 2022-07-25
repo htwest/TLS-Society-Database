@@ -12,15 +12,17 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
-import UserContext from "../../UserContext";
 import postLogin from "../../api/postLogIn";
+
+// Context
+import UserContext from "../../UserContext";
 
 const Login = ({ setRegister }) => {
   // Context
-  const msg = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   // States
-  const [user, setUser] = useState();
+  const [username, setUsername] = useState();
   const [pass, setPass] = useState();
   const [usrErr, setUsrErr] = useState();
   const [passErr, setPassErr] = useState();
@@ -28,9 +30,10 @@ const Login = ({ setRegister }) => {
   // Functions
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validate = validateLogIn(user, pass, setUsrErr, setPassErr);
+    const validate = validateLogIn(username, pass, setUsrErr, setPassErr);
     if (validate) {
-      await postLogin(user, pass).then((data) => {
+      await postLogin(username, pass).then((res) => {
+        setUser(res.data);
         navigate("/profile");
       });
     }
@@ -49,20 +52,19 @@ const Login = ({ setRegister }) => {
       spacing="1rem"
     >
       <Heading>Log In</Heading>
-      <p>{msg}</p>
       <FormControl isInvalid={usrErr}>
         <FormLabel>Username</FormLabel>
         <Input
           type="text"
-          name="username"
-          value={user}
+          name="user_name"
+          value={username}
           placeholder="Enter Username"
           autoComplete="off"
           size="lg"
           onChange={(e) => {
             setUsrErr();
             setPassErr();
-            setUser(e.target.value);
+            setUsername(e.target.value);
           }}
         />
         <FormErrorMessage>{usrErr}</FormErrorMessage>

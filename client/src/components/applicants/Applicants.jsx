@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { VStack } from "@chakra-ui/react";
 
-// Hooks
-import fetchUser from "../../hooks/fetchUser";
+// Context
+import UserContext from "../../UserContext";
 
 // Components
 import ApplicantsBox from "./ApplicantsBox";
 import UserLogout from "../profile/UserLogout";
 
 const Applicants = () => {
-  const [user, setUser] = useState();
-
-  useEffect(() => {
-    fetchUser(setUser);
-  }, []);
+  // Context
+  const { user, setUser } = useContext(UserContext);
 
   return (
     <VStack

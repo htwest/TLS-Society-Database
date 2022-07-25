@@ -21,7 +21,7 @@ router.post("/login", (req, res, next) => {
           console.log("LOGIN PASSPORT AUTHENTICATION ERROR [STAGE 2]:");
           console.log(err);
         } else {
-          res.send("Succesfully Authenticated");
+          res.send(req.user);
           // console.log(req.user);
         }
       });
