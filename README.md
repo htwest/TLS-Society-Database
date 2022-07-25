@@ -83,15 +83,6 @@ PENDING
 
 ## To-Do
 
-- Create "Blocked" table in Database
-
-  - Schema should include ID and email
-
-- Refactor Register Route to check signup email against "Blocked" Table in Database.
-
-  - If Email is not present, procede with register normally
-  - If Found, deny new Signup
-
 - Create "Pending" table in Database
 
   - Pending will hold unapproved Intership Information.
