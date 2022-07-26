@@ -1,4 +1,12 @@
-const validateSignUp = (username, password, fName, lName, email) => {
+const validateSignUp = (
+  username,
+  password,
+  fName,
+  lName,
+  email,
+  setErr,
+  onOpen
+) => {
   if (
     username.length === 0 ||
     password.length === 0 ||
@@ -6,7 +14,8 @@ const validateSignUp = (username, password, fName, lName, email) => {
     lName.length === 0 ||
     email.length === 0
   ) {
-    return false;
+    setErr("Please Make Sure All Fields Are Filled Out Correctly");
+    onOpen();
   } else {
     return true;
   }

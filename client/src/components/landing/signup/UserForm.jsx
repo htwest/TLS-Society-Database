@@ -12,7 +12,7 @@ import {
 // Hooks
 import validateSignUp from "../../../hooks/validateSignUp";
 
-const UserForm = ({ setRegister, setUserData }) => {
+const UserForm = ({ setErr, setUserData, onOpen }) => {
   const [user, setUser] = useState("");
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
@@ -21,9 +21,17 @@ const UserForm = ({ setRegister, setUserData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validate = validateSignUp(user, pass, fName, lName, email);
+    const validate = validateSignUp(
+      user,
+      pass,
+      fName,
+      lName,
+      email,
+      setErr,
+      onOpen
+    );
     if (validate) {
-      setUserData([user, fName, lName, email, pass]);
+      setUserData([user, fName, lName, email, pass, setErr]);
     }
   };
   return (
