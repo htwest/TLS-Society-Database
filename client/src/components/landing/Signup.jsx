@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
 import validateSignUp from "../../hooks/validateSignUp";
 import {
   VStack,
@@ -37,12 +36,10 @@ const SignUp = ({ setRegister }) => {
 
     if (validate) {
       await postRegister(user, pass, fName, lName, email).then((data) => {
-        navigate("/");
+        setRegister(false);
       });
     }
   };
-
-  const navigate = useNavigate();
 
   return (
     <VStack

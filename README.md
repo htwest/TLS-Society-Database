@@ -87,6 +87,10 @@ PENDING
 
   - Pending will hold unapproved Intership Information.
 
+- Build out "Reject" functionality
+
+  - Should delete entry from the "Pending" database
+
 - Refactor Register to include Internship Information
 
   - On signup, add Internship Info to "Pending" Table
@@ -98,5 +102,3 @@ PENDING
 - Build out "Application" Button to present user Internship Info
 
   - Should retrieve Internship info from "Pending Table"
-
-- Build Protected Routes with Session Data
