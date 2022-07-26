@@ -12,10 +12,11 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
+// Api
 import postLogin from "../../api/postLogIn";
 
 // Context
-import UserContext from "../../UserContext";
+import UserContext from "../../utils/UserContext";
 
 const Login = ({ setRegister }) => {
   // Context

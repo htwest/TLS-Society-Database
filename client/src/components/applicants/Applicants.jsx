@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { VStack } from "@chakra-ui/react";
 
 // Context
-import UserContext from "../../UserContext";
+import UserContext from "../../utils/UserContext";
 
 // Components
 import ApplicantsBox from "./ApplicantsBox";
