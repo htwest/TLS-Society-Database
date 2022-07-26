@@ -1,12 +1,4 @@
-const validateSignUp = (
-  username,
-  password,
-  fName,
-  lName,
-  email,
-  setErr,
-  setErrMsg
-) => {
+const validateSignUp = (username, password, fName, lName, email) => {
   if (
     username.length === 0 ||
     password.length === 0 ||
@@ -14,8 +6,7 @@ const validateSignUp = (
     lName.length === 0 ||
     email.length === 0
   ) {
-    setErr(true);
-    setErrMsg("Please Fill Out All Boxes");
+    return false;
   } else {
     return true;
   }
