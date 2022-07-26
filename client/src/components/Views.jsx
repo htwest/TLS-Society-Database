@@ -1,9 +1,12 @@
 import React, { useState, useMemo } from "react";
 import { Routes, Route } from "react-router-dom";
+
+// Page Components
 import Landing from "./landing/Landing";
 import Profile from "./profile/Profile";
 import Applicants from "./applicants/Applicants";
 
+// Context
 import UserContext from "../UserContext";
 
 const Views = () => {
