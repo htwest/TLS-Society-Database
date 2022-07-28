@@ -16,6 +16,23 @@ router.get("/list", async (req, res) => {
 });
 
 // ************************************
+//   GET PENDING INTERNSHIP BY USERNAME
+// ************************************
+router.post("/pending", async (req, res) => {
+  try {
+    const user = req.body.username;
+    const pending = await pool.query(
+      "SELECT * FROM pending WHERE user_name = $1",
+      [user]
+    );
+    res.send(list.rows);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
+// ************************************
 //   GET ALL UNAPPROVED APPLICANTS
 // ************************************
 

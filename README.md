@@ -83,6 +83,10 @@ PENDING
 
 ## To-Do
 
+- Fix "Log-In" bug
+
+  - renders "Application is being process" on failed login
+
 - Create "Pending" table in Database
 
   - Pending will hold unapproved Intership Information.
