@@ -14,15 +14,17 @@ router.post("/login", (req, res, next) => {
       console.log(err);
     }
     if (!user) {
-      res.send("No User Exists");
+      // If User Is not Found
+      res.sendStatus(401);
     } else {
+      // If User Is Found
       req.logIn(user, (err) => {
         if (err) {
           console.log("LOGIN PASSPORT AUTHENTICATION ERROR [STAGE 2]:");
           console.log(err);
         } else {
+          // Send User Data
           res.send(req.user);
-          // console.log(req.user);
         }
       });
     }

@@ -83,9 +83,25 @@ PENDING
 
 ## To-Do
 
-- Fix "Log-In" bug
+###### Front End
 
-  - renders "Application is being process" on failed login
+- Build out Application Page
+
+  - Render User signup first
+
+    - Validate
+
+  - Render First Insitute Info
+
+    - Validate
+
+  - Render Second Insitute Info
+
+    - Validate
+
+  - Submit user info to "applicants" and Institute info to "pending"
+
+###### Back End
 
 - Create "Pending" table in Database
 

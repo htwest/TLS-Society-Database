@@ -8,12 +8,13 @@ import {
   Button,
   Heading,
   Select,
+  Text,
   Textarea,
   SimpleGrid,
 } from "@chakra-ui/react";
 import DatePicker from "react-datepicker";
 
-const InstituteForm = ({ setErr, onOpen }) => {
+const InstituteForm = ({ setErr, onOpen, disp, setDisp }) => {
   const [institute, setInstitute] = useState();
   const [semester, setSemester] = useState();
   const [name, setName] = useState();
@@ -42,7 +43,7 @@ const InstituteForm = ({ setErr, onOpen }) => {
           type="text"
           name="institute_name"
           value={institute}
-          placeholder="Enter Username"
+          placeholder="Name of Institute"
           autoComplete="off"
           size="lg"
           onChange={(e) => {
@@ -67,16 +68,14 @@ const InstituteForm = ({ setErr, onOpen }) => {
       <FormControl>
         <FormLabel>Dates</FormLabel>
         <SimpleGrid columns={2} spacing={10}>
-          <Input
-            placeHolder="Select Start Date"
-            size="lg"
-            type="datetime-local"
-          />
-          <Input
-            placeHolder="Select Deadline"
-            size="lg"
-            type="datetime-local"
-          />
+          <VStack justify="center">
+            <Text>Start Date</Text>
+            <Input size="lg" type="datetime-local" />
+          </VStack>
+          <VStack justify="center">
+            <Text>Deadline</Text>
+            <Input size="lg" type="datetime-local" />
+          </VStack>
         </SimpleGrid>
       </FormControl>
 
@@ -123,6 +122,7 @@ const InstituteForm = ({ setErr, onOpen }) => {
         <Button colorScheme="teal" type="submit">
           Add Insitute Info
         </Button>
+        <Button onClick={() => setDisp(disp - 1)}>Back</Button>
       </ButtonGroup>
     </VStack>
   );

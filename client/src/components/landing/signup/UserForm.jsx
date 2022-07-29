@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   VStack,
   ButtonGroup,
@@ -12,13 +12,34 @@ import {
 // Hooks
 import validateSignUp from "../../../hooks/validateSignUp";
 
-const UserForm = ({ setErr, setUserData, onOpen, disp, setDisp }) => {
+const UserForm = ({
+  userData,
+  setRegister,
+  setErr,
+  setUserData,
+  onOpen,
+  disp,
+  setDisp,
+}) => {
+  // States
   const [user, setUser] = useState("");
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
+  // Effects
+  useEffect(() => {
+    if (userData) {
+      setUser(userData[0]);
+      setFName(userData[1]);
+      setLName(userData[2]);
+      setEmail(userData[3]);
+      setPass(userData[4]);
+    }
+  }, [userData]);
+
+  // Functions
   const handleSubmit = (e) => {
     e.preventDefault();
     const validate = validateSignUp(
@@ -31,7 +52,7 @@ const UserForm = ({ setErr, setUserData, onOpen, disp, setDisp }) => {
       onOpen
     );
     if (validate) {
-      setUserData([user, fName, lName, email, pass, setErr]);
+      setUserData([user, fName, lName, email, pass]);
       setDisp(disp + 1);
     }
   };
@@ -121,8 +142,9 @@ const UserForm = ({ setErr, setUserData, onOpen, disp, setDisp }) => {
 
       <ButtonGroup pt="1rem">
         <Button colorScheme="teal" type="submit">
-          Add User Data
+          Next
         </Button>
+        <Button onClick={() => setRegister(false)}>Back</Button>
       </ButtonGroup>
     </VStack>
   );

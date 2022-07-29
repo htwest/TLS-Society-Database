@@ -17,6 +17,8 @@ const SignUp = ({ setRegister }) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  console.log(userData);
+
   const handleSubmit = async () => {
     await postRegister(userData).then((data) => {
       setRegister(false);
@@ -34,6 +36,8 @@ const SignUp = ({ setRegister }) => {
       <ErrorModal isOpen={isOpen} onClose={onClose} err={err} setErr={setErr} />
       {disp === 0 ? (
         <UserForm
+          userData={userData}
+          setRegister={setRegister}
           setErr={setErr}
           setUserData={setUserData}
           onOpen={onOpen}
@@ -46,16 +50,18 @@ const SignUp = ({ setRegister }) => {
           setFirstInstitute={setFirstInstitute}
           disp={disp}
           setDisp={setDisp}
+          setErr={setErr}
+          onOpen={onOpen}
         />
       ) : null}
-      {userData && firstInstitute ? (
+      {/* {userData && firstInstitute ? (
         <ButtonGroup pt="1rem">
           <Button colorScheme="teal" onClick={() => handleSubmit()}>
             Create Account
           </Button>
           <Button onClick={() => setRegister(false)}>Back</Button>
         </ButtonGroup>
-      ) : null}
+      ) : null} */}
     </VStack>
   );
 };
