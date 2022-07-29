@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 
 // Hooks
-import validateInternship from "../../../hooks/validateInternship";
+import validateForm from "../../../hooks/validateForm";
 
 const InstituteForm = ({
   setFirstInstitute,
@@ -35,7 +35,7 @@ const InstituteForm = ({
   // Functions
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validate = validateInternship(
+    const validate = validateForm(
       setErr,
       onOpen,
       institute,

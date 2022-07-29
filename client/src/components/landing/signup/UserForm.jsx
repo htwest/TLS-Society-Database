@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 
 // Hooks
-import validateSignUp from "../../../hooks/validateSignUp";
+import validateForm from "../../../hooks/validateForm";
 
 const UserForm = ({
   userData,
@@ -42,14 +42,14 @@ const UserForm = ({
   // Functions
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validate = validateSignUp(
+    const validate = validateForm(
+      setErr,
+      onOpen,
       user,
-      pass,
       fName,
       lName,
       email,
-      setErr,
-      onOpen
+      pass
     );
     if (validate) {
       setUserData([user, fName, lName, email, pass]);

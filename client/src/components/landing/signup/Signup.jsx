@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { VStack, useDisclosure } from "@chakra-ui/react";
 
 // Components
-import ErrorModal from "./signup/ErrorModal";
-import UserForm from "./signup/UserForm";
-import InstituteForm from "./signup/InstituteForm";
+import ErrorModal from "../ErrorModal";
+import UserForm from "./UserForm";
+import InstituteForm from "./InstituteForm";
 
 // Api
-import postRegister from "../../api/postRegister";
+import postRegister from "../../../api/postRegister";
 
 const SignUp = ({ setRegister }) => {
   const [userData, setUserData] = useState();
