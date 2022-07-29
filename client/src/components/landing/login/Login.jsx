@@ -1,24 +1,25 @@
-import React, { useState, useContext, useDisclosure } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import {
   VStack,
   ButtonGroup,
   FormControl,
   FormLabel,
+  FormErrorMessage,
   Input,
   Button,
   Heading,
+  useDisclosure,
 } from "@chakra-ui/react";
+
+// Components
+import ErrorModal from "../ErrorModal";
 
 // Api
 import postLogin from "../../../api/postLogIn";
 
 // Hooks
-import validateLogIn from "../../../hooks/validateLogIn";
 import validateForm from "../../../hooks/validateForm";
-
-// Components
-import ErrorModal from "../ErrorModal";
 
 // Context
 import UserContext from "../../../utils/UserContext";
@@ -31,6 +32,7 @@ const Login = ({ setRegister }) => {
   const [username, setUsername] = useState();
   const [pass, setPass] = useState();
   const [err, setErr] = useState();
+  const [loginErr, setLoginErr] = useState();
 
   // Functions
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -39,14 +41,14 @@ const Login = ({ setRegister }) => {
     e.preventDefault();
     const validate = validateForm(setErr, onOpen, username, pass);
     if (validate) {
-      await postLogin(username, pass).then((res) => {
-        if (res) {
+      await postLogin(username, pass)
+        .then((res) => {
           setUser(res.data);
           navigate("/profile");
-        } else {
-          setErr("Invalid Username or Password");
-        }
-      });
+        })
+        .catch((err) => {
+          setLoginErr("Invalid Username and/or Password");
+        });
     }
   };
 
@@ -62,8 +64,9 @@ const Login = ({ setRegister }) => {
       h="100vh"
       spacing="1rem"
     >
+      <ErrorModal isOpen={isOpen} onClose={onClose} err={err} setErr={setErr} />
       <Heading>Log In</Heading>
-      <FormControl>
+      <FormControl isInvalid={loginErr}>
         <FormLabel>Username</FormLabel>
         <Input
           type="text"
@@ -73,11 +76,14 @@ const Login = ({ setRegister }) => {
           autoComplete="off"
           size="lg"
           onChange={(e) => {
+            setLoginErr();
             setUsername(e.target.value);
           }}
         />
+        <FormErrorMessage>{loginErr}</FormErrorMessage>
       </FormControl>
-      <FormControl>
+
+      <FormControl isInvalid={loginErr}>
         <FormLabel>Password</FormLabel>
         <Input
           type="password"
@@ -86,10 +92,13 @@ const Login = ({ setRegister }) => {
           autoComplete="off"
           size="lg"
           onChange={(e) => {
+            setLoginErr();
             setPass(e.target.value);
           }}
         />
+        <FormErrorMessage>{loginErr}</FormErrorMessage>
       </FormControl>
+
       <ButtonGroup pt="1rem">
         <Button colorScheme="teal" type="submit">
           Log In
