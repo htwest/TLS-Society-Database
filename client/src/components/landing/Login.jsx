@@ -34,8 +34,13 @@ const Login = ({ setRegister }) => {
     const validate = validateLogIn(username, pass, setUsrErr, setPassErr);
     if (validate) {
       await postLogin(username, pass).then((res) => {
-        setUser(res.data);
-        navigate("/profile");
+        if (res) {
+          setUser(res.data);
+          navigate("/profile");
+        } else {
+          setUsrErr("Invalid Username or Password");
+          setPassErr("Invalid Username or Password");
+        }
       });
     }
   };

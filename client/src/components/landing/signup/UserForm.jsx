@@ -12,7 +12,7 @@ import {
 // Hooks
 import validateSignUp from "../../../hooks/validateSignUp";
 
-const UserForm = ({ setErr, setUserData, onOpen }) => {
+const UserForm = ({ setErr, setUserData, onOpen, disp, setDisp }) => {
   const [user, setUser] = useState("");
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
@@ -32,16 +32,16 @@ const UserForm = ({ setErr, setUserData, onOpen }) => {
     );
     if (validate) {
       setUserData([user, fName, lName, email, pass, setErr]);
+      setDisp(disp + 1);
     }
   };
   return (
     <VStack
       as="form"
-      onSubmit={(e) => handleSubmit(e)}
       w={{ base: "90%", md: "500px" }}
+      onSubmit={(e) => handleSubmit(e)}
       m="auto"
       justify="center"
-      h="100vh"
       spacing="1rem"
     >
       <Heading>Sign Up</Heading>
