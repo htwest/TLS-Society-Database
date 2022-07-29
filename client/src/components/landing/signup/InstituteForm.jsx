@@ -12,9 +12,18 @@ import {
   Textarea,
   SimpleGrid,
 } from "@chakra-ui/react";
-import DatePicker from "react-datepicker";
 
-const InstituteForm = ({ setErr, onOpen, disp, setDisp }) => {
+// Hooks
+import validateInternship from "../../../hooks/validateInternship";
+
+const InstituteForm = ({
+  setFirstInstitute,
+  setErr,
+  onOpen,
+  disp,
+  setDisp,
+}) => {
+  // States
   const [institute, setInstitute] = useState();
   const [semester, setSemester] = useState();
   const [name, setName] = useState();
@@ -23,8 +32,32 @@ const InstituteForm = ({ setErr, onOpen, disp, setDisp }) => {
   const [deadline, setDeadline] = useState(new Date());
   const [desc, setDesc] = useState();
 
+  // Functions
   const handleSubmit = (e) => {
     e.preventDefault();
+    const validate = validateInternship(
+      setErr,
+      onOpen,
+      institute,
+      semester,
+      name,
+      email,
+      date,
+      deadline,
+      desc
+    );
+    if (validate) {
+      setFirstInstitute([
+        institute,
+        semester,
+        name,
+        email,
+        date,
+        deadline,
+        desc,
+      ]);
+      setDisp(disp + 1);
+    }
   };
 
   return (
@@ -70,11 +103,19 @@ const InstituteForm = ({ setErr, onOpen, disp, setDisp }) => {
         <SimpleGrid columns={2} spacing={10}>
           <VStack justify="center">
             <Text>Start Date</Text>
-            <Input size="lg" type="datetime-local" />
+            <Input
+              size="lg"
+              type="datetime-local"
+              onChange={(e) => setDate(e.target.value)}
+            />
           </VStack>
           <VStack justify="center">
             <Text>Deadline</Text>
-            <Input size="lg" type="datetime-local" />
+            <Input
+              size="lg"
+              type="datetime-local"
+              onChange={(e) => setDeadline(e.target.value)}
+            />
           </VStack>
         </SimpleGrid>
       </FormControl>
@@ -120,7 +161,7 @@ const InstituteForm = ({ setErr, onOpen, disp, setDisp }) => {
 
       <ButtonGroup pt="1rem">
         <Button colorScheme="teal" type="submit">
-          Add Insitute Info
+          Next
         </Button>
         <Button onClick={() => setDisp(disp - 1)}>Back</Button>
       </ButtonGroup>

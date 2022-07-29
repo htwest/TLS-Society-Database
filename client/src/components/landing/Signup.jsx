@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { VStack, ButtonGroup, Button, useDisclosure } from "@chakra-ui/react";
+import { VStack, useDisclosure } from "@chakra-ui/react";
 
 // Components
 import ErrorModal from "./signup/ErrorModal";
@@ -16,8 +16,6 @@ const SignUp = ({ setRegister }) => {
   const [err, setErr] = useState();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  console.log(userData);
 
   const handleSubmit = async () => {
     await postRegister(userData).then((data) => {
@@ -54,14 +52,6 @@ const SignUp = ({ setRegister }) => {
           onOpen={onOpen}
         />
       ) : null}
-      {/* {userData && firstInstitute ? (
-        <ButtonGroup pt="1rem">
-          <Button colorScheme="teal" onClick={() => handleSubmit()}>
-            Create Account
-          </Button>
-          <Button onClick={() => setRegister(false)}>Back</Button>
-        </ButtonGroup>
-      ) : null} */}
     </VStack>
   );
 };
