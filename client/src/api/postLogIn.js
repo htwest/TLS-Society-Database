@@ -1,12 +1,14 @@
 const axios = require("axios");
 
-const postLogin = (user, pass) => {
+const postLogin = (data) => {
+  const username = data.username;
+  const password = data.pass;
   return axios
     .post(
       "/auth/login",
       {
-        username: user,
-        password: pass,
+        username,
+        password,
       },
       { withCredentials: true }
     )

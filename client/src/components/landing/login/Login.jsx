@@ -39,9 +39,13 @@ const Login = ({ setRegister }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validate = validateForm(setErr, onOpen, username, pass);
+    const data = {
+      username,
+      pass,
+    };
+    const validate = validateForm(setErr, onOpen, data);
     if (validate) {
-      await postLogin(username, pass)
+      await postLogin(data)
         .then((res) => {
           setUser(res.data);
           navigate("/profile");
