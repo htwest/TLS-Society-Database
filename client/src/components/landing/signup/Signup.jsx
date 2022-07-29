@@ -45,6 +45,7 @@ const SignUp = ({ setRegister }) => {
       ) : null}
       {disp === 1 ? (
         <InstituteForm
+          firstInstitute={firstInstitute}
           setFirstInstitute={setFirstInstitute}
           disp={disp}
           setDisp={setDisp}

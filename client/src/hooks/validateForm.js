@@ -1,12 +1,12 @@
-function validateForm(setErr, onOpen, ...args) {
+function validateForm(setErr, onOpen, data) {
   let validated = true;
-  args.forEach((arg) => {
-    if (arg === undefined || arg.length === 0) {
+  for (const item in data) {
+    if (data[item] === undefined || data[item].length === 0) {
       validated = false;
       setErr("Please Make Sure All Forms Are Filled Out Correctly");
       onOpen();
     }
-  });
+  }
   return validated;
 }
 

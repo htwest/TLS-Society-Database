@@ -31,28 +31,27 @@ const UserForm = ({
   // Effects
   useEffect(() => {
     if (userData) {
-      setUser(userData[0]);
-      setFName(userData[1]);
-      setLName(userData[2]);
-      setEmail(userData[3]);
-      setPass(userData[4]);
+      setUser(userData.user);
+      setFName(userData.fName);
+      setLName(userData.lName);
+      setEmail(userData.email);
+      setPass(userData.pass);
     }
   }, [userData]);
 
   // Functions
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validate = validateForm(
-      setErr,
-      onOpen,
+    const data = {
       user,
       fName,
       lName,
       email,
-      pass
-    );
+      pass,
+    };
+    const validate = validateForm(setErr, onOpen, data);
     if (validate) {
-      setUserData([user, fName, lName, email, pass]);
+      setUserData(data);
       setDisp(disp + 1);
     }
   };

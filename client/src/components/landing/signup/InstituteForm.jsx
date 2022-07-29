@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   VStack,
   ButtonGroup,
@@ -17,6 +17,7 @@ import {
 import validateForm from "../../../hooks/validateForm";
 
 const InstituteForm = ({
+  firstInstitute,
   setFirstInstitute,
   setErr,
   onOpen,
@@ -32,30 +33,34 @@ const InstituteForm = ({
   const [deadline, setDeadline] = useState(new Date());
   const [desc, setDesc] = useState();
 
+  // Effects
+  useEffect(() => {
+    if (firstInstitute) {
+      setInstitute(firstInstitute.institute);
+      setSemester(firstInstitute.semester);
+      setName(firstInstitute.name);
+      setEmail(firstInstitute.email);
+      setDate(firstInstitute.date);
+      setDeadline(firstInstitute.deadline);
+      setDesc(firstInstitute.desc);
+    }
+  }, [firstInstitute]);
+
   // Functions
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validate = validateForm(
-      setErr,
-      onOpen,
+    const data = {
       institute,
       semester,
       name,
       email,
       date,
       deadline,
-      desc
-    );
+      desc,
+    };
+    const validate = validateForm(setErr, onOpen, data);
     if (validate) {
-      setFirstInstitute([
-        institute,
-        semester,
-        name,
-        email,
-        date,
-        deadline,
-        desc,
-      ]);
+      setFirstInstitute(data);
       setDisp(disp + 1);
     }
   };
