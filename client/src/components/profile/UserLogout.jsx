@@ -9,6 +9,7 @@ const UserLogout = ({ setUser }) => {
   const handleLogout = async () => {
     await postLogout().then((res) => {
       setUser();
+      window.localStorage.removeItem("user");
       navigate("/");
     });
   };

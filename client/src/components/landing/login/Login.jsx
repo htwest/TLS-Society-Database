@@ -48,6 +48,7 @@ const Login = ({ setRegister }) => {
       await postLogin(data)
         .then((res) => {
           setUser(res.data);
+          window.localStorage.setItem("user", JSON.stringify(res.data));
           navigate("/profile");
         })
         .catch((err) => {

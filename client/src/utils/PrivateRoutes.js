@@ -5,7 +5,6 @@ import { Navigate, Outlet } from "react-router-dom";
 import UserContext from "./UserContext";
 
 const PrivateRoutes = () => {
-  // Context
   const { user } = useContext(UserContext);
   return user ? <Outlet /> : <Navigate to="/" />;
 };

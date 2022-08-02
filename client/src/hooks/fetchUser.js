@@ -1,9 +1,9 @@
-import getUser from "../api/getUser";
-
-const fetchUser = async (setUser) => {
-  await getUser().then((res) => {
-    setUser(res.data);
-  });
+const fetchUser = () => {
+  let currentUser = window.localStorage.getItem("user");
+  if (currentUser) {
+    currentUser = JSON.parse(currentUser);
+  }
+  return currentUser;
 };
 
 export default fetchUser;
