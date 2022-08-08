@@ -17,15 +17,15 @@ import {
 import validateForm from "../../../hooks/validateForm";
 
 const InstituteForm = ({
-  firstInstitute,
-  setFirstInstitute,
+  institute,
+  setInstitute,
   setErr,
   onOpen,
   disp,
   setDisp,
 }) => {
   // States
-  const [institute, setInstitute] = useState();
+  const [inst, setInst] = useState();
   const [semester, setSemester] = useState();
   const [name, setName] = useState();
   const [email, setEmail] = useState();
@@ -35,22 +35,22 @@ const InstituteForm = ({
 
   // Effects
   useEffect(() => {
-    if (firstInstitute) {
-      setInstitute(firstInstitute.institute);
-      setSemester(firstInstitute.semester);
-      setName(firstInstitute.name);
-      setEmail(firstInstitute.email);
-      setDate(firstInstitute.date);
-      setDeadline(firstInstitute.deadline);
-      setDesc(firstInstitute.desc);
+    if (institute) {
+      setInst(inst.institute);
+      setSemester(inst.semester);
+      setName(inst.name);
+      setEmail(inst.email);
+      setDate(inst.date);
+      setDeadline(inst.deadline);
+      setDesc(inst.desc);
     }
-  }, [firstInstitute]);
+  }, [institute]);
 
   // Functions
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      institute,
+      inst,
       semester,
       name,
       email,
@@ -60,7 +60,7 @@ const InstituteForm = ({
     };
     const validate = validateForm(setErr, onOpen, data);
     if (validate) {
-      setFirstInstitute(data);
+      setInstitute(data);
       setDisp(disp + 1);
     }
   };
@@ -80,12 +80,12 @@ const InstituteForm = ({
         <Input
           type="text"
           name="institute_name"
-          value={institute}
+          value={inst}
           placeholder="Name of Institute"
           autoComplete="off"
           size="lg"
           onChange={(e) => {
-            setInstitute(e.target.value);
+            setInst(e.target.value);
           }}
         />
       </FormControl>

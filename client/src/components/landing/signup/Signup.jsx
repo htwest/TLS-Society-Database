@@ -7,21 +7,22 @@ import UserForm from "./UserForm";
 import InstituteForm from "./InstituteForm";
 
 // Api
-import postRegister from "../../../api/postRegister";
+// import postRegister from "../../../api/postRegister";
 
 const SignUp = ({ setRegister }) => {
   const [userData, setUserData] = useState();
   const [disp, setDisp] = useState(0);
   const [firstInstitute, setFirstInstitute] = useState();
+  const [secondInstitute, setSecondInstitute] = useState();
   const [err, setErr] = useState();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const handleSubmit = async () => {
-    await postRegister(userData).then((data) => {
-      setRegister(false);
-    });
-  };
+  // const handleSubmit = async () => {
+  //   await postRegister(userData).then((data) => {
+  //     setRegister(false);
+  //   });
+  // };
 
   return (
     <VStack
@@ -45,8 +46,18 @@ const SignUp = ({ setRegister }) => {
       ) : null}
       {disp === 1 ? (
         <InstituteForm
-          firstInstitute={firstInstitute}
-          setFirstInstitute={setFirstInstitute}
+          institute={firstInstitute}
+          setInstitute={setFirstInstitute}
+          disp={disp}
+          setDisp={setDisp}
+          setErr={setErr}
+          onOpen={onOpen}
+        />
+      ) : null}
+      {disp === 2 ? (
+        <InstituteForm
+          institute={firstInstitute}
+          setInstitute={setFirstInstitute}
           disp={disp}
           setDisp={setDisp}
           setErr={setErr}
