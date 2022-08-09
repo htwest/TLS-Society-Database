@@ -85,21 +85,9 @@ PENDING
 
 ###### Front End
 
-- Build out Application Page
+- Build out Form validation for Registration Process
 
-  - Render User signup first
-
-    - Validate
-
-  - Render First Insitute Info
-
-    - Validate
-
-  - Render Second Insitute Info
-
-    - Validate
-
-  - Submit user info to "applicants" and Institute info to "pending"
+- Submit user info to "applicants" and Institute info to "pending"
 
 ###### Back End
 

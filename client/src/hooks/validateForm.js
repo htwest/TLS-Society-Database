@@ -1,11 +1,16 @@
-function validateForm(data, setErr) {
+function validateForm(data, errorCheck) {
   let validated = true;
+  let errors = [];
   for (const item in data) {
     if (data[item] === undefined || data[item].length === 0) {
+      errors.push(item);
       validated = false;
-      setErr("Please Make Sure All Forms Are Filled Out Correctly");
     }
   }
+  if (errors.length > 0) {
+    errorCheck(errors);
+  }
+  console.log(validated);
   return validated;
 }
 

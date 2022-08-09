@@ -1,19 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import {
+  VStack,
   FormControl,
   FormLabel,
+  FormErrorMessage,
   Grid,
   GridItem,
   Input,
+  ButtonGroup,
+  Button,
 } from "@chakra-ui/react";
 
 // Hooks
-// import validateForm from "../../hooks/validateForm";
+import validateForm from "../../hooks/validateForm";
 
-const UserForm = ({ userData, setUserData }) => {
+const UserForm = ({ userData, setUserData, nextStep }) => {
+  // States
+  const [userErr, setUserErr] = useState();
+  const [passErr, setPassErr] = useState();
+  const [fNameErr, setFNameErr] = useState();
+  const [lNameErr, setLNameErr] = useState();
+  const [emailErr, setEmailErr] = useState();
+
+  // Methods
+  const navigate = useNavigate();
+
+  const errorCheck = (errors) => {
+    errors.forEach((element) => {
+      switch (element) {
+        case "username":
+          setUserErr(true);
+          break;
+        case "password":
+          setPassErr(true);
+          break;
+        case "fName":
+          setFNameErr(true);
+          break;
+        case "lName":
+          setLNameErr(true);
+          break;
+        case "email":
+          setEmailErr(true);
+          break;
+        default:
+          break;
+      }
+    });
+  };
+
+  const handleNext = () => {
+    const validate = validateForm(userData, errorCheck);
+    if (validate) {
+      nextStep();
+    }
+  };
+
   return (
-    <>
-      <FormControl>
+    <VStack justify="center" spacing="1rem">
+      <FormControl isInvalid={userErr}>
         <FormLabel>Username</FormLabel>
         <Input
           type="text"
@@ -22,14 +68,15 @@ const UserForm = ({ userData, setUserData }) => {
           placeholder="Enter Username"
           autoComplete="off"
           size="lg"
-          onChange={(e) =>
-            setUserData({ ...userData, username: e.target.value })
-          }
+          onChange={(e) => {
+            setUserData({ ...userData, username: e.target.value });
+            setUserErr(false);
+          }}
         />
-        {/* <FormErrorMessage>{err}</FormErrorMessage> */}
+        <FormErrorMessage>Please Enter A Valid Username</FormErrorMessage>
       </FormControl>
 
-      <FormControl>
+      <FormControl isInvalid={passErr}>
         <FormLabel>Password</FormLabel>
         <Input
           type="password"
@@ -38,14 +85,15 @@ const UserForm = ({ userData, setUserData }) => {
           value={userData.password}
           autoComplete="off"
           size="lg"
-          onChange={(e) =>
-            setUserData({ ...userData, password: e.target.value })
-          }
+          onChange={(e) => {
+            setUserData({ ...userData, password: e.target.value });
+            setPassErr(false);
+          }}
         />
-        {/* <FormErrorMessage>{err}</FormErrorMessage> */}
+        <FormErrorMessage>Please Enter a Valid Password</FormErrorMessage>
       </FormControl>
 
-      <FormControl>
+      <FormControl isInvalid={lNameErr || fNameErr}>
         <FormLabel>Name</FormLabel>
         <Grid templateColumns="repeat(2, 1fr)" gap={6}>
           <GridItem>
@@ -56,9 +104,11 @@ const UserForm = ({ userData, setUserData }) => {
               placeholder="First"
               autoComplete="off"
               size="lg"
-              onChange={(e) =>
-                setUserData({ ...userData, fName: e.target.value })
-              }
+              onChange={(e) => {
+                setUserData({ ...userData, fName: e.target.value });
+                setLNameErr(false);
+                setFNameErr(false);
+              }}
             />
           </GridItem>
           <GridItem>
@@ -69,16 +119,18 @@ const UserForm = ({ userData, setUserData }) => {
               placeholder="Last"
               autoComplete="off"
               size="lg"
-              onChange={(e) =>
-                setUserData({ ...userData, lName: e.target.value })
-              }
+              onChange={(e) => {
+                setUserData({ ...userData, lName: e.target.value });
+                setLNameErr(false);
+                setFNameErr(false);
+              }}
             />
           </GridItem>
         </Grid>
-        {/* <FormErrorMessage>{err}</FormErrorMessage> */}
+        <FormErrorMessage>Please Enter Your Name</FormErrorMessage>
       </FormControl>
 
-      <FormControl>
+      <FormControl isInvalid={emailErr}>
         <FormLabel>Email</FormLabel>
         <Input
           type="text"
@@ -87,11 +139,19 @@ const UserForm = ({ userData, setUserData }) => {
           value={userData.email}
           autoComplete="off"
           size="lg"
-          onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+          onChange={(e) => {
+            setUserData({ ...userData, email: e.target.value });
+            setEmailErr(false);
+          }}
         />
-        {/* <FormErrorMessage>{err}</FormErrorMessage> */}
+        <FormErrorMessage>Please Enter a Valid Email</FormErrorMessage>
       </FormControl>
-    </>
+
+      <ButtonGroup>
+        <Button onClick={() => navigate("/")}>Back to Log In</Button>
+        <Button onClick={handleNext}>Next</Button>
+      </ButtonGroup>
+    </VStack>
   );
 };
 
