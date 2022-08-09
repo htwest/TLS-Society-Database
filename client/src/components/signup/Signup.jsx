@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import {
-  VStack,
-  Heading,
-  ButtonGroup,
-  Button,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { VStack, Heading, ButtonGroup, Button } from "@chakra-ui/react";
 
 // Components
-import ErrorModal from "./ErrorModal";
-import formDisplay from "./FormDisplay";
+import UserForm from "./UserForm";
+import InstituteForm from "./InstituteForm";
 
 // Api
 // import postRegister from "../../../api/postRegister";
@@ -18,17 +12,59 @@ import formDisplay from "./FormDisplay";
 const SignUp = () => {
   // States
   const [step, setStep] = useState(0);
-  const [err, setErr] = useState();
+  const [userData, setUserData] = useState({
+    username: "",
+    password: "",
+    fName: "",
+    lName: "",
+    email: "",
+  });
+  const [firstInstitute, setFirstInstitute] = useState({
+    institute: "",
+    semester: "",
+    poc_name: "",
+    poc_email: "",
+    app_open: "",
+    app_deadline: "",
+    description: "",
+  });
+  const [secondInstitute, setSecondInstitute] = useState({
+    institute: "",
+    semester: "",
+    poc_name: "",
+    poc_email: "",
+    app_open: "",
+    app_dealine: "",
+    description: "",
+  });
 
+  // Misc
+  const FormDisplay = () => {
+    switch (step) {
+      case 0:
+        return <UserForm userData={userData} setUserData={setUserData} />;
+      case 1:
+        return (
+          <InstituteForm
+            institute={firstInstitute}
+            setInstitute={setFirstInstitute}
+          />
+        );
+      case 2:
+        return (
+          <InstituteForm
+            institute={secondInstitute}
+            setInstitute={setSecondInstitute}
+          />
+        );
+      default:
+        return <UserForm userData={userData} setUserData={setUserData} />;
+    }
+  };
   const formTitles = ["Sign Up", "First Institute", "Second Institute"];
-
   const navigate = useNavigate();
 
-  // Error Modal
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   // Methods
-
   const nextStep = () => {
     setStep((currentStep) => currentStep + 1);
   };
@@ -51,9 +87,8 @@ const SignUp = () => {
       h="100vh"
       spacing="1rem"
     >
-      <ErrorModal isOpen={isOpen} onClose={onClose} err={err} setErr={setErr} />
       <Heading>{formTitles[step]}</Heading>
-      <div className="register-body">{formDisplay(step)}</div>
+      <div className="register-body">{FormDisplay()}</div>
       <ButtonGroup>
         {step === 0 ? (
           <Button
@@ -61,13 +96,15 @@ const SignUp = () => {
               navigate("/");
             }}
           >
-            Log In
+            Back to Log In
           </Button>
         ) : (
           <Button onClick={prevStep}>Back</Button>
         )}
         {step === 2 ? (
-          <Button onClick={handleSubmit}>Submit</Button>
+          <Button colorScheme="teal" onClick={handleSubmit}>
+            Submit
+          </Button>
         ) : (
           <Button onClick={nextStep}>Next</Button>
         )}
