@@ -1,8 +1,6 @@
 const axios = require("axios");
 
-const postLogin = (data) => {
-  const username = data.username;
-  const password = data.pass;
+const postLogin = (username, password) => {
   return axios
     .post(
       "/auth/login",

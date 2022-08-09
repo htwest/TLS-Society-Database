@@ -2,7 +2,8 @@ import React, { useState, useMemo } from "react";
 import { Routes, Route } from "react-router-dom";
 
 // Page Components
-import Landing from "./landing/Landing";
+import Login from "./login/Login";
+import SignUp from "./signup/Signup";
 import Profile from "./profile/Profile";
 import Applicants from "./applicants/Applicants";
 
@@ -28,8 +29,9 @@ const Views = () => {
           <Route path="/profile" element={<Profile />} exact />
           <Route path="/applicants" element={<Applicants exact />} />
         </Route>
-        <Route path="/" element={<Landing />} />
-        <Route path="*" element={<Landing />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<SignUp />} />
+        <Route path="*" element={<Login />} />
       </Routes>
     </UserContext.Provider>
   );

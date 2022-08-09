@@ -1,4 +1,4 @@
-function validateForm(setErr, onOpen, data) {
+function validateForm(data, setErr, onOpen) {
   let validated = true;
   for (const item in data) {
     if (data[item] === undefined || data[item].length === 0) {
