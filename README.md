@@ -87,6 +87,8 @@ PENDING
 
 - Submit user info to "applicants" and Institutes info to "pending"
 
+- Build Page for Moderators to Look at Pending applications.
+
 ###### Back End
 
 - Create "Pending" table in Database
