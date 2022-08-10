@@ -50,7 +50,8 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
     });
   };
 
-  const handleNext = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const validate = validateForm(userData, errorCheck);
     if (validate) {
       nextStep();
@@ -58,7 +59,12 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
   };
 
   return (
-    <VStack justify="center" spacing="1rem">
+    <VStack
+      justify="center"
+      spacing="1rem"
+      as="form"
+      onSubmit={(e) => handleSubmit(e)}
+    >
       <FormControl isInvalid={userErr}>
         <FormLabel>Username</FormLabel>
         <Input
@@ -149,7 +155,7 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
 
       <ButtonGroup>
         <Button onClick={() => navigate("/")}>Back to Log In</Button>
-        <Button onClick={handleNext}>Next</Button>
+        <Button type="submit">Next</Button>
       </ButtonGroup>
     </VStack>
   );

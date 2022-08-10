@@ -85,9 +85,7 @@ PENDING
 
 ###### Front End
 
-- Build out Form validation for Registration Process
-
-- Submit user info to "applicants" and Institute info to "pending"
+- Submit user info to "applicants" and Institutes info to "pending"
 
 ###### Back End
 

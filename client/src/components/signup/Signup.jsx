@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { VStack, Heading } from "@chakra-ui/react";
+import { VStack, Heading, Box } from "@chakra-ui/react";
 
 // Components
 import UserForm from "./UserForm";
@@ -70,17 +70,25 @@ const SignUp = () => {
           />
         );
       case 3:
-        return <Review />;
+        return (
+          <Review
+            userData={userData}
+            firstInstitute={firstInstitute}
+            secondInstitute={secondInstitute}
+            step={step}
+            setStep={setStep}
+          />
+        );
       default:
         return <UserForm userData={userData} setUserData={setUserData} />;
     }
   };
+
   const formTitles = ["Sign Up", "First Institute", "Second Institute"];
 
   // Methods
   const nextStep = () => {
     setStep((currentStep) => currentStep + 1);
-    console.log(step);
   };
 
   const prevStep = () => {
@@ -92,11 +100,12 @@ const SignUp = () => {
       w={{ base: "90%", md: "500px" }}
       m="auto"
       justify="center"
-      h="100vh"
       spacing="1rem"
     >
+      <Box h="10vh" />
       <Heading>{formTitles[step]}</Heading>
       <div className="register-body">{FormDisplay()}</div>
+      <Box h="5vh" />
     </VStack>
   );
 };

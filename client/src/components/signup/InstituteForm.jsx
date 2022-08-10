@@ -24,7 +24,6 @@ const InstituteForm = ({
   nextStep,
   prevStep,
 }) => {
-  console.log(step);
   // States
   const [instErr, setInstErr] = useState();
   const [semErr, setSemErr] = useState();
