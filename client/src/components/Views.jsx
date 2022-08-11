@@ -7,6 +7,9 @@ import SignUp from "./signup/Signup";
 import Profile from "./profile/Profile";
 import Applicants from "./applicants/Applicants";
 
+// Testing
+import Test from "./testing/Test";
+
 // Utils
 import PrivateRoutes from "../utils/PrivateRoutes";
 
@@ -31,6 +34,7 @@ const Views = () => {
         </Route>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<SignUp />} />
+        <Route path="test" element={<Test />} />
         <Route path="*" element={<Login />} />
       </Routes>
     </UserContext.Provider>
