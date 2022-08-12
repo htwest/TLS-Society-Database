@@ -22,7 +22,7 @@ router.post("/pending", async (req, res) => {
   try {
     const user = req.body.username;
     const pending = await pool.query(
-      "SELECT * FROM pending WHERE user_name = $1",
+      "SELECT * FROM pending WHERE username = $1",
       [user]
     );
     res.send(pending.rows);
@@ -39,7 +39,7 @@ router.post("/pending", async (req, res) => {
 router.get("/unapproved", async (req, res) => {
   try {
     const list = await pool.query(
-      "SELECT user_name, user_fname, user_lname FROM users WHERE user_approved = false"
+      "SELECT username, f_name, l_name FROM users WHERE approved = false"
     );
     res.send(list.rows);
   } catch (err) {

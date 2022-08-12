@@ -6,13 +6,13 @@ const bcrypt = require("bcrypt");
 // ************
 //   APPROVE USER
 // ************
-router.put("/approve/:user_name", async (req, res) => {
+router.put("/approve/:username", async (req, res) => {
   try {
-    const { user_name } = req.params;
+    const { username } = req.params;
 
     const updateUser = await pool.query(
-      "UPDATE users SET user_approved = $1 WHERE user_name = $2",
-      [true, user_name],
+      "UPDATE users SET approved = $1 WHERE username = $2",
+      [true, username],
       (err, result) => {
         if (err) {
           console.log(err);
@@ -31,12 +31,12 @@ router.put("/approve/:user_name", async (req, res) => {
 // ************
 //   DELETE USER
 // ************
-router.delete("/delete/:user_name", async (req, res) => {
+router.delete("/delete/:username", async (req, res) => {
   try {
-    const { user_name } = req.params;
+    const { username } = req.params;
     const deleteUser = await pool.query(
-      "DELETE FROM users WHERE user_name = $1",
-      [user_name],
+      "DELETE FROM users WHERE username = $1",
+      [username],
       (err, result) => {
         if (err) {
           console.log(err);
