@@ -9,30 +9,26 @@ module.exports = function (passport) {
       // Look up user in DB by username
       try {
         const user = await pool.query(
-          "SELECT * FROM users WHERE user_name = $1",
+          "SELECT * FROM users WHERE username = $1",
           [username]
         );
         // If User is Found
         if (user.rows.length > 0) {
           // Compare hashed password in DB to submitted password
-          bcrypt.compare(
-            password,
-            user.rows[0].user_password,
-            (err, result) => {
-              if (err) {
-                // If Error
-                console.log("BCRYPT COMPARE ERROR");
-                console.log(err);
-              }
-              if (result) {
-                // If Password Matches
-                return done(null, user.rows[0]);
-              } else {
-                // If Password does not match
-                return done(null, false);
-              }
+          bcrypt.compare(password, user.rows[0].password, (err, result) => {
+            if (err) {
+              // If Error
+              console.log("BCRYPT COMPARE ERROR");
+              console.log(err);
             }
-          );
+            if (result) {
+              // If Password Matches
+              return done(null, user.rows[0]);
+            } else {
+              // If Password does not match
+              return done(null, false);
+            }
+          });
         } else {
           // If no User is Found
           return done(null, false);
@@ -48,24 +44,22 @@ module.exports = function (passport) {
   // Serialize User
   passport.serializeUser((user, cb) => {
     // Stores a cookie inside browser with user_id
-    cb(null, user.user_id);
+    cb(null, user.id);
   });
 
   // Deserialize User
   passport.deserializeUser(async (id, cb) => {
     // Find user in DB with user_id matching cookie id
     try {
-      const user = await pool.query("SELECT * FROM users WHERE user_id = $1", [
-        id,
-      ]);
+      const user = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
       // If user was found
       if (user.rows.length > 0) {
         const userInformation = {
-          user_name: user.rows[0].user_name,
-          user_approved: user.rows[0].user_approved,
-          user_mod: user.rows[0].user_mod,
-          user_fname: user.rows[0].user_fname,
-          user_lname: user.rows[0].user_lname,
+          user_name: user.rows[0].username,
+          user_approved: user.rows[0].approved,
+          user_mod: user.rows[0].mod,
+          user_fname: user.rows[0].f_name,
+          user_lname: user.rows[0].l_name,
         };
         cb(null, userInformation);
       } else {
