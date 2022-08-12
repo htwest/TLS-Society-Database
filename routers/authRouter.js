@@ -73,11 +73,16 @@ router.post("/register", async (req, res) => {
       res.send("User Name Already Taken");
     } else {
       // Add User to DB
-      const newUser = await pool.query(
-        "INSERT INTO users (user_name, user_fname, user_lname, user_email, user_password, user_approved, user_mod) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *",
-        [name, fname, lname, email, password, approved, mod]
-      );
-      res.send("User Created");
+      const newUser = await pool
+        .query(
+          // Change to "applicants"
+          "INSERT INTO users (user_name, user_fname, user_lname, user_email, user_password, user_approved, user_mod) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+          [name, fname, lname, email, password, approved, mod]
+        )
+        .then((list) => {
+          res.send(list.rows.data);
+          // Query to "pending" Table Here Using id from "applicants" table
+        });
     }
   } catch (err) {
     res.sendStatus(500);

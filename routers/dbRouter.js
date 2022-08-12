@@ -25,7 +25,7 @@ router.post("/pending", async (req, res) => {
       "SELECT * FROM pending WHERE user_name = $1",
       [user]
     );
-    res.send(list.rows);
+    res.send(pending.rows);
   } catch (err) {
     console.log(err);
     res.sendStatus(500);

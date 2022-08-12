@@ -15,7 +15,7 @@ const pool = require("./db");
 const path = require("path");
 
 const authRouter = require("./routers/authRouter");
-const todoRouter = require("./routers/todoRouter");
+const testRouter = require("./routers/testRouter");
 const modRouter = require("./routers/modRouter");
 const dbRouter = require("./routers/dbRouter");
 
@@ -63,11 +63,11 @@ app.use("/auth", authRouter);
 // **** DB ****
 app.use("/db", dbRouter);
 
-// **** TODOS ****
-app.use("/todo", todoRouter);
-
 // **** MODERATION ****
 app.use("/user", modRouter);
+
+// **** TEST ****
+app.use("/test", testRouter);
 
 // **** CATCH ALL ****
 app.get("*", (req, res) => {

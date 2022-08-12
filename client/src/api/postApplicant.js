@@ -1,22 +1,12 @@
 const axios = require("axios");
 
-const postApplicant = (userData) => {
+const postApplicant = (data) => {
   return axios
-    .post(
-      "/auth/register",
-      {
-        username: userData.username,
-        fName: userData.fName,
-        lName: userData.lName,
-        email: userData.email,
-        password: userData.password,
-      },
-      { withCredentials: true }
-    )
+    .post("/test/register", data, { withCredentials: true })
     .catch((err) => {
       console.log(err);
     })
-    .then((response) => response);
+    .then((response) => response.data);
 };
 
 export default postApplicant;

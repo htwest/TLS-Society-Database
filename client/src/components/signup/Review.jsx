@@ -19,6 +19,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 
+import postApplicant from "../../api/postApplicant";
 import validatePassword from "../../hooks/validatePassword";
 
 const Review = ({
@@ -33,10 +34,18 @@ const Review = ({
   const [err, setErr] = useState();
 
   // Methods
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const validate = validatePassword(userData.password, pass, setErr);
     if (validate) {
-      console.log("works");
+      const data = {
+        userData,
+        firstInstitute,
+        secondInstitute,
+      };
+      await postApplicant(data).then((res) => {
+        console.log(res);
+      });
     }
   };
 
@@ -57,7 +66,7 @@ const Review = ({
             <Tr>
               <Th>Name</Th>
               <Td>
-                {userData.fName} {userData.lName}
+                {userData.f_name} {userData.l_name}
               </Td>
             </Tr>
             <Tr>
@@ -175,7 +184,7 @@ const Review = ({
         />
         <FormErrorMessage>Your Password Does Not Match</FormErrorMessage>
       </FormControl>
-      <Button colorScheme="teal" onClick={() => handleSubmit()}>
+      <Button colorScheme="teal" onClick={(e) => handleSubmit(e)}>
         Submit
       </Button>
     </VStack>

@@ -15,8 +15,8 @@ const SignUp = () => {
   const [userData, setUserData] = useState({
     username: "",
     password: "",
-    fName: "",
-    lName: "",
+    f_name: "",
+    l_name: "",
     email: "",
   });
   const [firstInstitute, setFirstInstitute] = useState({

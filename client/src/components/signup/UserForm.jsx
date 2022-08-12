@@ -35,10 +35,10 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
         case "password":
           setPassErr(true);
           break;
-        case "fName":
+        case "f_name":
           setFNameErr(true);
           break;
-        case "lName":
+        case "l_name":
           setLNameErr(true);
           break;
         case "email":
@@ -106,12 +106,12 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
             <Input
               type="text"
               name="first_name"
-              value={userData.fName}
+              value={userData.f_name}
               placeholder="First"
               autoComplete="off"
               size="lg"
               onChange={(e) => {
-                setUserData({ ...userData, fName: e.target.value });
+                setUserData({ ...userData, f_name: e.target.value });
                 setLNameErr(false);
                 setFNameErr(false);
               }}
@@ -121,12 +121,12 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
             <Input
               type="text"
               name="last_name"
-              value={userData.lName}
+              value={userData.l_name}
               placeholder="Last"
               autoComplete="off"
               size="lg"
               onChange={(e) => {
-                setUserData({ ...userData, lName: e.target.value });
+                setUserData({ ...userData, l_name: e.target.value });
                 setLNameErr(false);
                 setFNameErr(false);
               }}
