@@ -10,6 +10,7 @@ function validateForm(data, errorCheck) {
   if (errors.length > 0) {
     errorCheck(errors);
   }
+  console.log(errors);
   return validated;
 }
 

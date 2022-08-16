@@ -22,13 +22,7 @@ import {
 import postApplicant from "../../api/postApplicant";
 import validatePassword from "../../hooks/validatePassword";
 
-const Review = ({
-  userData,
-  firstInstitute,
-  secondInstitute,
-  step,
-  setStep,
-}) => {
+const Review = ({ userData, institute, step, setStep }) => {
   // States
   const [pass, setPass] = useState();
   const [err, setErr] = useState();
@@ -40,8 +34,7 @@ const Review = ({
     if (validate) {
       const data = {
         userData,
-        firstInstitute,
-        secondInstitute,
+        institute,
       };
       await postApplicant(data).then((res) => {
         console.log(res);
@@ -93,78 +86,47 @@ const Review = ({
           <Tbody>
             <Tr>
               <Th>Institute</Th>
-              <Td>{firstInstitute.institute}</Td>
+              <Td>{institute.name}</Td>
             </Tr>
             <Tr>
               <Th>Semester</Th>
-              <Td>{firstInstitute.semester}</Td>
+              <Td>{institute.semester}</Td>
             </Tr>
+
+            <Tr>
+              <Th>Position</Th>
+              <Td>{institute.position}</Td>
+            </Tr>
+
+            <Tr>
+              <Th>Type</Th>
+              <Td>{institute.type}</Td>
+            </Tr>
+
             <Tr>
               <Th>Point of Contact</Th>
-              <Td>{firstInstitute.poc_name}</Td>
+              <Td>{institute.poc_name}</Td>
             </Tr>
             <Tr>
               <Th>P.O.C Email</Th>
-              <Td>{firstInstitute.poc_email}</Td>
+              <Td>{institute.poc_email}</Td>
             </Tr>
             <Tr>
               <Th>Start Date</Th>
-              <Td>{firstInstitute.app_open}</Td>
+              <Td>{institute.app_open}</Td>
             </Tr>
             <Tr>
               <Th>Deadline</Th>
-              <Td>{firstInstitute.app_deadline}</Td>
+              <Td>{institute.app_deadline}</Td>
             </Tr>
             <Tr>
               <Th>Description</Th>
-              <Td>{firstInstitute.description}</Td>
+              <Td>{institute.description}</Td>
             </Tr>
           </Tbody>
         </Table>
       </TableContainer>
       <Button onClick={() => setStep(1)}>Edit</Button>
-
-      <Box h="30px" />
-      <Divider />
-      <Box h="30px" />
-
-      <Text>First Institute</Text>
-      <TableContainer>
-        <Table variant="striped" colorScheme="teal">
-          <TableCaption>First Institute</TableCaption>
-          <Tbody>
-            <Tr>
-              <Th>Institute</Th>
-              <Td>{secondInstitute.institute}</Td>
-            </Tr>
-            <Tr>
-              <Th>Semester</Th>
-              <Td>{secondInstitute.semester}</Td>
-            </Tr>
-            <Tr>
-              <Th>Point of Contact</Th>
-              <Td>{secondInstitute.poc_name}</Td>
-            </Tr>
-            <Tr>
-              <Th>P.O.C Email</Th>
-              <Td>{secondInstitute.poc_email}</Td>
-            </Tr>
-            <Tr>
-              <Th>Start Date</Th>
-              <Td>{secondInstitute.app_open}</Td>
-            </Tr>
-            <Tr>
-              <Th>Deadline</Th>
-              <Td>{secondInstitute.app_deadline}</Td>
-            </Tr>
-            <Tr>
-              <Th>Description</Th>
-              <Td>{secondInstitute.description}</Td>
-            </Tr>
-          </Tbody>
-        </Table>
-      </TableContainer>
-      <Button onClick={() => setStep(2)}>Edit</Button>
 
       <Box h="30px" />
       <Divider />

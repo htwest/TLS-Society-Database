@@ -16,18 +16,11 @@ const SignUp = () => {
     l_name: "",
     email: "",
   });
-  const [firstInstitute, setFirstInstitute] = useState({
-    institute: "",
+  const [institute, setInstitute] = useState({
+    name: "",
     semester: "",
-    poc_name: "",
-    poc_email: "",
-    app_open: "",
-    app_deadline: "",
-    description: "",
-  });
-  const [secondInstitute, setSecondInstitute] = useState({
-    institute: "",
-    semester: "",
+    position: "",
+    type: "",
     poc_name: "",
     poc_email: "",
     app_open: "",
@@ -49,8 +42,8 @@ const SignUp = () => {
       case 1:
         return (
           <InstituteForm
-            institute={firstInstitute}
-            setInstitute={setFirstInstitute}
+            institute={institute}
+            setInstitute={setInstitute}
             step={step}
             nextStep={nextStep}
             prevStep={prevStep}
@@ -58,20 +51,9 @@ const SignUp = () => {
         );
       case 2:
         return (
-          <InstituteForm
-            institute={secondInstitute}
-            setInstitute={setSecondInstitute}
-            step={step}
-            nextStep={nextStep}
-            prevStep={prevStep}
-          />
-        );
-      case 3:
-        return (
           <Review
             userData={userData}
-            firstInstitute={firstInstitute}
-            secondInstitute={secondInstitute}
+            institute={institute}
             step={step}
             setStep={setStep}
           />
@@ -81,7 +63,7 @@ const SignUp = () => {
     }
   };
 
-  const formTitles = ["Sign Up", "First Institute", "Second Institute"];
+  const formTitles = ["Sign Up", "Institute Information"];
 
   // Methods
   const nextStep = () => {

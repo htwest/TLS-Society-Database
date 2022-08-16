@@ -56,8 +56,7 @@ router.post("/register", async (req, res) => {
 
     // Data
     const userData = req.body.userData;
-    const firstInstitute = req.body.firstInstitute;
-    const secondInstitue = req.body.secondInstitute;
+    const instituteData = req.body.institute;
 
     // Check if Username is Taken
     const userCheck = await pool.query(
@@ -85,23 +84,17 @@ router.post("/register", async (req, res) => {
       const newUserID = newUser.rows[0].id;
       // Add Institute Data to DB
       const newInstitutes = await pool.query(
-        "INSERT INTO pending (id, institute, semester, poc_name, poc_email, app_open, app_deadline, description, user_id) VALUES (uuid_generate_V4(), $1, $2, $3, $4, $5, $6, $7, $8), (uuid_generate_V4(), $9, $10, $11, $12, $13, $14, $15, $16) RETURNING *",
+        "INSERT INTO pending (id, name, semester, position, type, poc_name, poc_email, app_open, app_deadline, description, user_id) VALUES (uuid_generate_V4(), $1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
         [
-          firstInstitute.institute,
-          firstInstitute.semester,
-          firstInstitute.poc_name,
-          firstInstitute.poc_email,
-          firstInstitute.app_open,
-          firstInstitute.app_deadline,
-          firstInstitute.description,
-          newUserID,
-          secondInstitue.institute,
-          secondInstitue.semester,
-          secondInstitue.poc_name,
-          secondInstitue.poc_email,
-          secondInstitue.app_open,
-          secondInstitue.app_deadline,
-          secondInstitue.description,
+          instituteData.name,
+          instituteData.semester,
+          instituteData.position,
+          instituteData.type,
+          instituteData.poc_name,
+          instituteData.poc_email,
+          instituteData.app_open,
+          instituteData.app_deadline,
+          instituteData.description,
           newUserID,
         ]
       );

@@ -25,20 +25,29 @@ const InstituteForm = ({
   prevStep,
 }) => {
   // States
-  const [instErr, setInstErr] = useState();
+  const [nameErr, setNameErr] = useState();
   const [semErr, setSemErr] = useState();
+  const [typeErr, setTypeErr] = useState();
+  const [positionErr, setPositionErr] = useState();
   const [pocErr, setPocErr] = useState();
   const [deadlineErr, setDeadlineErr] = useState();
   const [descErr, setDesErr] = useState();
+
   // Methods
   const errorCheck = (errors) => {
     errors.forEach((element) => {
       switch (element) {
-        case "institute":
-          setInstErr(true);
+        case "name":
+          setNameErr(true);
           break;
         case "semester":
           setSemErr(true);
+          break;
+        case "position":
+          setPositionErr(true);
+          break;
+        case "type":
+          setTypeErr(true);
           break;
         case "poc_name" || "poc_email":
           setPocErr(true);
@@ -64,18 +73,18 @@ const InstituteForm = ({
 
   return (
     <VStack justify="center" spacing="1rem">
-      <FormControl isInvalid={instErr}>
+      <FormControl isInvalid={nameErr}>
         <FormLabel>Institute</FormLabel>
         <Input
           type="text"
           name="institute"
           placeholder="Name of Institute"
-          value={institute.institute}
+          value={institute.name}
           autoComplete="off"
           size="lg"
           onChange={(e) => {
-            setInstitute({ ...institute, institute: e.target.value });
-            setInstErr(false);
+            setInstitute({ ...institute, name: e.target.value });
+            setNameErr(false);
           }}
         />
         <FormErrorMessage>
@@ -96,7 +105,46 @@ const InstituteForm = ({
           <option value="Fall">Fall</option>
           <option value="Spring">Spring</option>
         </Select>
-        <FormErrorMessage>Please Select A Semseter</FormErrorMessage>
+        <FormErrorMessage>Please Select A </FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={typeErr}>
+        <FormLabel>Type of Law</FormLabel>
+        <Select
+          placeholder="Select Field"
+          value={institute.type}
+          onChange={(e) => {
+            setInstitute({ ...institute, type: e.target.value });
+            setTypeErr(false);
+          }}
+        >
+          <option value="Government">Government</option>
+          <option value="Emerging Technology">Emerging Technology</option>
+          <option value="AI">AI</option>
+          <option value="National Security">National Security</option>
+          <option value="E-Commerce">E-Commerce</option>
+          <option value="Other">Other</option>
+        </Select>
+        <FormErrorMessage>Please Select A Law Type</FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={positionErr}>
+        <FormLabel>Position</FormLabel>
+        <Input
+          type="text"
+          name="institute"
+          placeholder="Position In Program"
+          value={institute.position}
+          autoComplete="off"
+          size="lg"
+          onChange={(e) => {
+            setInstitute({ ...institute, position: e.target.value });
+            setPositionErr(false);
+          }}
+        />
+        <FormErrorMessage>
+          Please Provide the Postition in the Program
+        </FormErrorMessage>
       </FormControl>
 
       <FormControl isInvalid={pocErr}>
