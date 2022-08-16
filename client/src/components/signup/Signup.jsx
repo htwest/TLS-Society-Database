@@ -6,9 +6,6 @@ import UserForm from "./UserForm";
 import InstituteForm from "./InstituteForm";
 import Review from "./Review";
 
-// Api
-// import postRegister from "../../../api/postRegister";
-
 const SignUp = () => {
   // States
   const [step, setStep] = useState(0);

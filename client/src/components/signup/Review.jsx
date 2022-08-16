@@ -50,7 +50,11 @@ const Review = ({
   };
 
   return (
-    <VStack justify="center" spacing="1rem">
+    <VStack
+      justify="center"
+      spacing="1rem"
+      w={{ base: "250px", sm: "250px", md: "500px", lg: "700px" }}
+    >
       <Heading>Almost There!</Heading>
       <Text>Please Make Sure All Information is Correct Before Submitting</Text>
 
