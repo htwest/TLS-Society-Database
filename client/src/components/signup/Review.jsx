@@ -22,7 +22,7 @@ import {
 import postApplicant from "../../api/postApplicant";
 import validatePassword from "../../hooks/validatePassword";
 
-const Review = ({ userData, institute, step, setStep }) => {
+const Review = ({ userData, institute, step, setStep, nextStep }) => {
   // States
   const [pass, setPass] = useState();
   const [err, setErr] = useState();
@@ -37,7 +37,7 @@ const Review = ({ userData, institute, step, setStep }) => {
         institute,
       };
       await postApplicant(data).then((res) => {
-        console.log(res);
+        nextStep();
       });
     }
   };
@@ -79,10 +79,10 @@ const Review = ({ userData, institute, step, setStep }) => {
       <Divider />
       <Box h="30px" />
 
-      <Text>First Institute</Text>
+      <Text>Institute Information</Text>
       <TableContainer>
         <Table variant="striped" colorScheme="teal">
-          <TableCaption>First Institute</TableCaption>
+          <TableCaption>Institute Information</TableCaption>
           <Tbody>
             <Tr>
               <Th>Institute</Th>

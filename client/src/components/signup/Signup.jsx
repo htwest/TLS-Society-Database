@@ -5,6 +5,7 @@ import { VStack, Heading, Box } from "@chakra-ui/react";
 import UserForm from "./UserForm";
 import InstituteForm from "./InstituteForm";
 import Review from "./Review";
+import Thanks from "./Thanks";
 
 const SignUp = () => {
   // States
@@ -56,8 +57,11 @@ const SignUp = () => {
             institute={institute}
             step={step}
             setStep={setStep}
+            nextStep={nextStep}
           />
         );
+      case 3:
+        return <Thanks userData={userData} />;
       default:
         return <UserForm userData={userData} setUserData={setUserData} />;
     }
