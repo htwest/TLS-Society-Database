@@ -2,7 +2,7 @@ const axios = require("axios");
 
 const putApproveUser = (username) => {
   return axios
-    .put(`/user/approve/${username}`, { withCredentials: true })
+    .put(`/mod/approve/${username}`, { withCredentials: true })
     .catch((err) => {
       console.log(err);
     })

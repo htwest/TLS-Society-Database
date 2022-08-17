@@ -44,7 +44,7 @@ const ModDrawer = () => {
           <DrawerHeader>Navigation</DrawerHeader>
 
           <DrawerBody>
-            <Link to="/applicants">Applicants</Link>
+            <Link to="/pending">Pending</Link>
           </DrawerBody>
 
           <DrawerFooter>

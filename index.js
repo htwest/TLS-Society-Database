@@ -64,7 +64,7 @@ app.use("/auth", authRouter);
 app.use("/db", dbRouter);
 
 // **** MODERATION ****
-app.use("/user", modRouter);
+app.use("/mod", modRouter);
 
 // **** TEST ****
 app.use("/test", testRouter);

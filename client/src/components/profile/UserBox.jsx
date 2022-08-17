@@ -11,8 +11,8 @@ const UserBox = ({ userData }) => {
     <VStack>
       <Heading>Welcome</Heading>
       <Text fontSize="3xl">{userData.user_name}</Text>
-      {userData.user_approved ? <DBTable /> : <UserUnapproved />}
-      {userData.user_mod ? <ModDrawer /> : null}
+      {userData.approved ? <DBTable /> : <UserUnapproved />}
+      {userData.mod ? <ModDrawer /> : null}
     </VStack>
   );
 };

@@ -10,20 +10,17 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 
-import getList from "../../api/getList";
+// Hooks
+import fetchList from "../../hooks/fetchList";
 
+// Components
 import TableItem from "./TableItem";
 
 const DBTable = () => {
   const [dbList, setDbList] = useState();
 
   useEffect(() => {
-    const fetchList = async () => {
-      await getList().then((res) => {
-        setDbList(res);
-      });
-    };
-    fetchList();
+    fetchList(setDbList);
   }, []);
 
   return (
@@ -33,8 +30,10 @@ const DBTable = () => {
         <Thead>
           <Tr>
             <Th>Institute</Th>
-            <Th>Fall/Spring</Th>
-            <Th>P.O.C</Th>
+            <Th>Semester</Th>
+            <Th>Position</Th>
+            <Th>Type of Law</Th>
+            <Th>Point of Contact</Th>
             <Th isNumeric>Application Open</Th>
             <Th isNumeric>Deadline</Th>
           </Tr>
@@ -47,8 +46,10 @@ const DBTable = () => {
         <Tfoot>
           <Tr>
             <Th>Institute</Th>
-            <Th>Fall/Spring</Th>
-            <Th>P.O.C</Th>
+            <Th>Semester</Th>
+            <Th>Position</Th>
+            <Th>Type of Law</Th>
+            <Th>Point of Contact</Th>
             <Th isNumeric>Application Open</Th>
             <Th isNumeric>Deadline</Th>
           </Tr>

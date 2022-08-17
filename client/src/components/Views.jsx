@@ -5,13 +5,14 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./login/Login";
 import SignUp from "./signup/Signup";
 import Profile from "./profile/Profile";
-import Applicants from "./applicants/Applicants";
+import Pending from "./mod/pending/Pending";
 
 // Testing
 import Test from "./testing/Test";
 
 // Utils
 import PrivateRoutes from "../utils/PrivateRoutes";
+import AdminRoutes from "../utils/AdminRoutes";
 
 // Hooks
 import fetchUser from "../hooks/fetchUser";
@@ -30,7 +31,9 @@ const Views = () => {
       <Routes>
         <Route element={<PrivateRoutes />}>
           <Route path="/profile" element={<Profile />} exact />
-          <Route path="/applicants" element={<Applicants exact />} />
+          <Route elment={<AdminRoutes />}>
+            <Route path="/pending" element={<Pending />} />
+          </Route>
         </Route>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<SignUp />} />

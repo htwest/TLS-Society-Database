@@ -52,4 +52,18 @@ router.delete("/delete/:username", async (req, res) => {
   }
 });
 
+// ************************************
+//   GET PENDING INTERNSHIPS
+// ************************************
+router.get("/pending", async (req, res) => {
+  try {
+    const user = req.body.username;
+    const pending = await pool.query("SELECT * FROM pending");
+    res.send(pending.rows);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = router;
