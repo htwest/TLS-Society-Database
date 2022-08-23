@@ -9,6 +9,7 @@ import {
   Input,
   Button,
   Heading,
+  Box,
 } from "@chakra-ui/react";
 
 // Api
@@ -57,45 +58,56 @@ const Login = () => {
       h="100vh"
       spacing="1rem"
     >
-      <Heading>Log In</Heading>
-      <FormControl isInvalid={err}>
-        <FormLabel>Username</FormLabel>
-        <Input
-          type="text"
-          name="user_name"
-          value={username}
-          placeholder="Enter Username"
-          autoComplete="off"
-          size="lg"
-          onChange={(e) => {
-            setErr();
-            setUsername(e.target.value);
-          }}
-        />
-        <FormErrorMessage>{err}</FormErrorMessage>
-      </FormControl>
+      <Box
+        w="100%"
+        color="#F5F5F5"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <Heading className="form-header">Log In</Heading>
+        <FormControl className="form-item" isInvalid={err}>
+          <FormLabel>Username</FormLabel>
+          <Input
+            type="text"
+            name="user_name"
+            value={username}
+            placeholder="Enter Username"
+            autoComplete="off"
+            size="lg"
+            onChange={(e) => {
+              setErr();
+              setUsername(e.target.value);
+            }}
+          />
+          <FormErrorMessage>{err}</FormErrorMessage>
+        </FormControl>
 
-      <FormControl isInvalid={err}>
-        <FormLabel>Password</FormLabel>
-        <Input
-          type="password"
-          name="password"
-          value={pass}
-          autoComplete="off"
-          size="lg"
-          onChange={(e) => {
-            setErr();
-            setPass(e.target.value);
-          }}
-        />
-        <FormErrorMessage>{err}</FormErrorMessage>
-      </FormControl>
+        <FormControl className="form-item" isInvalid={err}>
+          <FormLabel>Password</FormLabel>
+          <Input
+            type="password"
+            name="password"
+            value={pass}
+            autoComplete="off"
+            size="lg"
+            onChange={(e) => {
+              setErr();
+              setPass(e.target.value);
+            }}
+          />
+          <FormErrorMessage>{err}</FormErrorMessage>
+        </FormControl>
+      </Box>
 
       <ButtonGroup pt="1rem">
-        <Button colorScheme="teal" type="submit">
+        <Button colorScheme="blue" type="submit">
           Log In
         </Button>
-        <Button onClick={() => navigate("/register")}>Create Account</Button>
+        <Button colorScheme="gray" onClick={() => navigate("/register")}>
+          Create Account
+        </Button>
       </ButtonGroup>
     </VStack>
   );
