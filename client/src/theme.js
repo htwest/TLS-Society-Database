@@ -24,5 +24,5 @@ const theme = {
   },
 };
 
-// helllo thererrrrrr
+// helllo thererrrrrrrrr
 export default extendTheme(theme);
