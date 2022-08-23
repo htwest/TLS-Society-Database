@@ -4,13 +4,6 @@ import {
   Input,
   Divider,
   Text,
-  TableContainer,
-  Table,
-  TableCaption,
-  Th,
-  Tr,
-  Td,
-  Tbody,
   Heading,
   Button,
   FormControl,
@@ -18,6 +11,8 @@ import {
   FormErrorMessage,
   Box,
 } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 import postApplicant from "../../api/postApplicant";
 import validatePassword from "../../hooks/validatePassword";
@@ -48,84 +43,80 @@ const Review = ({ userData, institute, step, setStep, nextStep }) => {
       spacing="1rem"
       w={{ base: "250px", sm: "250px", md: "500px", lg: "700px" }}
     >
-      <Heading>Almost There!</Heading>
-      <Text>Please Make Sure All Information is Correct Before Submitting</Text>
+      <Text color="white.200">
+        Please Make Sure All Information is Correct Before Submitting
+      </Text>
 
-      <Text>User Information</Text>
-      <TableContainer>
-        <Table variant="striped" colorScheme="teal">
-          <TableCaption>User Information</TableCaption>
-          <Tbody>
-            <Tr>
-              <Th>Username</Th>
-              <Td>{userData.username}</Td>
-            </Tr>
-            <Tr>
-              <Th>Name</Th>
-              <Td>
-                {userData.f_name} {userData.l_name}
-              </Td>
-            </Tr>
-            <Tr>
-              <Th>Email</Th>
-              <Td>{userData.email}</Td>
-            </Tr>
-          </Tbody>
-        </Table>
-      </TableContainer>
+      <Box h="30px" />
+      <Divider />
+      <Box h="30px" />
+
+      <Text color="white.200">User Information</Text>
+      <Table className="content-table">
+        <Tbody className="table-body">
+          <Tr className="table-row">
+            <Th className="table-head">Username</Th>
+            <Td className="table-data">{userData.username}</Td>
+          </Tr>
+          <Tr className="table-row">
+            <Th className="table-head">Name</Th>
+            <Td className="table-data">
+              {userData.f_name} {userData.l_name}
+            </Td>
+          </Tr>
+          <Tr className="table-row">
+            <Th className="table-head">Email</Th>
+            <Td className="table-data">{userData.email}</Td>
+          </Tr>
+        </Tbody>
+      </Table>
       <Button onClick={() => setStep(0)}>Edit</Button>
 
       <Box h="30px" />
       <Divider />
       <Box h="30px" />
 
-      <Text>Institute Information</Text>
-      <TableContainer>
-        <Table variant="striped" colorScheme="teal">
-          <TableCaption>Institute Information</TableCaption>
-          <Tbody>
-            <Tr>
-              <Th>Institute</Th>
-              <Td>{institute.name}</Td>
-            </Tr>
-            <Tr>
-              <Th>Semester</Th>
-              <Td>{institute.semester}</Td>
-            </Tr>
-
-            <Tr>
-              <Th>Position</Th>
-              <Td>{institute.position}</Td>
-            </Tr>
-
-            <Tr>
-              <Th>Type</Th>
-              <Td>{institute.type}</Td>
-            </Tr>
-
-            <Tr>
-              <Th>Point of Contact</Th>
-              <Td>{institute.poc_name}</Td>
-            </Tr>
-            <Tr>
-              <Th>P.O.C Email</Th>
-              <Td>{institute.poc_email}</Td>
-            </Tr>
-            <Tr>
-              <Th>Start Date</Th>
-              <Td>{institute.app_open}</Td>
-            </Tr>
-            <Tr>
-              <Th>Deadline</Th>
-              <Td>{institute.app_deadline}</Td>
-            </Tr>
-            <Tr>
-              <Th>Description</Th>
-              <Td>{institute.description}</Td>
-            </Tr>
-          </Tbody>
-        </Table>
-      </TableContainer>
+      <Text color="white.200">Institute Information</Text>
+      <Table className="content-table">
+        <Tbody>
+          <Tr>
+            <Th>Institute</Th>
+            <Td>{institute.name}</Td>
+          </Tr>
+          <Tr>
+            <Th>Semester</Th>
+            <Td>{institute.semester}</Td>
+          </Tr>
+          <Tr>
+            <Th>Position</Th>
+            <Td>{institute.position}</Td>
+          </Tr>
+          <Tr>
+            <Th>Type</Th>
+            <Td>{institute.type}</Td>
+          </Tr>
+          <Tr>
+            <Th>Point of Contact</Th>
+            <Td>{institute.poc_name}</Td>
+          </Tr>
+          <Tr>
+            <Th>P.O.C Email</Th>
+            <Td>{institute.poc_email}</Td>
+          </Tr>
+          <Tr>
+            <Th>Start Date</Th>
+            <Td>{institute.app_open}</Td>
+          </Tr>
+          <Tr>
+            <Th>Deadline</Th>
+            <Td>{institute.app_deadline}</Td>
+          </Tr>
+          <Tr>
+            <Th>Description</Th>
+            <Td>{institute.description}</Td>
+          </Tr>
+        </Tbody>
+      </Table>
       <Button onClick={() => setStep(1)}>Edit</Button>
 
       <Box h="30px" />

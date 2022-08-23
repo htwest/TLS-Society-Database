@@ -79,6 +79,8 @@ const InstituteForm = ({
           type="text"
           name="institute"
           placeholder="Name of Institute"
+          _placeholder={{ color: "black.100" }}
+          bg="white.100"
           value={institute.name}
           autoComplete="off"
           size="lg"
@@ -96,6 +98,8 @@ const InstituteForm = ({
         <FormLabel>Semester</FormLabel>
         <Select
           placeholder="Select Semester"
+          _placeholder={{ color: "black.100" }}
+          bg="white.100"
           value={institute.semester}
           onChange={(e) => {
             setInstitute({ ...institute, semester: e.target.value });
@@ -112,6 +116,8 @@ const InstituteForm = ({
         <FormLabel>Type of Law</FormLabel>
         <Select
           placeholder="Select Field"
+          _placeholder={{ color: "black.100" }}
+          bg="white.100"
           value={institute.type}
           onChange={(e) => {
             setInstitute({ ...institute, type: e.target.value });
@@ -134,6 +140,8 @@ const InstituteForm = ({
           type="text"
           name="institute"
           placeholder="Position In Program"
+          _placeholder={{ color: "black.100" }}
+          bg="white.100"
           value={institute.position}
           autoComplete="off"
           size="lg"
@@ -156,6 +164,8 @@ const InstituteForm = ({
               name="name"
               value={institute.poc_name}
               placeholder="Full Name"
+              _placeholder={{ color: "black.100" }}
+              bg="white.100"
               autoComplete="off"
               size="lg"
               onChange={(e) => {
@@ -170,6 +180,8 @@ const InstituteForm = ({
               name="email"
               value={institute.poc_email}
               placeholder="Email"
+              _placeholder={{ color: "black.100" }}
+              bg="white.100"
               autoComplete="off"
               size="lg"
               onChange={(e) => {
@@ -193,6 +205,8 @@ const InstituteForm = ({
               size="lg"
               type="datetime-local"
               value={institute.app_open}
+              _placeholder={{ color: "black.100" }}
+              bg="white.100"
               onChange={(e) => {
                 setInstitute({ ...institute, app_open: e.target.value });
                 setDeadlineErr(false);
@@ -205,6 +219,8 @@ const InstituteForm = ({
               size="lg"
               type="datetime-local"
               value={institute.app_deadline}
+              _placeholder={{ color: "black.100" }}
+              bg="white.100"
               onChange={(e) => {
                 setInstitute({ ...institute, app_deadline: e.target.value });
                 setDeadlineErr(false);
@@ -220,6 +236,8 @@ const InstituteForm = ({
         <Textarea
           name="desc"
           placeholder="Please provide a short description..."
+          _placeholder={{ color: "black.100" }}
+          bg="white.100"
           value={institute.description}
           autoComplete="off"
           size="lg"
@@ -235,7 +253,9 @@ const InstituteForm = ({
 
       <ButtonGroup>
         <Button onClick={() => prevStep()}>Back</Button>
-        <Button onClick={() => handleNext()}>Next</Button>
+        <Button colorScheme="blue" onClick={() => handleNext()}>
+          Next
+        </Button>
       </ButtonGroup>
     </VStack>
   );

@@ -66,12 +66,14 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
       onSubmit={(e) => handleSubmit(e)}
     >
       <FormControl isInvalid={userErr}>
-        <FormLabel>Username</FormLabel>
+        <FormLabel color="white.200">Username</FormLabel>
         <Input
           type="text"
           name="user_name"
           value={userData.username}
           placeholder="Enter Username"
+          _placeholder={{ color: "black.100" }}
+          bg="white.100"
           autoComplete="off"
           size="lg"
           onChange={(e) => {
@@ -83,11 +85,13 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
       </FormControl>
 
       <FormControl isInvalid={passErr}>
-        <FormLabel>Password</FormLabel>
+        <FormLabel color="white.200">Password</FormLabel>
         <Input
           type="password"
           name="password"
           placeholder="Enter Password"
+          _placeholder={{ color: "black.100" }}
+          bg="white.100"
           value={userData.password}
           autoComplete="off"
           size="lg"
@@ -100,7 +104,7 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
       </FormControl>
 
       <FormControl isInvalid={lNameErr || fNameErr}>
-        <FormLabel>Name</FormLabel>
+        <FormLabel color="white.200">Name</FormLabel>
         <Grid templateColumns="repeat(2, 1fr)" gap={6}>
           <GridItem>
             <Input
@@ -108,6 +112,8 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
               name="first_name"
               value={userData.f_name}
               placeholder="First"
+              _placeholder={{ color: "black.100" }}
+              bg="white.100"
               autoComplete="off"
               size="lg"
               onChange={(e) => {
@@ -122,6 +128,8 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
               type="text"
               name="last_name"
               value={userData.l_name}
+              _placeholder={{ color: "black.100" }}
+              bg="white.100"
               placeholder="Last"
               autoComplete="off"
               size="lg"
@@ -137,11 +145,13 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
       </FormControl>
 
       <FormControl isInvalid={emailErr}>
-        <FormLabel>Email</FormLabel>
+        <FormLabel color="white.200">Email</FormLabel>
         <Input
           type="text"
           name="email"
           placeholder="Enter Email"
+          _placeholder={{ color: "black.100" }}
+          bg="white.100"
           value={userData.email}
           autoComplete="off"
           size="lg"
@@ -154,8 +164,12 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
       </FormControl>
 
       <ButtonGroup>
-        <Button onClick={() => navigate("/")}>Back to Log In</Button>
-        <Button type="submit">Next</Button>
+        <Button colorScheme="cyan" onClick={() => navigate("/")}>
+          Back to Log In
+        </Button>
+        <Button colorScheme="blue" type="submit">
+          Next
+        </Button>
       </ButtonGroup>
     </VStack>
   );

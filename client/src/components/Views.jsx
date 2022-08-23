@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { Routes, Route } from "react-router-dom";
 
 // Page Components
+import Header from "./header/Header";
 import Login from "./login/Login";
 import SignUp from "./signup/Signup";
 import Profile from "./profile/Profile";
@@ -28,6 +29,7 @@ const Views = () => {
 
   return (
     <UserContext.Provider value={providerValue}>
+      <Header />
       <Routes>
         <Route element={<PrivateRoutes />}>
           <Route path="/profile" element={<Profile />} exact />

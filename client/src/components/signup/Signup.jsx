@@ -67,7 +67,7 @@ const SignUp = () => {
     }
   };
 
-  const formTitles = ["Sign Up", "Institute Information"];
+  const formTitles = ["Sign Up", "Institute Information", "Almost There!"];
 
   // Methods
   const nextStep = () => {
@@ -85,8 +85,8 @@ const SignUp = () => {
       justify="center"
       spacing="1rem"
     >
-      <Box h="10vh" />
-      <Heading>{formTitles[step]}</Heading>
+      <Box h="10vh" w="100%" />
+      <Heading color="white.200">{formTitles[step]}</Heading>
       <div className="register-body">{FormDisplay()}</div>
       <Box h="5vh" />
     </VStack>
