@@ -3,9 +3,10 @@
 
 .App {
   background-color: black;
-  background: black;
-  /* background: url("../images/dark.jpeg"); */
-  background-color: black;
+  /* background: black; */
+  background: url("../images/dark.jpeg");
+  min-height: 100vh;
+  max-width: 100vw;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

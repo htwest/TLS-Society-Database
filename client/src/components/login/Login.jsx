@@ -55,25 +55,22 @@ const Login = () => {
       w={{ base: "90%", md: "500px" }}
       m="auto"
       justify="center"
-      h="100vh"
+      h="80vh"
       spacing="1rem"
     >
-      <Box
-        w="100%"
-        color="#F5F5F5"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <Heading className="form-header">Log In</Heading>
+      <Box w="100%" display="flex" flexDirection="column" alignItems="center">
+        <Heading className="form-header" color="white.200">
+          Log In
+        </Heading>
         <FormControl className="form-item" isInvalid={err}>
-          <FormLabel>Username</FormLabel>
+          <FormLabel color="white.200">Username</FormLabel>
           <Input
             type="text"
             name="user_name"
             value={username}
             placeholder="Enter Username"
+            _placeholder={{ color: "black.100" }}
+            bg="white.100"
             autoComplete="off"
             size="lg"
             onChange={(e) => {
@@ -85,12 +82,15 @@ const Login = () => {
         </FormControl>
 
         <FormControl className="form-item" isInvalid={err}>
-          <FormLabel>Password</FormLabel>
+          <FormLabel color="white.200">Password</FormLabel>
           <Input
             type="password"
             name="password"
             value={pass}
+            placeholder="Enter Password"
             autoComplete="off"
+            _placeholder={{ color: "black.100" }}
+            bg="white.100"
             size="lg"
             onChange={(e) => {
               setErr();
