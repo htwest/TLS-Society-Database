@@ -1,28 +1,27 @@
 import { extendTheme } from "@chakra-ui/react";
 
-const theme = {
-  config: {
-    initialColorMode: "dark",
-    useSystemColorMode: true,
-  },
-
-  styles: {
-    global: {
-      body: {
-        margin: 0,
-        "font-family":
-          "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans, 'Droid Sans', 'Helvetica Neue', sans-serif",
-        "-webkit-font-smoothing": "antialiased",
-        "-moz-osx-font-smoothing": "grayscale",
-      },
-
-      code: {
-        "font-family":
-          "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', 'monospace'",
-      },
+const theme = extendTheme({
+  colors: {
+    brand: {
+      100: "#F5F5F5",
+      200: "#424FFF",
+      300: "#5631E8",
+      400: "#316DE8",
+      500: "#36ADFF",
+    },
+    white: {
+      100: "rgb(250, 250, 250, 0.8)",
+      200: "#F5F5F5",
+    },
+    black: {
+      100: "rgb(0, 0, 0, 0.8)",
     },
   },
-};
+  fonts: {
+    color: "#F5F5F5",
+    heading: `'Silkscreen', 'Open Sans', sans-serif`,
+    body: `'Quicksand', sans-serif`,
+  },
+});
 
-// helllo thererrrrrrrrr
-export default extendTheme(theme);
+export default theme;
