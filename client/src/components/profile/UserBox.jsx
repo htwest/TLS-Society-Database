@@ -3,15 +3,16 @@ import { VStack, Text, Heading } from "@chakra-ui/react";
 
 // Components
 import UserUnapproved from "./UserUnapproved";
-import DBTable from "../table/DBTable";
+// import DBTable from "../table/DBTable";
 import ModDrawer from "../mod/ModDrawer";
+import InternshipTable from "../table/InternshipTable";
 
 const UserBox = ({ userData }) => {
   return (
     <VStack>
       <Heading>Welcome</Heading>
-      <Text fontSize="3xl">{userData.user_name}</Text>
-      {userData.approved ? <DBTable /> : <UserUnapproved />}
+      <Text fontSize="3xl">{userData.username}</Text>
+      {userData.approved ? <InternshipTable /> : <UserUnapproved />}
       {userData.mod ? <ModDrawer /> : null}
     </VStack>
   );

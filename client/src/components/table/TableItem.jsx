@@ -1,17 +1,16 @@
 import React from "react";
-import { Tr, Td } from "@chakra-ui/react";
 
 const TableItem = ({ item }) => {
   return (
-    <Tr>
-      <Td>{item.institute}</Td>
-      <Td>{item.semester}</Td>
-      <Td>{item.position}</Td>
-      <Td>{item.type}</Td>
-      <Td>{item.poc_name}</Td>
-      <Td>{item.app_open}</Td>
-      <Td>{item.app_deadline}</Td>
-    </Tr>
+    <tr>
+      <td data-heading="Institute">{item.name}</td>
+      <td data-heading="Semester">{item.semester}</td>
+      <td data-heading="Position">{item.position}</td>
+      <td data-heading="Type">{item.type}</td>
+      <td data-heading="Contact">{item.poc_name}</td>
+      <td data-heading="Start Date">{item.app_open}</td>
+      <td data-heading="Deadline">{item.app_deadline}</td>
+    </tr>
   );
 };
 
