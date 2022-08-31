@@ -1,0 +1,107 @@
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  max-width: 900px;
+}
+
+.filter-box {
+  padding-top: 10px;
+  display: flex;
+  width: 79vw;
+  padding-bottom: 10px;
+  color: black;
+}
+
+.filter-box input {
+  width: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+}
+
+.filter-box select {
+  margin-left: 20px;
+  padding: 8px 12px;
+  color: whitesmoke;
+  background-color: #3eb3c3;
+  border: 1px solid black;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.filter-box button {
+  background-color: #3eb3c3; /* Green */
+  border: none;
+  border-radius: 3px;
+  color: white;
+  padding: 8px 30px;
+  margin-left: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.content-table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+  width: 80vw;
+}
+
+.content-table thead {
+  background-color: #3eb3c3;
+  color: black;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: left;
+  white-space: nowrap;
+  border: 5px solid black;
+}
+
+.content-table th, .content-table td {
+  padding: 20px;
+}
+
+.content-table tbody {
+  background-color: rgb(55, 55, 55, 0.5);
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: rgb(230, 230, 230, 0.8);
+  color: black;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 4px solid #3eb3c3;
+}
+
+@media (max-width: 767px) {
+
+  .filter-box button{
+    display: block;
+  }
+
+  .content-table tbody tr td:last-of-type {
+    border-bottom: 5px solid black;
+  }
+
+  .content-table th, .content-table td {
+    padding: 3px;
+  }
+
+  .content-table th {
+    display: none;
+  }
+
+  .content-table td {
+    display: block;
+    text-align: left;
+  }
+
+  .content-table td::before{
+    content: attr(data-heading) " : ";
+    font-weight: bold;
+    width: 8.5em;
+    display: inline-block;
+  }
+}

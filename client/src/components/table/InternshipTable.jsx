@@ -1,59 +1,89 @@
 import React, { useState, useEffect } from "react";
-import "../../css/Table.scss";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  useDisclosure,
+} from "@chakra-ui/react";
+import "../../css/Table.css";
 
 // Hooks
 import fetchList from "../../hooks/fetchList";
 
 // Components
-import Table from "./Table";
 import TableItem from "./TableItem";
 
-const InternshipTable = ({ breakOn = "large" }) => {
+const InternshipTable = () => {
   const [dbList, setDbList] = useState();
-  console.log(dbList);
+  const [modalData, setModalData] = useState();
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
+    onClose();
     fetchList(setDbList);
   }, []);
 
-  // Responsive
-  let tableClass = "table-container__table";
-
-  switch (breakOn) {
-    case "small":
-      tableClass += " table-container__table--break-sm";
-      break;
-    case "medium":
-      tableClass += " table-container__table--break-md";
-      break;
-    case "large":
-      tableClass += " table-container__table--break-lg";
-      break;
-    default:
-      tableClass += " table-container__table--break-md";
-      break;
-  }
-
   return (
     <div className="table-container">
-      <div className="table-container__title">
-        <h2>Internships</h2>
+      {/* <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{modalData.name}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <p>{modalData.description}</p>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal> */}
+
+      <div className="filter-box">
+        <input type="text" placeholder="Search..." />
+        <select name="field">
+          <option value="" disabled selected hidden>
+            Field
+          </option>
+          <option>Technology</option>
+          <option>Government</option>
+          <option>Policy</option>
+        </select>
+        <button>Go</button>
       </div>
-      <table className={tableClass}>
+
+      <table className="content-table">
         <thead>
           <tr>
-            <td data-heading="Institute">Institute</td>
-            <td data-heading="Semester">Semester</td>
-            <td data-heading="Position">Position</td>
-            <td data-heading="Type">Type</td>
-            <td data-heading="Contact">Contact</td>
-            <td data-heading="Start Date">Start Date</td>
-            <td data-heading="Deadline">Deadline</td>
+            <th>Institute</th>
+            <th>Semester</th>
+            <th>Position</th>
+            <th>Type</th>
+            <th>Contact</th>
+            <th>Start Date</th>
+            <th>Deadline</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
           {dbList
-            ? dbList.map((item) => <TableItem item={item} key={item.id} />)
+            ? dbList.map((item) => (
+                <TableItem
+                  item={item}
+                  key={item.id}
+                  setModalData={setModalData}
+                  onOpen={onOpen}
+                />
+              ))
             : null}
         </tbody>
       </table>

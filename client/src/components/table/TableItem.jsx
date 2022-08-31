@@ -1,6 +1,9 @@
-import React from "react";
+const TableItem = ({ item, setModalData, onOpen }) => {
+  const handleModal = () => {
+    setModalData(item);
+    onOpen();
+  };
 
-const TableItem = ({ item }) => {
   return (
     <tr>
       <td data-heading="Institute">{item.name}</td>
@@ -10,6 +13,11 @@ const TableItem = ({ item }) => {
       <td data-heading="Contact">{item.poc_name}</td>
       <td data-heading="Start Date">{item.app_open}</td>
       <td data-heading="Deadline">{item.app_deadline}</td>
+      <td data-heading="Description">
+        <button className="description-button" onClick={handleModal}>
+          Open
+        </button>
+      </td>
     </tr>
   );
 };
