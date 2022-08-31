@@ -73,6 +73,7 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
           value={userData.username}
           placeholder="Enter Username"
           _placeholder={{ color: "black.100" }}
+          color="black.100"
           bg="white.100"
           autoComplete="off"
           size="lg"
@@ -91,6 +92,7 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
           name="password"
           placeholder="Enter Password"
           _placeholder={{ color: "black.100" }}
+          color="black.100"
           bg="white.100"
           value={userData.password}
           autoComplete="off"
@@ -103,8 +105,8 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
         <FormErrorMessage>Please Enter a Valid Password</FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={lNameErr || fNameErr}>
-        <FormLabel color="white.200">Name</FormLabel>
+      <FormControl color="white.200" isInvalid={lNameErr || fNameErr}>
+        <FormLabel>Name</FormLabel>
         <Grid templateColumns="repeat(2, 1fr)" gap={6}>
           <GridItem>
             <Input
@@ -113,6 +115,7 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
               value={userData.f_name}
               placeholder="First"
               _placeholder={{ color: "black.100" }}
+              color="black.100"
               bg="white.100"
               autoComplete="off"
               size="lg"
@@ -129,6 +132,7 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
               name="last_name"
               value={userData.l_name}
               _placeholder={{ color: "black.100" }}
+              color="black.100"
               bg="white.100"
               placeholder="Last"
               autoComplete="off"
@@ -151,6 +155,7 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
           name="email"
           placeholder="Enter Email"
           _placeholder={{ color: "black.100" }}
+          color="black.100"
           bg="white.100"
           value={userData.email}
           autoComplete="off"
@@ -164,7 +169,7 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
       </FormControl>
 
       <ButtonGroup>
-        <Button colorScheme="cyan" onClick={() => navigate("/")}>
+        <Button colorScheme="white" onClick={() => navigate("/")}>
           Back to Log In
         </Button>
         <Button colorScheme="blue" type="submit">

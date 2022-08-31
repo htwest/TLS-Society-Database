@@ -203,7 +203,7 @@ const InstituteForm = ({
             <Text>Start</Text>
             <Input
               size="lg"
-              type="datetime-local"
+              type="date"
               value={institute.app_open}
               _placeholder={{ color: "black.100" }}
               bg="white.100"
@@ -217,7 +217,7 @@ const InstituteForm = ({
             <Text>End</Text>
             <Input
               size="lg"
-              type="datetime-local"
+              type="date"
               value={institute.app_deadline}
               _placeholder={{ color: "black.100" }}
               bg="white.100"

@@ -2,8 +2,8 @@
 
 .App {
   background-color: black;
-  background: black;
-  /* background: url("../images/dark.jpeg"); */
+  /* background: black; */
+  background: url("../images/dark.jpeg");
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;

@@ -67,13 +67,16 @@ const Login = () => {
         justifyContent="space-between"
       >
         <Heading className="form-header">Log In</Heading>
-        <FormControl className="form-item" isInvalid={err}>
+        <FormControl className="form-item" color="white.200" isInvalid={err}>
           <FormLabel>Username</FormLabel>
           <Input
             type="text"
             name="user_name"
             value={username}
             placeholder="Enter Username"
+            _placeholder={{ color: "black.100" }}
+            bg="white.100"
+            color="black.100"
             autoComplete="off"
             size="lg"
             onChange={(e) => {
@@ -84,13 +87,17 @@ const Login = () => {
           <FormErrorMessage>{err}</FormErrorMessage>
         </FormControl>
 
-        <FormControl className="form-item" isInvalid={err}>
+        <FormControl className="form-item" color="white.200" isInvalid={err}>
           <FormLabel>Password</FormLabel>
           <Input
             type="password"
             name="password"
             value={pass}
             autoComplete="off"
+            placeholder="Enter Password"
+            _placeholder={{ color: "black.100" }}
+            bg="white.100"
+            color="black.100"
             size="lg"
             onChange={(e) => {
               setErr();
@@ -102,11 +109,11 @@ const Login = () => {
       </Box>
 
       <ButtonGroup pt="1rem">
+        <Button colorScheme="white" onClick={() => navigate("/register")}>
+          Create Account
+        </Button>
         <Button colorScheme="blue" type="submit">
           Log In
-        </Button>
-        <Button colorScheme="gray" onClick={() => navigate("/register")}>
-          Create Account
         </Button>
       </ButtonGroup>
     </VStack>
