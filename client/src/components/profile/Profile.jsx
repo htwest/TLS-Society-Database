@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { VStack } from "@chakra-ui/react";
 
+import redBanner from "../../images/redBanner.jpeg";
+
 // Context
 import UserContext from "../../utils/UserContext";
 
@@ -19,6 +21,7 @@ const Profile = () => {
       justify="center"
       spacing="1rem"
     >
+      {/* <img src={redBanner} alt="banner" className="banner-image" /> */}
       {user ? <UserBox userData={user} /> : null}
       {user ? <UserLogout setUser={setUser} /> : null}
     </VStack>

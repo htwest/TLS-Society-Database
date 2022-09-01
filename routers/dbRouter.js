@@ -7,7 +7,10 @@ const pool = require("../db");
 // ************************************
 router.get("/list", async (req, res) => {
   try {
-    const list = await pool.query("SELECT * FROM internships");
+    // const list = await pool.query("SELECT * FROM internships");
+    const list = await pool.query(
+      "SELECT name, semester, position, type, poc_name, poc_email, app_open, app_deadline, description FROM internships"
+    );
     res.send(list.rows);
   } catch (err) {
     console.log(err);

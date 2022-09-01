@@ -19,7 +19,7 @@ const theme = extendTheme({
   },
   fonts: {
     color: "#F5F5F5",
-    heading: `'Silkscreen', 'Open Sans', sans-serif`,
+    heading: `'Teko', 'Open Sans', sans-serif`,
     body: `'Quicksand', sans-serif`,
   },
 });
