@@ -1,4 +1,5 @@
 import WhiteLogo from "../../images/WhiteLogo.png";
+import "../../css/header/Header.css";
 
 const Header = () => {
   return (

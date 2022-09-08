@@ -22,13 +22,15 @@ import fetchUser from "../hooks/fetchUser";
 import UserContext from "../utils/UserContext";
 
 const Views = () => {
+  // Check if there is already a logged in user
   const currentUser = fetchUser();
+
   // States and Memo
   const [user, setUser] = useState(currentUser);
-  const providerValue = useMemo(() => ({ user, setUser }), [user, setUser]);
+  const userProvider = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
-    <UserContext.Provider value={providerValue}>
+    <UserContext.Provider value={userProvider}>
       <Header />
       <Routes>
         <Route element={<PrivateRoutes />}>

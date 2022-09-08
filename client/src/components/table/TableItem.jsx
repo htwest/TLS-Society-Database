@@ -1,9 +1,4 @@
-const TableItem = ({ item, setModalData, onOpen }) => {
-  const handleModal = () => {
-    setModalData(item);
-    onOpen();
-  };
-
+const TableItem = ({ item }) => {
   return (
     <tr>
       <td data-heading="Institute">{item.name}</td>
@@ -14,9 +9,7 @@ const TableItem = ({ item, setModalData, onOpen }) => {
       <td data-heading="Start Date">{item.app_open}</td>
       <td data-heading="Deadline">{item.app_deadline}</td>
       <td data-heading="Description">
-        <button className="description-button" onClick={handleModal}>
-          Open
-        </button>
+        <button className="description-button">Open</button>
       </td>
     </tr>
   );

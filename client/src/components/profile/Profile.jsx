@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { VStack } from "@chakra-ui/react";
 
-import redBanner from "../../images/redBanner.jpeg";
-
 // Context
 import UserContext from "../../utils/UserContext";
 

@@ -1,0 +1,12 @@
+.header-box {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.header-box img {
+  width: 90%;
+  height: auto;
+  margin-top: 1em;
+  max-width: 1000px;
+}

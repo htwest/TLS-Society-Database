@@ -12,23 +12,6 @@
   background-position: center;
 }
 
-.header-box {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-}
-
-.header-box img {
-  width: 90%;
-  height: auto;
-  margin-top: 1em;
-  max-width: 1000px;
-}
-
-.banner-image {
-  margin: 30px;
-}
-
 .form-header {
   margin: 1em;
 }
