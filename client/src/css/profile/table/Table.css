@@ -76,7 +76,16 @@
   border-bottom: 4px solid #3eb3c3;
 }
 
-@media (max-width: 767px) {
+.pagination {
+  display: flex;
+  list-style: none;
+}
+
+.pagination li {
+  margin: 10px;
+}
+
+@media (max-width: 875px) {
 
   .filter-box button{
     display: block;

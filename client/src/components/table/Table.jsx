@@ -1,6 +1,14 @@
 import TableItem from "./TableItem";
 
-const Table = ({ list }) => {
+const Table = ({ list, loading, postsPerPage, totalPosts, paginate }) => {
+  if (loading) {
+    return (
+      <div>
+        <h2>Loading...</h2>
+      </div>
+    );
+  }
+
   return (
     <table className="content-table">
       <thead>

@@ -3,47 +3,42 @@ import "../../css/profile/table/Table.css";
 
 // Hooks
 import fetchList from "../../hooks/fetchList";
+import filterList from "../../hooks/filterList";
 
 // Components
 import Table from "./Table";
+import Pagination from "./Pagination";
 
 const Internships = () => {
-  const [dbList, setDbList] = useState();
+  // States
+  const [dbList, setDbList] = useState([]);
+  const [currentList, setCurrentList] = useState([]);
   const [search, setSearch] = useState();
   const [field, setField] = useState();
   const [semester, setSemester] = useState();
 
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+
   const [mobile, setMobile] = useState(false);
 
+  // Effects
   useEffect(() => {
-    fetchList(setDbList);
+    fetchList(setLoading, setDbList, setCurrentList);
   }, []);
 
+  // Functions
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const paginationList = currentList.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   const handleSubmit = () => {
-    const filter = {
-      type: field,
-      semester: semester,
-    };
-
-    const nameFilter = dbList.filter((item) => {
-      if (search === "" || search === undefined) {
-        return item;
-      } else if (item.name.toLowerCase().includes(search.toLowerCase())) {
-        return item;
-      }
-    });
-
-    const filteredList = nameFilter.filter((item) => {
-      if (
-        (filter.type === item.type || filter.type === undefined) &&
-        (filter.semester === item.semester || filter.semester === undefined)
-      ) {
-        return item;
-      }
-      return false;
-    });
-
-    setDbList(filteredList);
+    filterList(search, field, semester, dbList, setCurrentList);
   };
 
   return (
@@ -80,7 +75,18 @@ const Internships = () => {
           Go
         </button>
       </div>
-      <Table list={dbList} />
+      <Table
+        list={paginationList}
+        loading={loading}
+        postsPerPage={postsPerPage}
+        totalPosts={dbList.length}
+        paginate={paginate}
+      />
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={currentList.length}
+        paginate={paginate}
+      />
     </div>
   );
 };
