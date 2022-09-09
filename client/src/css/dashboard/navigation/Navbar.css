@@ -7,6 +7,8 @@
   --border: 1px solid #474a4d;
   --border-radius: 8px;
   --spdeed: 500ms;
+  --button-size: 40px;
+  --button-size-mobile: 30px;
 }
 
 .navbar ul {
@@ -22,7 +24,7 @@
 
 .navbar {
   height: var(--nav-size);
-  padding: 0 1rem;
+  padding: 3rem 1rem;
   position: fixed;
   top: 0;
   right: 0;
@@ -35,14 +37,18 @@
 }
 
 .nav-item {
-  width: calc(var(--nav-size) * 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-item a {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .icon-button {
-  --button-size: calc(var(--nav-size) * 0.5);
   width: var(--button-size);
   height: var(--button-size);
   background-color: var(--bg);
@@ -52,20 +58,20 @@
 }
 
 .icon-button:hover {
-  background: var(--bg-alt);
+  background-color: var(--bg-alt);
 }
 
 .icon-button svg {
   fill: var(--text-color);
-  width: 20px;
-  height: 20px;
+  width: var(--button-size);
+  height: var(--button-size);
 }
 
 /* Dropdown Menu */
 
 .dropdown {
   position: absolute;
-  top: 58px;
+  top: 75px;
   width: 200px;
   transform: translate(-45%);
   background-color: var(--bg);
@@ -88,10 +94,30 @@
   background-color: var(--bg-alt);
 }
 
+.menu-item:hover .icon-button {
+  background-color: var(--bg-alt);
+}
+
 .icon-button {
   margin-right: 10px;
 }
 
 .icon-right {
   margin-left: auto;
+}
+
+@media(max-width: 767px) {
+  .navbar {
+    padding: 2rem 1rem;
+  }
+
+  .icon-button {
+    width: var(--button-size-mobile);
+    height: var(--button-size-mobile);
+  }
+
+  .icon-button svg {
+    width: var(--button-size-mobile);
+    height: var(--button-size-mobile);
+  }
 }
