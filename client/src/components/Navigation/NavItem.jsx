@@ -5,8 +5,7 @@ const NavItem = (props) => {
 
   return (
     <li className="nav-item">
-      {/* eslint-disable-next-line */}
-      <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
+      <a href="#!" className="icon-button" onClick={() => setOpen(!open)}>
         {props.icon}
       </a>
       {open && props.children}

@@ -1,4 +1,9 @@
 .table-container {
+  --bg: #53bbfa;
+  --text: #0c0404;
+}
+
+.table-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,35 +12,39 @@
   margin: 20px;
 }
 
-.filter-box {
+.search-box {
   padding-top: 10px;
   display: flex;
   width: 79vw;
   padding-bottom: 10px;
-  color: black;
+  color: var(--text);
 }
 
-.filter-box input {
+.search-box input {
   width: 100%;
   padding: 12px 20px;
   box-sizing: border-box;
 }
 
-.filter-box select {
+.filter-box {
+  display: flex;
+}
+
+.search-box select {
   margin-left: 20px;
   padding: 8px 12px;
-  color: whitesmoke;
-  background-color: #3eb3c3;
+  color: var(--text);
+  background-color: var(--bg);
   border: 1px solid black;
   cursor: pointer;
   border-radius: 5px;
 }
 
-.filter-box button {
-  background-color: #3eb3c3; /* Green */
+.search-button {
+  background-color: var(--bg);
   border: none;
   border-radius: 3px;
-  color: white;
+  color: var(--text);
   padding: 8px 30px;
   margin-left: 20px;
   text-align: center;
@@ -50,8 +59,8 @@
 }
 
 .content-table thead {
-  background-color: #3eb3c3;
-  color: black;
+  background-color: var(--bg);
+  color: var(--text);
   font-size: 1.2em;
   font-weight: bold;
   text-align: left;
@@ -73,7 +82,27 @@
 }
 
 .content-table tbody tr:last-of-type {
-  border-bottom: 4px solid #3eb3c3;
+  border-bottom: 4px solid var(--bg);
+}
+
+/* Buttons */
+
+.description-button {
+  background-color: var(--bg);
+  border: none;
+  border-radius: 3px;
+  color: var(--text);
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+.description-button:hover {
+  background-color: white;
+  color: black;
 }
 
 .pagination {
@@ -85,10 +114,20 @@
   margin: 10px;
 }
 
-@media (max-width: 875px) {
+.filterbox button {
+  display: hidden;
+}
 
-  .filter-box button{
-    display: block;
+@media (max-width: 767px) {
+
+  .search-box {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .filter-box {
+    margin: 10px;
   }
 
   .content-table tbody tr td:last-of-type {

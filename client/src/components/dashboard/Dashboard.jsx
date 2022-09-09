@@ -6,7 +6,7 @@ import UserContext from "../../utils/UserContext";
 
 // Components
 import UserBox from "./UserBox";
-import NavBox from "../Navigation/NavBox";
+import NavBox from "../navigation/NavBox";
 
 const Dashboard = () => {
   // Context

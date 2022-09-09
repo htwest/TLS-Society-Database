@@ -41,31 +41,33 @@ const Internships = () => {
 
   return (
     <div className="table-container">
-      <div className="filter-box">
+      <div className="search-box">
         <input
           type="text"
           placeholder="Search..."
           onChange={(e) => setSearch(e.target.value)}
         />
+        <div className="filter-box">
+          <select name="field" onChange={(e) => setField(e.target.value)}>
+            <option value="" disabled selected hidden>
+              Field
+            </option>
+            <option value="Technology">Technology</option>
+            <option value="Government">Government</option>
+            <option value="Policy">Policy</option>
+            <option value="Law">Law</option>
+          </select>
 
-        <select name="field" onChange={(e) => setField(e.target.value)}>
-          <option value="" disabled selected hidden>
-            Field
-          </option>
-          <option value="Technology">Technology</option>
-          <option value="Government">Government</option>
-          <option value="Policy">Policy</option>
-          <option value="Law">Law</option>
-        </select>
-
-        <select name="Semester" onChange={(e) => setSemester(e.target.value)}>
-          <option value="" disabled selected hidden>
-            Semester
-          </option>
-          <option value="Spring">Spring</option>
-          <option value="Fall">Fall</option>
-        </select>
+          <select name="Semester" onChange={(e) => setSemester(e.target.value)}>
+            <option value="" disabled selected hidden>
+              Semester
+            </option>
+            <option value="Spring">Spring</option>
+            <option value="Fall">Fall</option>
+          </select>
+        </div>
         <button
+          className="search-button"
           onClick={() => {
             handleSubmit();
           }}

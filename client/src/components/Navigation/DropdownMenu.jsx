@@ -30,9 +30,8 @@ const DropdownMenu = () => {
 
   const DropdownItem = (props) => {
     return (
-      // eslint-disable-next-line
       <a
-        href="#"
+        href="#!"
         className="menu-item"
         onClick={() => {
           props.clickEvent();

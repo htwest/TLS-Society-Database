@@ -36,26 +36,6 @@
   margin: 20px;
 }
 
-/* Buttons */
-
-.description-button {
-  background-color: #3eb3c3; /* Green */
-  border: none;
-  border-radius: 3px;
-  color: white;
-  padding: 5px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
-}
-
-.description-button:hover {
-  background-color: white;
-  color: black;
-}
-
 @media(max-width: 767px) {
   .App {
     max-width: 767px;
