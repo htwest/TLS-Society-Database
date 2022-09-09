@@ -1,7 +1,8 @@
 .navbar {
-  --bg: #242526;
-  --bg-accent: #484a4d;
-  --text-color: #dadce1;
+  --bg: #53bbfa;
+  --bg-alt: #469dd3;
+  --bg-accent: #aadbf9;
+  --text-color: #0c0404;
   --nav-size: 60px;
   --border: 1px solid #474a4d;
   --border-radius: 8px;
@@ -44,14 +45,14 @@
   --button-size: calc(var(--nav-size) * 0.5);
   width: var(--button-size);
   height: var(--button-size);
-  background-color: #484a4d;
+  background-color: var(--bg);
   border-radius: 50%;
   padding: 5px;
   margin: 2px;
 }
 
 .icon-button:hover {
-  filter:brightness(1.2)
+  background: var(--bg-alt);
 }
 
 .icon-button svg {
@@ -84,7 +85,7 @@
 }
 
 .menu-item:hover {
-  background-color: #525357;
+  background-color: var(--bg-alt);
 }
 
 .icon-button {

@@ -1,6 +1,9 @@
 .table-container {
   --bg: #53bbfa;
+  --bg-alt: #aadbf9;
   --text: #0c0404;
+  --table-bg: rgb(55, 55, 55, 0.5);
+  --table-bg-alt: rgb(230, 230, 230, 0.8);
 }
 
 .table-container {
@@ -30,28 +33,6 @@
   display: flex;
 }
 
-.search-box select {
-  margin-left: 20px;
-  padding: 8px 12px;
-  color: var(--text);
-  background-color: var(--bg);
-  border: 1px solid black;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.search-button {
-  background-color: var(--bg);
-  border: none;
-  border-radius: 3px;
-  color: var(--text);
-  padding: 8px 30px;
-  margin-left: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-}
-
 .content-table {
   border-collapse: collapse;
   font-size: 0.9em;
@@ -73,19 +54,48 @@
 }
 
 .content-table tbody {
-  background-color: rgb(55, 55, 55, 0.5);
+  background-color: var(--table-bg)
 }
 
 .content-table tbody tr:nth-of-type(even) {
-  background-color: rgb(230, 230, 230, 0.8);
-  color: black;
+  background-color: var(--table-bg-alt);
+  color: var(--text);
 }
 
 .content-table tbody tr:last-of-type {
   border-bottom: 4px solid var(--bg);
 }
 
-/* Buttons */
+/* Buttons & Select */
+.search-box select {
+  margin-left: 20px;
+  padding: 8px 12px;
+  color: var(--text);
+  background-color: var(--bg);
+  border: 1px solid black;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.search-box select:hover {
+  background:var(--bg-alt)
+}
+.search-button {
+  background-color: var(--bg);
+  border: none;
+  border-radius: 3px;
+  color: var(--text);
+  padding: 8px 30px;
+  margin-left: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition-duration: 0.4s;
+}
+
+.search-button:hover {
+  background:var(--bg-alt);
+}
 
 .description-button {
   background-color: var(--bg);
@@ -101,8 +111,7 @@
 }
 
 .description-button:hover {
-  background-color: white;
-  color: black;
+  background:var(--bg-alt);
 }
 
 .pagination {
