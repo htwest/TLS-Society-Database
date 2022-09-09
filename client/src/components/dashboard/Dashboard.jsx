@@ -6,11 +6,11 @@ import UserContext from "../../utils/UserContext";
 
 // Components
 import UserBox from "./UserBox";
-import UserLogout from "./UserLogout";
+import NavBox from "../Navigation/NavBox";
 
-const Profile = () => {
+const Dashboard = () => {
   // Context
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   return (
     <VStack
@@ -20,10 +20,10 @@ const Profile = () => {
       spacing="1rem"
     >
       {/* <img src={redBanner} alt="banner" className="banner-image" /> */}
+      {user ? <NavBox /> : null}
       {user ? <UserBox userData={user} /> : null}
-      {user ? <UserLogout setUser={setUser} /> : null}
     </VStack>
   );
 };
 
-export default Profile;
+export default Dashboard;

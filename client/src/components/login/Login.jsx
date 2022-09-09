@@ -38,7 +38,7 @@ const Login = () => {
         .then((res) => {
           setUser(res.data);
           window.localStorage.setItem("user", JSON.stringify(res.data));
-          navigate("/profile");
+          navigate("/dashboard");
         })
         .catch((err) => {
           setErr("Invalid Username and/or Password");

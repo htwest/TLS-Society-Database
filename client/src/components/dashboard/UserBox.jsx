@@ -3,8 +3,6 @@ import { Text, Heading } from "@chakra-ui/react";
 
 // Components
 import UserUnapproved from "./UserUnapproved";
-// import DBTable from "../table/DBTable";
-import ModDrawer from "../mod/ModDrawer";
 import Internships from "../table/Internships";
 
 const UserBox = ({ userData }) => {
@@ -17,7 +15,6 @@ const UserBox = ({ userData }) => {
         </Text>
       </div>
       {userData.approved ? <Internships /> : <UserUnapproved />}
-      {userData.mod ? <ModDrawer /> : null}
     </div>
   );
 };

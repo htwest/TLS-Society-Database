@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./header/Header";
 import Login from "./login/Login";
 import SignUp from "./signup/Signup";
-import Profile from "./profile/Profile";
+import Dashboard from "./dashboard/Dashboard";
 import Pending from "./mod/pending/Pending";
 
 // Testing
@@ -34,7 +34,7 @@ const Views = () => {
       <Header />
       <Routes>
         <Route element={<PrivateRoutes />}>
-          <Route path="/profile" element={<Profile />} exact />
+          <Route path="/dashboard" element={<Dashboard />} exact />
           <Route elment={<AdminRoutes />}>
             <Route path="/pending" element={<Pending />} />
           </Route>

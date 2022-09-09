@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../css/profile/table/Table.css";
+import "../../css/dashboard/table/Table.css";
 
 // Hooks
 import fetchList from "../../hooks/fetchList";
@@ -20,8 +20,6 @@ const Internships = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
-
-  const [mobile, setMobile] = useState(false);
 
   // Effects
   useEffect(() => {
