@@ -1,6 +1,6 @@
 import TableItem from "./TableItem";
 
-const Table = ({ list, loading }) => {
+const Table = ({ list, loading, updateModal }) => {
   if (loading) {
     return (
       <div>
@@ -25,7 +25,9 @@ const Table = ({ list, loading }) => {
       </thead>
       <tbody>
         {list
-          ? list.map((item) => <TableItem item={item} key={item.id} />)
+          ? list.map((item) => (
+              <TableItem item={item} key={item.id} updateModal={updateModal} />
+            ))
           : null}
       </tbody>
     </table>

@@ -1,4 +1,4 @@
-const TableItem = ({ item }) => {
+const TableItem = ({ item, updateModal }) => {
   return (
     <tr>
       <td data-heading="Institute">{item.name}</td>
@@ -9,7 +9,14 @@ const TableItem = ({ item }) => {
       <td data-heading="Start Date">{item.app_open}</td>
       <td data-heading="Deadline">{item.app_deadline}</td>
       <td data-heading="Description">
-        <button className="description-button">Open</button>
+        <button
+          className="description-button"
+          onClick={() => {
+            updateModal(item);
+          }}
+        >
+          Open
+        </button>
       </td>
     </tr>
   );

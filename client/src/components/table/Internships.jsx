@@ -7,6 +7,7 @@ import filterList from "../../hooks/filterList";
 
 // Components
 import Table from "./Table";
+import Modal from "./modal/Modal";
 import Pagination from "./Pagination";
 
 const Internships = () => {
@@ -16,6 +17,8 @@ const Internships = () => {
   const [search, setSearch] = useState();
   const [field, setField] = useState();
   const [semester, setSemester] = useState();
+  const [modalData, setModalData] = useState();
+  const [modalOpen, setModalOpen] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,6 +34,11 @@ const Internships = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const paginationList = currentList.slice(indexOfFirstPost, indexOfLastPost);
 
+  const updateModal = (data) => {
+    setModalData(data);
+    setModalOpen(!modalOpen);
+  };
+
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -41,6 +49,13 @@ const Internships = () => {
 
   return (
     <div className="table-container">
+      <Modal
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+        data={modalData}
+      />
+
+      {/* <button onClick={() => handleModal()}>Modal</button> */}
       <div className="search-box">
         <input
           type="text"
@@ -78,9 +93,7 @@ const Internships = () => {
       <Table
         list={paginationList}
         loading={loading}
-        postsPerPage={postsPerPage}
-        totalPosts={dbList.length}
-        paginate={paginate}
+        updateModal={updateModal}
       />
       <Pagination
         postsPerPage={postsPerPage}
