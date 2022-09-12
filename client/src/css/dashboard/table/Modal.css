@@ -65,3 +65,19 @@
   font-size: 16px;
   transition-duration: 0.4s;
 }
+
+@media(max-width:767px) {
+  .data-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .info {
+    padding: 10px;
+  }
+
+  .description {
+    padding: 10px
+  }
+}

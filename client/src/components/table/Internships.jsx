@@ -54,8 +54,6 @@ const Internships = () => {
         setModalOpen={setModalOpen}
         data={modalData}
       />
-
-      {/* <button onClick={() => handleModal()}>Modal</button> */}
       <div className="search-box">
         <input
           type="text"
