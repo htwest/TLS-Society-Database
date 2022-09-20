@@ -3,7 +3,7 @@ import { Text, Heading } from "@chakra-ui/react";
 
 // Components
 import UserUnapproved from "./UserUnapproved";
-import Internships from "../table/Internships";
+import TableDock from "../table/TableDock";
 
 const UserBox = ({ userData }) => {
   return (
@@ -14,7 +14,7 @@ const UserBox = ({ userData }) => {
           {userData.username}
         </Text>
       </div>
-      {userData.approved ? <Internships /> : <UserUnapproved />}
+      {userData.approved ? <TableDock /> : <UserUnapproved />}
     </div>
   );
 };

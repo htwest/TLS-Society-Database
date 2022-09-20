@@ -7,10 +7,10 @@ import filterList from "../../hooks/filterList";
 
 // Components
 import Table from "./Table";
-import Modal from "./modal/Modal";
+import DescriptionModal from "./popups/DescriptionModal";
 import Pagination from "./Pagination";
 
-const Internships = () => {
+const TableDock = () => {
   // States
   const [dbList, setDbList] = useState([]);
   const [currentList, setCurrentList] = useState([]);
@@ -19,7 +19,6 @@ const Internships = () => {
   const [semester, setSemester] = useState();
   const [modalData, setModalData] = useState();
   const [modalOpen, setModalOpen] = useState(false);
-
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
@@ -32,7 +31,11 @@ const Internships = () => {
   // Functions
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const paginationList = currentList.slice(indexOfFirstPost, indexOfLastPost);
+  let paginationList = currentList.slice(indexOfFirstPost, indexOfLastPost);
+
+  if (paginationList.length === 0) {
+    paginationList = currentList;
+  }
 
   const updateModal = (data) => {
     setModalData(data);
@@ -49,7 +52,7 @@ const Internships = () => {
 
   return (
     <div className="table-container">
-      <Modal
+      <DescriptionModal
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
         data={modalData}
@@ -102,4 +105,4 @@ const Internships = () => {
   );
 };
 
-export default Internships;
+export default TableDock;

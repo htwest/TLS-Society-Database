@@ -3,10 +3,10 @@ import { VStack } from "@chakra-ui/react";
 import "../../css/dashboard/dashboard.css";
 
 // BANNERS
-import redbanner from "../../images/redbanner.jpeg";
+// import redbanner from "../../images/redbanner.jpeg";
 // import greenbanner from "../../images/greenbanner.jpeg";
 // import yellowbanner from "../../images/yellowbanner.jpeg";
-// import bluebanner from "../../images/bluebanner.jpeg";
+import bluebanner from "../../images/bluebanner.jpeg";
 
 // Context
 import UserContext from "../../utils/UserContext";
@@ -27,7 +27,7 @@ const Dashboard = () => {
       spacing="1rem"
     >
       <div className="banner-container">
-        <img src={redbanner} alt="banner" className="banner" />
+        <img src={bluebanner} alt="banner" className="banner" />
       </div>
       {user ? <NavBox /> : null}
       {user ? <UserBox userData={user} /> : null}

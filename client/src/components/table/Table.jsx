@@ -1,6 +1,15 @@
-import TableItem from "./TableItem";
+import React, { useContext } from "react";
+
+// Context
+import UserContext from "../../utils/UserContext";
+
+// Components
+import TableItem from "./entries/TableItem";
 
 const Table = ({ list, loading, updateModal }) => {
+  // Context
+  const { user } = useContext(UserContext);
+
   if (loading) {
     return (
       <div>
@@ -17,16 +26,21 @@ const Table = ({ list, loading, updateModal }) => {
           <th>Semester</th>
           <th>Position</th>
           <th>Type</th>
-          <th>Contact</th>
           <th>Start Date</th>
           <th>Deadline</th>
           <th>Description</th>
+          {user.mod ? <th>Edit</th> : null}
         </tr>
       </thead>
       <tbody>
         {list
           ? list.map((item) => (
-              <TableItem item={item} key={item.id} updateModal={updateModal} />
+              <TableItem
+                item={item}
+                key={item.id}
+                updateModal={updateModal}
+                mod={user.mod}
+              />
             ))
           : null}
       </tbody>

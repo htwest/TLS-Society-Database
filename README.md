@@ -85,15 +85,11 @@ PENDING
 
 ###### Front End
 
-- Submit user info to "applicants" and Institutes info to "pending"
+- Create a "sorry nothing here" component for empty searches
 
 - Build Page for Moderators to Look at Pending applications.
 
 ###### Back End
-
-- Create "Pending" table in Database
-
-  - Pending will hold unapproved Intership Information.
 
 - Build out "Reject" functionality
 

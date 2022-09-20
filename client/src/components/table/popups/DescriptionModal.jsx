@@ -1,9 +1,7 @@
 import ReactDom from "react-dom";
 import "../../../css/dashboard/table/Modal.css";
 
-const Modal = ({ modalOpen, setModalOpen, data }) => {
-  console.log(data);
-
+const DescriptionModal = ({ modalOpen, setModalOpen, data }) => {
   if (!modalOpen) {
     return null;
   }
@@ -41,4 +39,4 @@ const Modal = ({ modalOpen, setModalOpen, data }) => {
   );
 };
 
-export default Modal;
+export default DescriptionModal;
