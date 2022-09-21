@@ -106,3 +106,13 @@ PENDING
 - Build out "Application" Button to present user Internship Info
 
   - Should retrieve Internship info from "Pending Table"
+
+###### Today
+
+- Finish building TableEdit
+
+- Drop and rebuild Internship DB to get correct date sytnax
+
+- Build out Modal for TableEdit for Description and contact updates
+
+- Create PUT path to server to update Internship in DB

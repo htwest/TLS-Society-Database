@@ -201,8 +201,7 @@ const InstituteForm = ({
         <Grid templateColumns="repeat(2, 1fr)" gap={6}>
           <GridItem>
             <Text>Start</Text>
-            <Input
-              size="lg"
+            <input
               type="date"
               value={institute.app_open}
               _placeholder={{ color: "black.100" }}
@@ -215,8 +214,7 @@ const InstituteForm = ({
           </GridItem>
           <GridItem>
             <Text>End</Text>
-            <Input
-              size="lg"
+            <input
               type="date"
               value={institute.app_deadline}
               _placeholder={{ color: "black.100" }}

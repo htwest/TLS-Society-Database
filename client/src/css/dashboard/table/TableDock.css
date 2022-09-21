@@ -66,6 +66,18 @@
   border-bottom: 4px solid var(--bg);
 }
 
+/* Edits and Inputs */
+.content-table input {
+  color: black;
+  padding-left: 10px;
+}
+
+.content-table select {
+  color: black;
+  padding-left: 10px;
+}
+
+
 /* Buttons & Select */
 .search-box select {
   margin-left: 20px;
