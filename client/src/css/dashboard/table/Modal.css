@@ -42,6 +42,8 @@
   justify-content: center;
 }
 
+/* Description Modal */
+
 .info {
   display: flex;
   flex-direction: column;
@@ -54,7 +56,7 @@
 }
 
 .modal-container button {
-  background-color: var(--bg);
+  background-color: var(--button-color);
   border: none;
   border-radius: 3px;
   color: var(--text);
@@ -66,7 +68,43 @@
   transition-duration: 0.4s;
 }
 
+/* Edit Modal */
+.edit-info {
+ width: 80vw;
+}
+
+.edit-block {
+  display: flex;
+  margin: 20px;
+}
+
+.edit-label {
+  display: block;
+  width: 150px;
+}
+
+.edit-block input {
+  border: 2px solid var(--border);
+  border-radius: 3%;
+  padding: 10px;
+}
+
+.edit-description {
+  margin: 20px;
+  width: 100%;
+}
+
+.edit-description textarea {
+  width: 90%;
+  height: 200px;
+  border: 2px solid var(--border);
+  border-radius: 3%;
+  margin-top: 10px;
+  padding: 10px;
+}
+
 @media(max-width:767px) {
+
   .data-container{
     display: flex;
     flex-direction: column;
@@ -80,4 +118,17 @@
   .description {
     padding: 10px
   }
+
+  .edit-block {
+    margin: 10px;
+  }
+
+  .edit-info {
+    width: 300px;
+  }
+
+  .edit-description {
+    margin: 10px;
+  }
+
 }

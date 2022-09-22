@@ -1,4 +1,4 @@
-const TableEntry = ({ item, updateModal, setEdit, mod }) => {
+const TableEntry = ({ item, handleDescription, setEdit, mod }) => {
   return (
     <tr>
       <td data-heading="Institute">{item.name}</td>
@@ -11,7 +11,7 @@ const TableEntry = ({ item, updateModal, setEdit, mod }) => {
         <button
           className="description-button"
           onClick={() => {
-            updateModal(item);
+            handleDescription(item);
           }}
         >
           Open

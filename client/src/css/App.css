@@ -2,7 +2,6 @@
 
 .App {
   background-color: black;
-  /* background: black; */
   background: url("../images/dark.jpeg");
   background-color: black;
   -webkit-background-size: cover;
@@ -10,6 +9,29 @@
   -o-background-size: cover;
   background-size: cover;
   background-position: center;
+}
+
+.App {
+  /* Colors */
+  --bg: #a08a40;
+  --bg-alt: #aadbf9;
+  --bg-accent: #aadbf9;
+  --text: #0c0404;
+
+  /* NavBar */
+  --nav-size: 60px;
+  --border: 1px solid #474a4d;
+  --border-radius: 8px;
+  --speed: 500ms;
+  --button-size: 40px;
+  --button-size-mobile: 30px;
+
+  /* Table */
+  --table-bg: rgb(55, 55, 55, 0.5);
+  --table-bg-alt: rgb(230, 230, 230, 0.8);
+
+
+  --button-color: red;
 }
 
 .form-header {

@@ -7,7 +7,6 @@ import filterList from "../../hooks/filterList";
 
 // Components
 import Table from "./Table";
-import DescriptionModal from "./popups/DescriptionModal";
 import Pagination from "./Pagination";
 
 const TableDock = () => {
@@ -17,8 +16,7 @@ const TableDock = () => {
   const [search, setSearch] = useState();
   const [field, setField] = useState();
   const [semester, setSemester] = useState();
-  const [modalData, setModalData] = useState();
-  const [modalOpen, setModalOpen] = useState(false);
+
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
@@ -37,11 +35,6 @@ const TableDock = () => {
     paginationList = currentList;
   }
 
-  const updateModal = (data) => {
-    setModalData(data);
-    setModalOpen(!modalOpen);
-  };
-
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -52,11 +45,6 @@ const TableDock = () => {
 
   return (
     <div className="table-container">
-      <DescriptionModal
-        modalOpen={modalOpen}
-        setModalOpen={setModalOpen}
-        data={modalData}
-      />
       <div className="search-box">
         <input
           type="text"
@@ -91,11 +79,7 @@ const TableDock = () => {
           Go
         </button>
       </div>
-      <Table
-        list={paginationList}
-        loading={loading}
-        updateModal={updateModal}
-      />
+      <Table list={paginationList} loading={loading} />
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={currentList.length}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const TableEdit = ({ item }) => {
+const TableEdit = ({ item, handleEdit }) => {
   const [name, setName] = useState(item.name);
   const [semester, setSemester] = useState(item.semester);
   const [position, setPosition] = useState(item.position);
@@ -55,7 +55,9 @@ const TableEdit = ({ item }) => {
         />
       </td>
       <td data-heading="Description">
-        <button className="description-button">Update</button>
+        <button className="description-button" onClick={() => handleEdit(item)}>
+          Update
+        </button>
       </td>
       <td>
         <button className="description-button">Done</button>
