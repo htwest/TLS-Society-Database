@@ -2,10 +2,6 @@ import ReactDom from "react-dom";
 import "../../../css/dashboard/table/Modal.css";
 
 const DescriptionModal = ({ modalOpen, setModalOpen, data }) => {
-  if (!modalOpen) {
-    return null;
-  }
-
   return ReactDom.createPortal(
     <>
       <div className="overlay" onClick={() => setModalOpen(!modalOpen)} />

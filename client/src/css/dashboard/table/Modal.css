@@ -29,7 +29,20 @@
   justify-content: center;
   width: 80vw;
   border: 3px solid var(--border);
+  overflow: auto;
 }
+
+.modal-content {
+  position:relative;
+  overflow:auto;
+  height:100%;
+  width: 100%;
+}
+
+
+
+
+
 
 .modal-container h3 {
   font-weight: bold;
@@ -69,39 +82,30 @@
 }
 
 /* Edit Modal */
-.edit-info {
- width: 80vw;
-}
-
-.edit-block {
+.edit-container {
+  padding: 10px 0px 10px 0px;
+  width: 80%;
   display: flex;
-  margin: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+ .edit-container input, .edit-container textarea, .edit-container select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid black;
+ }
 
-.edit-label {
-  display: block;
-  width: 150px;
-}
-
-.edit-block input {
-  border: 2px solid var(--border);
-  border-radius: 3%;
-  padding: 10px;
-}
-
-.edit-description {
-  margin: 20px;
+ .edit-container label {
   width: 100%;
-}
+  text-align: left;
+ }
 
-.edit-description textarea {
-  width: 90%;
-  height: 200px;
-  border: 2px solid var(--border);
-  border-radius: 3%;
-  margin-top: 10px;
-  padding: 10px;
-}
+ .edit-container textarea {
+  min-height: 200px;
+ }
 
 @media(max-width:767px) {
 
@@ -119,16 +123,5 @@
     padding: 10px
   }
 
-  .edit-block {
-    margin: 10px;
-  }
-
-  .edit-info {
-    width: 300px;
-  }
-
-  .edit-description {
-    margin: 10px;
-  }
 
 }

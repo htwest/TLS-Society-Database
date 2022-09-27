@@ -6,7 +6,7 @@ import UserContext from "../../utils/UserContext";
 // Components
 import TableItem from "./entries/TableItem";
 import DescriptionModal from "./popups/DescriptionModal";
-import EditDescriptionModal from "./popups/EditDescriptionModal";
+import EditModal from "./popups/EditModal";
 
 const Table = ({ list, loading }) => {
   // State
@@ -38,16 +38,20 @@ const Table = ({ list, loading }) => {
 
   return (
     <>
-      <DescriptionModal
-        modalOpen={descriptionOpen}
-        setModalOpen={setDescriptionOpen}
-        data={modalData}
-      />
-      <EditDescriptionModal
-        modalOpen={editOpen}
-        setModalOpen={setEditOpen}
-        data={modalData}
-      />
+      {descriptionOpen ? (
+        <DescriptionModal
+          modalOpen={descriptionOpen}
+          setModalOpen={setDescriptionOpen}
+          data={modalData}
+        />
+      ) : null}
+      {editOpen ? (
+        <EditModal
+          modalOpen={editOpen}
+          setModalOpen={setEditOpen}
+          data={modalData}
+        />
+      ) : null}
       <table className="content-table">
         <thead>
           <tr>
