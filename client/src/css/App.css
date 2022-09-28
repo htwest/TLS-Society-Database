@@ -13,14 +13,24 @@
 
 .App {
   /* Colors */
-  --bg: #a08a40;
+  /* --bg: #a08a40;
   --bg-alt: #aadbf9;
   --bg-accent: #aadbf9;
-  --text: #0c0404;
+  --text: #0c0404; */
+
+
+
+  /* V1 */
+  --bg: #626462;
+  --bg-alt: #aadbf9;
+  --bg-accent: #aadbf9;
+  --text: #dfdede;
+  --text-alt: #0c0404;
+
 
   /* NavBar */
   --nav-size: 60px;
-  --border: 1px solid #474a4d;
+  --border: 1px solid var(--bg);
   --border-radius: 8px;
   --speed: 500ms;
   --button-size: 40px;

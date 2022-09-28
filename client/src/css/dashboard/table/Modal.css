@@ -8,7 +8,7 @@
   z-index: 1000;
 }
 
-.modal-container {
+.modal-content {
   --bg: #53bbfa;
   --bg-alt: #aadbf9;
   --border: #262627ee;
@@ -23,26 +23,18 @@
   padding: 50px;
   z-index: 1000;
   color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 80vw;
   border: 3px solid var(--border);
+  max-height: 600px;
   overflow: auto;
 }
 
 .modal-content {
-  position:relative;
-  overflow:auto;
-  height:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
   width: 100%;
 }
-
-
-
-
-
 
 .modal-container h3 {
   font-weight: bold;
@@ -68,8 +60,8 @@
   white-space: nowrap;
 }
 
-.modal-container button {
-  background-color: var(--button-color);
+.modal-content button {
+  background-color: var(--bg);
   border: none;
   border-radius: 3px;
   color: var(--text);
@@ -82,30 +74,17 @@
 }
 
 /* Edit Modal */
-.edit-container {
-  padding: 10px 0px 10px 0px;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+.modal-content input, .modal-content select, .modal-content textarea{
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
 }
- .edit-container input, .edit-container textarea, .edit-container select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 5px 0;
-    box-sizing: border-box;
-    border: 1px solid black;
- }
 
- .edit-container label {
-  width: 100%;
-  text-align: left;
- }
+.modal-content textarea {
+  height: 120px;
+}
 
- .edit-container textarea {
-  min-height: 200px;
- }
 
 @media(max-width:767px) {
 

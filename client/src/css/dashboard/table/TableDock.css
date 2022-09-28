@@ -51,7 +51,7 @@
 
 .content-table tbody tr:nth-of-type(even) {
   background-color: var(--table-bg-alt);
-  color: var(--text);
+  color: var(--text-alt);
 }
 
 .content-table tbody tr:last-of-type {
@@ -119,6 +119,24 @@
   background:var(--bg-alt);
 }
 
+tr a {
+  background-color: var(--bg);
+  color: var(--text);
+  border-radius: 3px;
+  padding: 7px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  height: 20px;
+}
+
+
+
+
+
 .pagination {
   display: flex;
   list-style: none;
@@ -168,15 +186,4 @@
     width: 8.5em;
     display: inline-block;
   }
-
-  /* Edits and Inputs */
-.content-table input {
-  width: 200px;
-
-}
-
-.content-table select {
-  width: 200px;
-
-}
 }

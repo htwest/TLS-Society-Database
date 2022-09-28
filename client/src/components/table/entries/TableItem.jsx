@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
+
 const TableItem = ({ item, handleDescription, handleEdit, key, mod }) => {
   return (
     <tr>
@@ -19,14 +22,13 @@ const TableItem = ({ item, handleDescription, handleEdit, key, mod }) => {
       </td>
       {mod ? (
         <td data-heading="Edit">
-          <button
-            className="description-button"
-            onClick={() => {
-              handleEdit(item);
-            }}
-          >
-            Edit
-          </button>
+          <a href="#!">
+            <FontAwesomeIcon
+              icon={faGear}
+              className="icon"
+              onClick={() => handleEdit(item)}
+            />
+          </a>
         </td>
       ) : null}
     </tr>
