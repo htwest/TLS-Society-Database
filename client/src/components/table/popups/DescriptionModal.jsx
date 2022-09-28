@@ -29,7 +29,11 @@ const DescriptionModal = ({ modalOpen, setModalOpen, data }) => {
             </div>
             <div className="info-right">{data.description}</div>
           </div>
-          <button onClick={() => setModalOpen(!modalOpen)}>Close Modal</button>
+          <div className="button-group">
+            <button onClick={() => setModalOpen(!modalOpen)}>
+              Close Modal
+            </button>
+          </div>
         </div>
       </div>
     </>,

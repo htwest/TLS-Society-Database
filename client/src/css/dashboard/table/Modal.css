@@ -34,9 +34,6 @@
 }
 
 .modal-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
   width: 100%;
 }
 
@@ -46,6 +43,30 @@
   font-size: 2em;
   text-align: center;
   margin: 10px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.button-group button {
+  background-color: var(--button-color);
+  border: none;
+  border-radius: 3px;
+  color: var(--text);
+  padding: 5px 15px;
+  margin-top: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+.button-group button:hover {
+  background-color: var(--button-hover);
 }
 
 /* Description Modal */
@@ -71,25 +92,21 @@
   width: 100%;
 }
 
-.modal-content button {
-  background-color: var(--button-color);
-  border: none;
-  border-radius: 3px;
-  color: var(--text);
-  padding: 5px 15px;
-  margin-top: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
-}
-
-.modal-content button:hover {
-  background-color: var(--button-hover);
-}
-
 /* Edit Modal */
+
+.final-check {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.final-check
+
+.update-info {
+  display: flex;
+  flex-direction: column;
+}
 
 .modal-content input, .modal-content select, .modal-content textarea{
   padding: 10px;
