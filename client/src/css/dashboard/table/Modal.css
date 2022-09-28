@@ -101,10 +101,8 @@
   margin: 20px;
 }
 
-.final-check
-
 .update-info {
-  display: flex;
+  display: grid;
   flex-direction: column;
 }
 

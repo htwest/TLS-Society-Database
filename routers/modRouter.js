@@ -66,4 +66,41 @@ router.get("/pending", async (req, res) => {
   }
 });
 
+// ************************************
+//   UPDATE INTERNSHIP
+// ************************************
+router.put("/update/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const info = req.body;
+
+    const updateInternship = await pool.query(
+      "UPDATE internships SET name = $1, semester = $2, position = $3, type = $4, poc_name = $5, poc_email = $6, app_open = $7, app_deadline = $8, description = $9 WHERE id = $10",
+      [
+        info.name,
+        info.semester,
+        info.position,
+        info.type,
+        info.poc_name,
+        info.poc_email,
+        info.app_open,
+        info.app_deadline,
+        info.description,
+        id,
+      ],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(200);
+        }
+      }
+    );
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = router;

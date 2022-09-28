@@ -1,131 +1,113 @@
 import React, { useState } from "react";
 import ReactDom from "react-dom";
-
-// import putUpdateInternship from "../../../api/putUpdateInternship";
-
 import "../../../css/dashboard/table/Modal.css";
 
+// Components
+import InputBox from "./editModal/InputBox";
+
+// Api
+import putUpdateInternship from "../../../api/putUpdateInternship";
+
 const EditModal = ({ modalOpen, setModalOpen, data }) => {
-  const [name, setName] = useState(data.name);
-  const [semester, setSemester] = useState(data.semester);
-  const [position, setPosition] = useState(data.position);
-  const [type, setType] = useState(data.type);
-  const [poc_name, setPoc_Name] = useState(data.poc_name);
-  const [poc_email, setPoc_Email] = useState(data.poc_email);
-  const [app_open, setApp_Open] = useState(data.app_open);
-  const [deadline, setDeadline] = useState(data.app_deadline);
-  const [description, setDescription] = useState(data.description);
+  const [modalData, setModalData] = useState(data);
+  const [step, setStep] = useState(1);
 
-  const [finalCheck, setFinalCheck] = useState(false);
+  const handleUpdate = async () => {
+    await putUpdateInternship(data.id, modalData)
+      .then(() => {
+        console.log("worked");
+        stepUp();
+      })
+      .catch((err) => {
+        setStep(4);
+      });
+  };
 
-  const handleUpdate = () => {};
+  const resetStep = () => {
+    setStep(1);
+  };
+
+  const stepUp = () => {
+    setStep(step + 1);
+  };
+
+  const stepDown = () => {
+    setStep(step - 1);
+  };
 
   return ReactDom.createPortal(
     <>
-      <div className="overlay" onClick={() => setModalOpen(!modalOpen)} />
+      <div
+        className="overlay"
+        onClick={() => {
+          resetStep();
+          setModalOpen(!modalOpen);
+        }}
+      />
       <div className="modal-container">
         <div className="modal-content">
-          {finalCheck ? (
+          {/* Display */}
+
+          {step === 1 ? (
+            <InputBox modalData={modalData} setModalData={setModalData} />
+          ) : null}
+          {step === 2 ? (
             <div className="final-check">
               <h3>You Are About To Update This Information</h3>
               <h5>Are you Sure?</h5>
             </div>
-          ) : (
-            <div className="update-info">
-              {/* name */}
-              <label for="name">Institute</label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              {/* semester */}
-              <label for="semester">Semester</label>
-              <select
-                id="semester"
-                value={semester}
-                onChange={(e) => setSemester(e.target.value)}
-              >
-                <option value="Spring">Spring</option>
-                <option value="Fall">Fall</option>
-              </select>
-              {/* position */}
-              <label for="position">Position</label>
-              <input
-                type="text"
-                id="position"
-                value={position}
-                onChange={(e) => setPosition(e.target.value)}
-              />
-              {/* type */}
-              <label for="type">Type of Law</label>
-              <select
-                id="type"
-                value={type}
-                onChange={(e) => setType(e.target.value)}
-              >
-                <option value="Government">Government</option>
-                <option value="Emerging Technology">Emerging Technology</option>
-                <option value="AI">AI</option>
-                <option value="National Security">National Security</option>
-                <option value="E-Commerce">E-Commerce</option>
-                <option value="Other">Other</option>
-              </select>
-              {/* poc_name */}
-              <label for="poc_name">Point of Contact</label>
-              <input
-                type="text"
-                id="poc_name"
-                value={poc_name}
-                onChange={(e) => setPoc_Name(e.target.value)}
-              />
-              {/* poc_email */}
-              <input
-                type="text"
-                value={poc_email}
-                onChange={(e) => setPoc_Email(e.target.value)}
-              />
-              {/* app_open */}
-              <label for="deadline">Deadlines</label>
-              <input
-                type="date"
-                id="app_open"
-                value={app_open}
-                onChange={(e) => {
-                  setApp_Open(e.target.value);
-                }}
-              />
-              {/* app_deadline */}
-              <input
-                type="date"
-                id="deadline"
-                value={deadline}
-                onChange={(e) => {
-                  setDeadline(e.target.value);
-                }}
-              />
-              {/* description */}
-              <label for="description">Description</label>
-              <textarea
-                id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
+          ) : null}
+          {step === 3 ? (
+            <div className="message">
+              <h3>You Have Succesfully Updated The Information</h3>
             </div>
-          )}
+          ) : null}
+          {step === 4 ? (
+            <div className="message">
+              <h3>Unable To Update Information</h3>
+              <h5>Please try Again</h5>
+            </div>
+          ) : null}
 
-          {finalCheck ? (
-            <div className="button-group">
-              <button onClick={() => setFinalCheck(false)}>Cancel</button>
-              <button onClick={() => handleUpdate()}>Accept</button>
-            </div>
-          ) : (
+          {/* Button Groups */}
+
+          {step === 1 ? (
             <div className="button-group">
               <button onClick={() => setModalOpen(!modalOpen)}>Close</button>
-              <button onClick={() => setFinalCheck(true)}>Update</button>
+              <button onClick={() => stepUp()}>Update</button>
             </div>
-          )}
+          ) : null}
+          {step === 2 ? (
+            <div className="button-group">
+              <button onClick={() => stepDown()}>Cancel</button>
+              <button onClick={() => handleUpdate()}>Accept</button>
+            </div>
+          ) : null}
+          {step === 3 ? (
+            <div className="button-group">
+              <button
+                onClick={() => {
+                  resetStep();
+                  setModalOpen(!modalOpen);
+                }}
+              >
+                Close
+              </button>
+            </div>
+          ) : null}
+          {step === 4 ? (
+            <div className="button-group">
+              <button onClick={() => resetStep()}>Back</button>
+              <button
+                onClick={() => {
+                  resetStep();
+                  setModalOpen(!modalOpen);
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+          ) : null}
         </div>
       </div>
     </>,
