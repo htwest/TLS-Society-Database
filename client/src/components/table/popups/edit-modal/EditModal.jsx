@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import ReactDom from "react-dom";
-import "../../../css/dashboard/table/Modal.css";
+import "../../../../css/dashboard/table/Modal.css";
 
 // Components
-import InputBox from "./editModal/InputBox";
+import InputBox from "./InputBox";
 
 // Api
-import putUpdateInternship from "../../../api/putUpdateInternship";
+import putUpdateInternship from "../../../../api/putUpdateInternship";
 
 const EditModal = ({ modalOpen, setModalOpen, data }) => {
   const [modalData, setModalData] = useState(data);
@@ -15,7 +15,6 @@ const EditModal = ({ modalOpen, setModalOpen, data }) => {
   const handleUpdate = async () => {
     await putUpdateInternship(data.id, modalData)
       .then(() => {
-        console.log("worked");
         stepUp();
       })
       .catch((err) => {

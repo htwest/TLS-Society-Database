@@ -6,7 +6,7 @@ import UserContext from "../../utils/UserContext";
 // Components
 import TableItem from "./TableItem";
 import DescriptionModal from "./popups/DescriptionModal";
-import EditModal from "./popups/EditModal";
+import EditModal from "./popups/edit-modal/EditModal";
 
 const Table = ({ list, loading }) => {
   // State
