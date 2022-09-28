@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import ReactDom from "react-dom";
+
+// import putUpdateInternship from "../../../api/putUpdateInternship";
+
 import "../../../css/dashboard/table/Modal.css";
 
 const EditModal = ({ modalOpen, setModalOpen, data }) => {
