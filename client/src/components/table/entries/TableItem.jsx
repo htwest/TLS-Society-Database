@@ -22,12 +22,8 @@ const TableItem = ({ item, handleDescription, handleEdit, key, mod }) => {
       </td>
       {mod ? (
         <td data-heading="Edit">
-          <a href="#!">
-            <FontAwesomeIcon
-              icon={faGear}
-              className="icon"
-              onClick={() => handleEdit(item)}
-            />
+          <a href="#!" onClick={() => handleEdit(item)}>
+            <FontAwesomeIcon icon={faGear} className="icon" />
           </a>
         </td>
       ) : null}

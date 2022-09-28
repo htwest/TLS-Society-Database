@@ -1,12 +1,32 @@
 .header-box {
   width: 100vw;
+  padding-top: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .header-box img {
-  width: 90%;
   height: auto;
-  margin-top: 1em;
-  max-width: 1000px;
+  max-height: 150px;
+  width: auto;
+}
+
+#divider {
+  height: 100px;
+  width: 2px;
+  background-color: var(--bg-accent);
+  margin: 10px 30px
+}
+
+@media(max-width: 767px) {
+
+ .header-box {
+  flex-direction: column;
+  padding: 30px
+ }
+
+ #divider {
+  display: none;
+ }
 }

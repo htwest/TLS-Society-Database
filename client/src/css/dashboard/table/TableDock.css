@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
+  color: var(--text);
   max-width: 900px;
   margin: 20px;
 }
@@ -12,7 +12,7 @@
   display: flex;
   width: 79vw;
   padding-bottom: 10px;
-  color: var(--text);
+  color: var(--text-alt);
 }
 
 .search-box input {
@@ -38,7 +38,7 @@
   font-weight: bold;
   text-align: left;
   white-space: nowrap;
-  border: 5px solid black;
+  margin-bottom: 10px;
 }
 
 .content-table th, .content-table td {
@@ -46,7 +46,7 @@
 }
 
 .content-table tbody {
-  background-color: var(--table-bg)
+  background-color: var(--table-bg);
 }
 
 .content-table tbody tr:nth-of-type(even) {
@@ -83,7 +83,7 @@
 }
 
 .search-box select:hover {
-  background:var(--bg-alt)
+  background:var(--button-hover)
 }
 .search-button {
   background-color: var(--bg);
@@ -99,7 +99,7 @@
 }
 
 .search-button:hover {
-  background:var(--bg-alt);
+  background:var(--button-hover);
 }
 
 .description-button {
@@ -116,26 +116,26 @@
 }
 
 .description-button:hover {
-  background:var(--bg-alt);
+  background:var(--button-hover);
 }
 
 tr a {
   background-color: var(--bg);
   color: var(--text);
   border-radius: 3px;
-  padding: 7px 25px;
+  padding: 7px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+tr a:hover {
+  background-color: var(--button-hover);
+}
+
 .icon {
   height: 20px;
 }
-
-
-
-
 
 .pagination {
   display: flex;

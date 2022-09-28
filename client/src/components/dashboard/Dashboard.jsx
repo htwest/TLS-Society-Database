@@ -26,9 +26,9 @@ const Dashboard = () => {
       justify="center"
       spacing="1rem"
     >
-      <div className="banner-container">
+      {/* <div className="banner-container">
         <img src={bluebanner} alt="banner" className="banner" />
-      </div>
+      </div> */}
       {user ? <NavBox /> : null}
       {user ? <UserBox userData={user} /> : null}
     </VStack>
