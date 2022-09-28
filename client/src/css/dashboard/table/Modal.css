@@ -12,6 +12,10 @@
   --bg: #53bbfa;
   --bg-alt: #aadbf9;
   --border: #262627ee;
+  --text: #dfdede;
+  --button-color: #626462;
+  --button-hover: #a3a5a7;
+  font-family: Copperplate, "Copperplate Gothic Light", sans-serif;
 }
 
 .modal-container {
@@ -38,39 +42,51 @@
 
 .modal-container h3 {
   font-weight: bold;
-}
-
-.data-container {
-  padding: 10px 0px 10px 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-family: Copperplate, "Copperplate Gothic Light", sans-serif;
+  font-size: 2em;
+  text-align: center;
+  margin: 10px;
 }
 
 /* Description Modal */
 
 .info {
   display: flex;
-  flex-direction: column;
-  width: 40%;
-  padding: 0px 50px 0px 10px;
+  flex-direction: row;
 }
 
-.info span {
-  white-space: nowrap;
+.info-left {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  min-width: 200px;
+}
+
+.info-left span {
+  display: block;
+  width: 100%;
+}
+
+.info-right {
+  width: 100%;
 }
 
 .modal-content button {
-  background-color: var(--bg);
+  background-color: var(--button-color);
   border: none;
   border-radius: 3px;
   color: var(--text);
   padding: 5px 15px;
+  margin-top: 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   transition-duration: 0.4s;
+}
+
+.modal-content button:hover {
+  background-color: var(--button-hover);
 }
 
 /* Edit Modal */

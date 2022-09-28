@@ -55,7 +55,7 @@
 }
 
 .content-table tbody tr:last-of-type {
-  border-bottom: 4px solid var(--bg);
+  border-bottom: 5px solid var(--bg);
 }
 
 /* Edits and Inputs */
@@ -77,7 +77,6 @@
   padding: 8px 12px;
   color: var(--text);
   background-color: var(--bg);
-  border: 1px solid black;
   cursor: pointer;
   border-radius: 5px;
 }
@@ -87,8 +86,7 @@
 }
 .search-button {
   background-color: var(--bg);
-  border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   color: var(--text);
   padding: 8px 30px;
   margin-left: 20px;
@@ -123,8 +121,8 @@ tr a {
   background-color: var(--bg);
   color: var(--text);
   border-radius: 3px;
-  padding: 7px 20px;
-  display: flex;
+  padding: 7px 25px;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
 }
@@ -135,6 +133,7 @@ tr a:hover {
 
 .icon {
   height: 20px;
+
 }
 
 .pagination {
@@ -164,7 +163,8 @@ tr a:hover {
   }
 
   .content-table tbody tr td:last-of-type {
-    border-bottom: 5px solid black;
+    border-bottom: 5px solid var(--bg-accent);
+    padding-bottom: 10px
   }
 
   .content-table th, .content-table td {

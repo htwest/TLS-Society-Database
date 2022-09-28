@@ -17,11 +17,6 @@ const theme = extendTheme({
       100: "rgb(0, 0, 0, 0.8)",
     },
   },
-  fonts: {
-    color: "#F5F5F5",
-    heading: `'Teko', 'Open Sans', sans-serif`,
-    body: `'Quicksand', sans-serif`,
-  },
 });
 
 export default theme;

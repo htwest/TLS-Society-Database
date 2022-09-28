@@ -3,12 +3,15 @@
 .App {
   background-color: black;
   background: url("../images/dark.jpeg");
+  min-height: 100vh;
+  width: auto;
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   background-position: center;
+  font-family: Copperplate, "Copperplate Gothic Light", sans-serif;
 }
 
 .App {
@@ -22,8 +25,8 @@
 
   /* V1 */
   --bg: #626462;
-  --bg-alt: #aadbf9;
-  --bg-accent: #aadbf9;
+  --bg-alt: #a6b3bb;
+  --bg-accent: #e7ecef;
   --button-hover: #a3a5a7;
   --text: #dfdede;
   --text-alt: #0c0404;

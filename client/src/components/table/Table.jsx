@@ -4,7 +4,7 @@ import React, { useState, useContext } from "react";
 import UserContext from "../../utils/UserContext";
 
 // Components
-import TableItem from "./entries/TableItem";
+import TableItem from "./TableItem";
 import DescriptionModal from "./popups/DescriptionModal";
 import EditModal from "./popups/EditModal";
 

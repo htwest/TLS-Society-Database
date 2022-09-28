@@ -7,28 +7,30 @@ const DescriptionModal = ({ modalOpen, setModalOpen, data }) => {
       <div className="overlay" onClick={() => setModalOpen(!modalOpen)} />
       <div className="modal-container">
         <h3>{data.name}</h3>
-        <div className="data-container">
+        <div className="modal-content">
           <div className="info">
-            <span>
-              <strong>Type: </strong>
-              {data.type}
-            </span>
-            <span>
-              <strong>Postition: </strong>
-              {data.position}
-            </span>
-            <span>
-              <strong>Semester: </strong>
-              {data.semester}
-            </span>
-            <span>
-              <strong>Contact: </strong>
-              {data.poc_name}
-            </span>
+            <div className="info-left">
+              <span>
+                <strong>Type: </strong>
+                {data.type}
+              </span>
+              <span>
+                <strong>Postition: </strong>
+                {data.position}
+              </span>
+              <span>
+                <strong>Semester: </strong>
+                {data.semester}
+              </span>
+              <span>
+                <strong>Contact: </strong>
+                {data.poc_name}
+              </span>
+            </div>
+            <div className="info-right">{data.description}</div>
           </div>
-          <div className="description">{data.description}</div>
+          <button onClick={() => setModalOpen(!modalOpen)}>Close Modal</button>
         </div>
-        <button onClick={() => setModalOpen(!modalOpen)}>Close Modal</button>
       </div>
     </>,
     document.getElementById("portal")
