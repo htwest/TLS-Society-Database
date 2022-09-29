@@ -17,6 +17,7 @@ const TableDock = () => {
   const [field, setField] = useState();
   const [semester, setSemester] = useState();
 
+  // Pagination
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
@@ -53,9 +54,7 @@ const TableDock = () => {
         />
         <div className="filter-box">
           <select name="field" onChange={(e) => setField(e.target.value)}>
-            <option value="" disabled selected hidden>
-              Field
-            </option>
+            <option value="">Field</option>
             <option value="Technology">Technology</option>
             <option value="Government">Government</option>
             <option value="Policy">Policy</option>
@@ -63,9 +62,7 @@ const TableDock = () => {
           </select>
 
           <select name="Semester" onChange={(e) => setSemester(e.target.value)}>
-            <option value="" disabled selected hidden>
-              Semester
-            </option>
+            <option value="">Semester</option>
             <option value="Spring">Spring</option>
             <option value="Fall">Fall</option>
           </select>

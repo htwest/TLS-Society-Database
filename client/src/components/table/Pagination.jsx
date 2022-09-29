@@ -8,6 +8,12 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   return (
     <nav>
       <ul className="pagination">
+        <li>
+          <a href="#!" onClick={() => paginate(pageNumbers[0])}>
+            &#60;
+          </a>
+        </li>
+        <li>...</li>
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
             <a
@@ -21,6 +27,15 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
             </a>
           </li>
         ))}
+        <li>...</li>
+        <li>
+          <a
+            href="#!"
+            onClick={() => paginate(pageNumbers[pageNumbers.length - 1])}
+          >
+            &#62;
+          </a>
+        </li>
       </ul>
     </nav>
   );
