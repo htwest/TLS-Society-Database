@@ -54,7 +54,7 @@ const Login = () => {
       onSubmit={(e) => handleSubmit(e)}
       w={{ base: "90%", md: "500px" }}
       m="auto"
-      justify="center"
+      // justify="center"
       h="100vh"
       spacing="1rem"
     >

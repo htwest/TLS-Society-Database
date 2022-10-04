@@ -43,9 +43,6 @@
   /* Table */
   --table-bg: rgb(55, 55, 55, 0.5);
   --table-bg-alt: rgb(230, 230, 230, 0.8);
-
-
-  --button-color: red;
 }
 
 .form-header {
@@ -71,6 +68,13 @@
   align-items: center;
   margin: 20px;
 }
+
+
+
+/* *****
+TESTING
+***** */
+
 
 @media(max-width: 767px) {
   .App {
