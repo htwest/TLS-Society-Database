@@ -8,6 +8,7 @@ import UserContext from "../../utils/UserContext";
 // Components
 import UserBox from "./UserBox";
 import NavBox from "../navigation/NavBox";
+import Navbar from "../navigation-two/Navbar";
 
 const Dashboard = () => {
   // Context
@@ -20,7 +21,8 @@ const Dashboard = () => {
       justify="center"
       spacing="1rem"
     >
-      {user ? <NavBox /> : null}
+      {/* {user ? <NavBox /> : null} */}
+      {user ? <Navbar /> : null}
       {user ? <UserBox userData={user} /> : null}
     </VStack>
   );

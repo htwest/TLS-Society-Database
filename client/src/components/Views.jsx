@@ -3,6 +3,9 @@ import { Routes, Route } from "react-router-dom";
 
 // Page Components
 import Header from "./header/Header";
+
+import ToolBar from "./navigation-two/ToolBar";
+
 import Login from "./login/Login";
 import SignUp from "./signup/Signup";
 import Dashboard from "./dashboard/Dashboard";
