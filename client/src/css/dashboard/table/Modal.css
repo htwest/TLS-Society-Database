@@ -119,18 +119,14 @@
 
 @media(max-width:767px) {
 
-  .data-container{
+  .info {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .info {
     padding: 10px;
   }
 
-  .description {
-    padding: 10px
+  .info-left {
+    margin: 10px 0;
   }
 
 

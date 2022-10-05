@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Silkscreen&family=Teko&display=swap');
 
+
 .App {
-  background-color: black;
   background: url("../images/dark.jpeg");
   min-height: 100vh;
   width: auto;
@@ -12,6 +12,7 @@
   background-size: cover;
   background-position: center;
   font-family: Copperplate, "Copperplate Gothic Light", sans-serif;
+  margin-top: -10px;
 }
 
 .App {
