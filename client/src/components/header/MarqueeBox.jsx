@@ -38,30 +38,3 @@ const MarqueeBox = () => {
 };
 
 export default MarqueeBox;
-
-{
-  /* <Marquee className="marquee" gradient={false}>
-<Technology />
-<ECommerce />
-<Policy />
-<Security />
-<Government />
-<AI />
-</Marquee> */
-}
-
-{
-  /* <div className="marquee-container">
-<div className="red"></div>
-{
-  <Marquee className="green" gradient={false}>
-    <Technology />
-    <ECommerce />
-    <Policy />
-    <Security />
-    <Government />
-    <AI />
-  </Marquee>
-}
-</div> */
-}

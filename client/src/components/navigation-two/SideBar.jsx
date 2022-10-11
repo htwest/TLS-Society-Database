@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
@@ -7,17 +8,37 @@ import {
   faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 
+// Context
+import UserContext from "../../utils/UserContext";
+
+// Hooks
+import postLogout from "../../api/postLogout";
+import { useNavigate } from "react-router";
+
 const SideBar = ({ sidebar }) => {
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await postLogout().then((res) => {
+      setUser();
+      window.localStorage.removeItem("user");
+      navigate("/");
+    });
+  };
+
   return (
     <div className={sidebar ? "sidebar sidebar--open" : "sidebar"}>
       <li>
         <FontAwesomeIcon icon={faHouse} className="ri-home-line" />
         Dashboard
       </li>
-      <li>
-        <FontAwesomeIcon icon={faFileImport} className="ri-pending-line" />
-        Pending
-      </li>
+      {user.mod ? (
+        <li>
+          <FontAwesomeIcon icon={faFileImport} className="ri-pending-line" />
+          Pending
+        </li>
+      ) : null}
       <li>
         <FontAwesomeIcon icon={faEnvelope} className="ri-contact-line" />
         Contact
@@ -26,7 +47,7 @@ const SideBar = ({ sidebar }) => {
         <FontAwesomeIcon icon={faCircleQuestion} className="ri-about-line" />
         About Us
       </li>
-      <li>
+      <li onClick={() => handleLogout()}>
         <FontAwesomeIcon icon={faRightFromBracket} className="ri-logout-line" />
         Log Out
       </li>

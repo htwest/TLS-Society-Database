@@ -1,32 +1,30 @@
-.button-group {
+.login-button-group {
   display: flex;
-  margin: 10px
 }
 
-.button-group button {
-  background-color: var(--bg); /* Green */
+.login-button-group button {
+  background-color: var(--bg);
   border: none;
   border-radius: 5px;
   color: var(--text);
   padding: 10px 25px;
-  margin: 0 10px;
+  margin: 10px 10px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
 }
 
-.button-group button:hover {
+.login-button-group button:hover {
   background-color: var(--bg-alt);
   color: var(--text-alt)
 }
 
-.button-group .alt-button {
+.login-button-group .alt-button {
   background-color: var(--bg-secondary);
   color: var(--text-alt)
 }
 
-.button-group .alt-button:hover {
+.login-button-group .alt-button:hover {
   background-color: var(--bg-secondary-alt);
   color: var(--text)
 }

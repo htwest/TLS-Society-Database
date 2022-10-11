@@ -166,16 +166,7 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
         <FormErrorMessage>Please Enter a Valid Email</FormErrorMessage>
       </FormControl>
 
-      {/* <ButtonGroup>
-        <Button colorScheme="white" onClick={() => navigate("/")}>
-          Back to Log In
-        </Button>
-        <Button colorScheme="blue" type="submit">
-          Next
-        </Button>
-      </ButtonGroup> */}
-
-      <div className="button-group">
+      <div className="signup-button-group">
         <button onClick={() => navigate("/")}>Back to Log In</button>
         <button className="alt-button" type="submit">
           Next

@@ -11,7 +11,7 @@ const UserBox = ({ userData }) => {
       <div className="user-greet">
         <Heading color="white.100">Welcome</Heading>
         <Text color="white.100" fontSize="3xl">
-          {userData.username}
+          {userData.f_name}
         </Text>
       </div>
       {userData.approved ? <TableDock /> : <UserUnapproved />}

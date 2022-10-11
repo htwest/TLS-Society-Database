@@ -248,15 +248,8 @@ const InstituteForm = ({
           Please Write A Short Description of the Program
         </FormErrorMessage>
       </FormControl>
-      {/*
-      <ButtonGroup>
-        <Button onClick={() => prevStep()}>Back</Button>
-        <Button colorScheme="blue" onClick={() => handleNext()}>
-          Next
-        </Button>
-      </ButtonGroup> */}
 
-      <div className="button-group">
+      <div className="signup-button-group">
         <button onClick={() => prevStep()}>Back</button>
         <button className="alt-button" onClick={() => handleNext()}>
           Next

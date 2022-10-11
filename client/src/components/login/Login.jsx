@@ -9,7 +9,6 @@ import {
   Heading,
   Box,
 } from "@chakra-ui/react";
-
 import "../../css/login/Login.css";
 
 // Api
@@ -108,11 +107,11 @@ const Login = () => {
         </FormControl>
       </Box>
 
-      <div className="button-group">
-        <button className="alt-button" onClick={() => navigate("/register")}>
-          Create Account
+      <div className="login-button-group">
+        <button onClick={() => navigate("/register")}>Create Account</button>
+        <button className="alt-button" type="submit">
+          Log In
         </button>
-        <button type="submit">Log In</button>
       </div>
     </VStack>
   );
