@@ -8,8 +8,6 @@ import {
   Grid,
   GridItem,
   Input,
-  ButtonGroup,
-  Button,
 } from "@chakra-ui/react";
 
 // Hooks
@@ -168,14 +166,21 @@ const UserForm = ({ userData, setUserData, nextStep }) => {
         <FormErrorMessage>Please Enter a Valid Email</FormErrorMessage>
       </FormControl>
 
-      <ButtonGroup>
+      {/* <ButtonGroup>
         <Button colorScheme="white" onClick={() => navigate("/")}>
           Back to Log In
         </Button>
         <Button colorScheme="blue" type="submit">
           Next
         </Button>
-      </ButtonGroup>
+      </ButtonGroup> */}
+
+      <div className="button-group">
+        <button onClick={() => navigate("/")}>Back to Log In</button>
+        <button className="alt-button" type="submit">
+          Next
+        </button>
+      </div>
     </VStack>
   );
 };

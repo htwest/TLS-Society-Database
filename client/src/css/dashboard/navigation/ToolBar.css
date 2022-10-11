@@ -18,7 +18,7 @@
   color: #fff;
   top: 0;
   left: 0;
-  height: 100vw;
+  height: 100%;
   width: 280px;
   z-index: 999;
   transform: translateX(-100%);

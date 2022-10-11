@@ -10,8 +10,6 @@ import {
   Input,
   Text,
   Textarea,
-  ButtonGroup,
-  Button,
 } from "@chakra-ui/react";
 
 // Hooks
@@ -74,7 +72,7 @@ const InstituteForm = ({
   return (
     <VStack justify="center" spacing="1rem">
       <FormControl isInvalid={nameErr}>
-        <FormLabel>Institute</FormLabel>
+        <FormLabel color="white.200">Institute</FormLabel>
         <Input
           type="text"
           name="institute"
@@ -95,7 +93,7 @@ const InstituteForm = ({
       </FormControl>
 
       <FormControl isInvalid={semErr}>
-        <FormLabel>Semester</FormLabel>
+        <FormLabel color="white.200">Semester</FormLabel>
         <Select
           placeholder="Select Semester"
           _placeholder={{ color: "black.100" }}
@@ -113,7 +111,7 @@ const InstituteForm = ({
       </FormControl>
 
       <FormControl isInvalid={typeErr}>
-        <FormLabel>Type of Law</FormLabel>
+        <FormLabel color="white.200">Type of Law</FormLabel>
         <Select
           placeholder="Select Field"
           _placeholder={{ color: "black.100" }}
@@ -135,7 +133,7 @@ const InstituteForm = ({
       </FormControl>
 
       <FormControl isInvalid={positionErr}>
-        <FormLabel>Position</FormLabel>
+        <FormLabel color="white.200">Position</FormLabel>
         <Input
           type="text"
           name="institute"
@@ -156,7 +154,7 @@ const InstituteForm = ({
       </FormControl>
 
       <FormControl isInvalid={pocErr}>
-        <FormLabel>Point of Contact</FormLabel>
+        <FormLabel color="white.200">Point of Contact</FormLabel>
         <Grid templateColumns="repeat(2, 1fr)" gap={6}>
           <GridItem>
             <Input
@@ -197,12 +195,13 @@ const InstituteForm = ({
       </FormControl>
 
       <FormControl isInvalid={deadlineErr}>
-        <FormLabel>Application Deadlines</FormLabel>
+        <FormLabel color="white.200">Application Deadlines</FormLabel>
         <Grid templateColumns="repeat(2, 1fr)" gap={6}>
           <GridItem>
             <Text>Start</Text>
             <input
               type="date"
+              className="date-input"
               value={institute.app_open}
               _placeholder={{ color: "black.100" }}
               bg="white.100"
@@ -216,6 +215,7 @@ const InstituteForm = ({
             <Text>End</Text>
             <input
               type="date"
+              className="date-input"
               value={institute.app_deadline}
               _placeholder={{ color: "black.100" }}
               bg="white.100"
@@ -230,7 +230,7 @@ const InstituteForm = ({
       </FormControl>
 
       <FormControl isInvalid={descErr}>
-        <FormLabel>Description</FormLabel>
+        <FormLabel color="white.200">Description</FormLabel>
         <Textarea
           name="desc"
           placeholder="Please provide a short description..."
@@ -248,13 +248,20 @@ const InstituteForm = ({
           Please Write A Short Description of the Program
         </FormErrorMessage>
       </FormControl>
-
+      {/*
       <ButtonGroup>
         <Button onClick={() => prevStep()}>Back</Button>
         <Button colorScheme="blue" onClick={() => handleNext()}>
           Next
         </Button>
-      </ButtonGroup>
+      </ButtonGroup> */}
+
+      <div className="button-group">
+        <button onClick={() => prevStep()}>Back</button>
+        <button className="alt-button" onClick={() => handleNext()}>
+          Next
+        </button>
+      </div>
     </VStack>
   );
 };

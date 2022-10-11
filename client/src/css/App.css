@@ -16,17 +16,11 @@
 }
 
 .App {
-  /* Colors */
-  /* --bg: #a08a40;
-  --bg-alt: #aadbf9;
-  --bg-accent: #aadbf9;
-  --text: #0c0404; */
-
-
-
-  /* V1 */
-  --bg: #626462;
-  --bg-alt: #a6b3bb;
+  /* Color Scheme */
+  --bg: #4d4d4e;
+  --bg-alt: #979b9c;
+  --bg-secondary: #d2d3d3;
+  --bg-secondary-alt: #868a8a;
   --bg-accent: #e7ecef;
   --button-hover: #a3a5a7;
   --text: #dfdede;

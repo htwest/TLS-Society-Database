@@ -4,7 +4,7 @@ function AI() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      xmlnsKrita="http://krita.org/namespaces/svg/krita"
+      // xmlnsKrita="http://krita.org/namespaces/svg/krita"
       width="320"
       height="320"
       viewBox="0 0 240 240"
@@ -54,7 +54,7 @@ function AI() {
         letterSpacing="0"
         transform="rotate(.529 -10138.723 11713.524)"
         wordSpacing="0"
-        kritaUseRichText="true"
+        // useRichText="true"
       >
         <tspan x="0">A.I.</tspan>
       </text>

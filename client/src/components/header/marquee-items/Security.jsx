@@ -4,7 +4,7 @@ function Security() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      xmlnsKrita="http://krita.org/namespaces/svg/krita"
+      // xmlnsKrita="http://krita.org/namespaces/svg/krita"
       width="320"
       height="320"
       viewBox="0 0 240 240"
@@ -54,7 +54,7 @@ function Security() {
         letterSpacing="0"
         transform="rotate(-.306 17820.317 -14977.176)"
         wordSpacing="0"
-        kritaUseRichText="true"
+        // useRichText="true"
       >
         <tspan x="0">Security</tspan>
       </text>

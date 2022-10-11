@@ -2,15 +2,15 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import {
   VStack,
-  ButtonGroup,
   FormControl,
   FormLabel,
   FormErrorMessage,
   Input,
-  Button,
   Heading,
   Box,
 } from "@chakra-ui/react";
+
+import "../../css/login/Login.css";
 
 // Api
 import postLogin from "../../api/postLogIn";
@@ -108,14 +108,12 @@ const Login = () => {
         </FormControl>
       </Box>
 
-      <ButtonGroup pt="1rem">
-        <Button colorScheme="white" onClick={() => navigate("/register")}>
+      <div className="button-group">
+        <button className="alt-button" onClick={() => navigate("/register")}>
           Create Account
-        </Button>
-        <Button colorScheme="blue" type="submit">
-          Log In
-        </Button>
-      </ButtonGroup>
+        </button>
+        <button type="submit">Log In</button>
+      </div>
     </VStack>
   );
 };

@@ -4,7 +4,7 @@ function Government() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      xmlnsKrita="http://krita.org/namespaces/svg/krita"
+      // xmlnsKrita="http://krita.org/namespaces/svg/krita"
       width="320"
       height="320"
       viewBox="0 0 240 240"
@@ -54,7 +54,7 @@ function Government() {
         letterSpacing="0"
         transform="rotate(-.189 46912.694 -19454.275)"
         wordSpacing="0"
-        kritaUseRichText="true"
+        // useRichText="true"
       >
         <tspan x="0">Government</tspan>
       </text>

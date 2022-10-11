@@ -4,14 +4,13 @@ import {
   Input,
   Divider,
   Text,
-  Heading,
   Button,
   FormControl,
   FormLabel,
   FormErrorMessage,
   Box,
 } from "@chakra-ui/react";
-import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import { Table, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 import postApplicant from "../../api/postApplicant";

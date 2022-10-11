@@ -4,7 +4,7 @@ function ECommerce() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      xmlnsKrita="http://krita.org/namespaces/svg/krita"
+      // xmlnsKrita="http://krita.org/namespaces/svg/krita"
       width="320"
       height="320"
       viewBox="0 0 240 240"
@@ -54,7 +54,7 @@ function ECommerce() {
         letterSpacing="0"
         transform="rotate(-.306 17813.334 -12358.792)"
         wordSpacing="0"
-        kritaUseRichText="true"
+        // useRichText="true"
       >
         <tspan x="0">E-Commerce</tspan>
       </text>

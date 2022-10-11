@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { VStack, Heading, Box } from "@chakra-ui/react";
+import "../../css/signup/Signup.css";
 
 // Components
 import UserForm from "./UserForm";
