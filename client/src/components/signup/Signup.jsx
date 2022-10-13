@@ -6,6 +6,7 @@ import "../../css/signup/Signup.css";
 import UserForm from "./UserForm";
 import InstituteForm from "./InstituteForm";
 import Review from "./Review";
+import Review2 from "./Review2";
 import Thanks from "./Thanks";
 
 const SignUp = () => {
@@ -53,7 +54,7 @@ const SignUp = () => {
         );
       case 2:
         return (
-          <Review
+          <Review2
             userData={userData}
             institute={institute}
             step={step}

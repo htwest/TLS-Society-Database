@@ -9,6 +9,61 @@
   background-color: rgb(250, 250, 250, 0.8)
 }
 
+/* Review */
+
+.review-box {
+  color: white;
+  width: 60vw;
+}
+
+.review-box h3{
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.signup-info-box {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-info-box h4{
+  text-align: center;
+  font-size: 1.5em;
+  margin: 20px 0;
+}
+
+.signup-info-element{
+  margin: 0;
+  padding: 10px
+}
+
+.signup-info-element:nth-child(even) {
+  background-color: var(--table-bg);
+  color: var(--text)
+}
+
+.signup-info-element:nth-child(odd) {
+  background-color: var(--table-bg-alt);
+  color: var(--text-alt)
+}
+
+.signup-info-element p{
+  font-size: 1.2em;
+  margin-left: 10px;
+}
+
+.signup-password-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-password-box input{
+  max-width: 200px;
+  padding: 10px;
+  margin: 5px;
+}
 
 /* Buttons */
 
@@ -45,3 +100,16 @@
   color: var(--text)
 }
 
+.edit-info-button {
+  background-color: var(--bg);
+  border: none;
+  border-radius: 5px;
+  color: var(--text);
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  align-self: center;
+  margin: 10px;
+}
