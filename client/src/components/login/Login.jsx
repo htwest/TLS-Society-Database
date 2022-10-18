@@ -108,10 +108,10 @@ const Login = () => {
       </Box>
 
       <div className="login-button-group">
-        <button onClick={() => navigate("/register")}>Create Account</button>
         <button className="alt-button" type="submit">
           Log In
         </button>
+        <button onClick={() => navigate("/register")}>Create Account</button>
       </div>
     </VStack>
   );
