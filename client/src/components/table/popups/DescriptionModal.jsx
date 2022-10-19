@@ -1,7 +1,28 @@
-import ReactDom from "react-dom";
-import "../../../css/dashboard/table/Modal.css";
+import React, { useState, useEffect } from "react";
 
-const DescriptionModal = ({ modalOpen, setModalOpen, data }) => {
+import ReactDom from "react-dom";
+import "../../../css/table/Modal.css";
+
+// Hooks
+import fetchApplicant from "../../../hooks/fetchApplicant";
+
+const DescriptionModal = ({ modalOpen, setModalOpen, data, tableForm }) => {
+  const [applicant, setApplicant] = useState("");
+
+  useEffect(() => {
+    switch (tableForm) {
+      case "dashboard":
+        break;
+      case "pending":
+        fetchApplicant(data.user_id, setApplicant);
+        break;
+      default:
+        break;
+    }
+  }, [tableForm, data]);
+
+  console.log(applicant);
+
   return ReactDom.createPortal(
     <>
       <div className="overlay" onClick={() => setModalOpen(!modalOpen)} />
@@ -10,22 +31,21 @@ const DescriptionModal = ({ modalOpen, setModalOpen, data }) => {
         <div className="modal-content">
           <div className="info">
             <div className="info-left">
-              <span>
-                <strong>Type: </strong>
-                {data.type}
-              </span>
-              <span>
-                <strong>Postition: </strong>
-                {data.position}
-              </span>
-              <span>
-                <strong>Semester: </strong>
-                {data.semester}
-              </span>
-              <span>
-                <strong>Contact: </strong>
-                {data.poc_name}
-              </span>
+              <p>Type: </p>
+              <p>{data.type}</p>
+
+              <p>Postition: </p>
+              <p>{data.position}</p>
+              <p>Semester: </p>
+              <p>{data.semester}</p>
+              <p>Contact: </p>
+              <p>{data.poc_name}</p>
+              {tableForm === "pending" ? (
+                <>
+                  <p>Applicant: </p>
+                  <p>{applicant}</p>
+                </>
+              ) : null}
             </div>
             <div className="info-right">{data.description}</div>
           </div>

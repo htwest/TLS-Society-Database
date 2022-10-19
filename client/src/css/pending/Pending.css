@@ -1,0 +1,16 @@
+.dashboard-container {
+  width: 90vw;
+  margin: auto;
+}
+
+.mod-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mod-container h3, h5 {
+  color: var(--text);
+  font-size: 1.2em;
+}

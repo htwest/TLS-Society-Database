@@ -1,8 +1,4 @@
-.banner-container {
-  width: 100vw;
-  margin: 30px 0px 10px 0px
-}
-
-.banner {
-  width: 100%;
+.dashboard-container {
+  width: 90vw;
+  margin: auto;
 }

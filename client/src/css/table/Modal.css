@@ -77,15 +77,10 @@
 }
 
 .info-left {
-  display: flex;
-  flex-direction: column;
-  margin-right: 20px;
-  min-width: 200px;
-}
-
-.info-left span {
-  display: block;
-  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0 10px;
+  margin-right: 50px;
 }
 
 .info-right {

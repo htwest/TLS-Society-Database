@@ -29,12 +29,12 @@ const SideBar = ({ sidebar }) => {
 
   return (
     <div className={sidebar ? "sidebar sidebar--open" : "sidebar"}>
-      <li>
+      <li onClick={() => navigate("/dashboard")}>
         <FontAwesomeIcon icon={faHouse} className="ri-home-line" />
         Dashboard
       </li>
       {user.mod ? (
-        <li>
+        <li onClick={() => navigate("/pending")}>
           <FontAwesomeIcon icon={faFileImport} className="ri-pending-line" />
           Pending
         </li>

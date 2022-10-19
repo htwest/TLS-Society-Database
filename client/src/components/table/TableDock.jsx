@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import "../../css/dashboard/table/TableDock.css";
+import "../../css//table/TableDock.css";
 
 // Hooks
 import fetchList from "../../hooks/fetchList";

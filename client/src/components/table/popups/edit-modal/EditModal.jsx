@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDom from "react-dom";
-import "../../../../css/dashboard/table/Modal.css";
+import "../../../../css/table/Modal.css";
 
 // Components
 import InputBox from "./InputBox";
@@ -14,22 +14,13 @@ const EditModal = ({ modalOpen, setModalOpen, data, tableForm }) => {
   const [step, setStep] = useState(1);
 
   const handleUpdate = async () => {
-    switch (tableForm) {
-      case "dashboard":
-        await putUpdateInternship(data.id, modalData)
-          .then(() => {
-            stepUp();
-          })
-          .catch((err) => {
-            setStep(4);
-          });
-        break;
-      case "pending":
-        // do stuff
-        break;
-      default:
-        console.log("Something went wrong: EDIT MODAL -- HandleUpdate()");
-    }
+    await putUpdateInternship(data.id, modalData, tableForm)
+      .then(() => {
+        stepUp();
+      })
+      .catch((err) => {
+        setStep(4);
+      });
   };
 
   const resetStep = () => {

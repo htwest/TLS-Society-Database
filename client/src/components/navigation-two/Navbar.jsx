@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "../../css/dashboard/navigation/ToolBar.css";
+import "../../css/navigation/ToolBar.css";
 
 import ToolBar from "../navigation-two/ToolBar";
 import SideBar from "../navigation-two/SideBar";

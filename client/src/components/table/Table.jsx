@@ -43,6 +43,7 @@ const Table = ({ list, loading, tableForm }) => {
           modalOpen={descriptionOpen}
           setModalOpen={setDescriptionOpen}
           data={modalData}
+          tableForm={tableForm}
         />
       ) : null}
       {editOpen ? (
