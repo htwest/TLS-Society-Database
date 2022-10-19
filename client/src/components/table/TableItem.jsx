@@ -28,8 +28,8 @@ const TableItem = ({ item, handleDescription, handleEdit, mod, tableForm }) => {
         </td>
       ) : null}
       {mod && tableForm === "pending" ? (
-        <td data-heading="Accept">
-          <button>Accept</button>
+        <td data-heading="Check">
+          <input type="checkbox" />
         </td>
       ) : null}
     </tr>

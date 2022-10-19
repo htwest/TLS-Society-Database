@@ -65,7 +65,7 @@ const Table = ({ list, loading, tableForm }) => {
             <th>Deadline</th>
             <th>Description</th>
             {user.mod ? <th>Edit</th> : null}
-            {user.mod && tableForm === "pending" ? <th>Accept</th> : null}
+            {user.mod && tableForm === "pending" ? <th>Select</th> : null}
           </tr>
         </thead>
         <tbody>

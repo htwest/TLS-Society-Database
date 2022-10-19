@@ -21,8 +21,6 @@ const DescriptionModal = ({ modalOpen, setModalOpen, data, tableForm }) => {
     }
   }, [tableForm, data]);
 
-  console.log(applicant);
-
   return ReactDom.createPortal(
     <>
       <div className="overlay" onClick={() => setModalOpen(!modalOpen)} />
