@@ -7,10 +7,7 @@ import Header from "./header/Header";
 import Login from "./login/Login";
 import SignUp from "./signup/Signup";
 import Dashboard from "./dashboard/Dashboard";
-import Pending from "./mod/pending/Pending";
-
-// Testing
-import Test from "./testing/Test";
+import Pending from "./pending/Pending";
 
 // Utils
 import PrivateRoutes from "../utils/PrivateRoutes";
@@ -42,7 +39,6 @@ const Views = () => {
         </Route>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<SignUp />} />
-        <Route path="test" element={<Test />} />
         <Route path="*" element={<Login />} />
       </Routes>
     </UserContext.Provider>

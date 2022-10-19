@@ -2,7 +2,7 @@ const InputBox = ({ modalData, setModalData }) => {
   return (
     <div className="update-info">
       {/* name */}
-      <label for="name">Institute</label>
+      <label htmlFor="name">Institute</label>
       <input
         type="text"
         id="name"
@@ -10,7 +10,7 @@ const InputBox = ({ modalData, setModalData }) => {
         onChange={(e) => setModalData({ ...modalData, name: e.target.value })}
       />
       {/* semester */}
-      <label for="semester">Semester</label>
+      <label htmlFor="semester">Semester</label>
       <select
         id="semester"
         value={modalData.semester}
@@ -22,7 +22,7 @@ const InputBox = ({ modalData, setModalData }) => {
         <option value="Fall">Fall</option>
       </select>
       {/* position */}
-      <label for="position">Position</label>
+      <label htmlFor="position">Position</label>
       <input
         type="text"
         id="position"
@@ -32,7 +32,7 @@ const InputBox = ({ modalData, setModalData }) => {
         }
       />
       {/* type */}
-      <label for="type">Type of Law</label>
+      <label htmlFor="type">Type of Law</label>
       <select
         id="type"
         value={modalData.type}
@@ -46,7 +46,7 @@ const InputBox = ({ modalData, setModalData }) => {
         <option value="Other">Other</option>
       </select>
       {/* poc_name */}
-      <label for="poc_name">Point of Contact</label>
+      <label htmlFor="poc_name">Point of Contact</label>
       <input
         type="text"
         id="poc_name"
@@ -64,7 +64,7 @@ const InputBox = ({ modalData, setModalData }) => {
         }
       />
       {/* app_open */}
-      <label for="deadline">Deadlines</label>
+      <label htmlFor="deadline">Deadlines</label>
       <input
         type="date"
         id="app_open"
@@ -83,7 +83,7 @@ const InputBox = ({ modalData, setModalData }) => {
         }}
       />
       {/* description */}
-      <label for="description">Description</label>
+      <label htmlFor="description">Description</label>
       <textarea
         id="description"
         value={modalData.description}

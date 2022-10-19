@@ -8,7 +8,7 @@ import TableItem from "./TableItem";
 import DescriptionModal from "./popups/DescriptionModal";
 import EditModal from "./popups/edit-modal/EditModal";
 
-const Table = ({ list, loading }) => {
+const Table = ({ list, loading, tableForm }) => {
   // State
   const [modalData, setModalData] = useState();
   const [descriptionOpen, setDescriptionOpen] = useState(false);
@@ -50,6 +50,7 @@ const Table = ({ list, loading }) => {
           modalOpen={editOpen}
           setModalOpen={setEditOpen}
           data={modalData}
+          tableForm={tableForm}
         />
       ) : null}
       <table className="content-table">
@@ -63,6 +64,7 @@ const Table = ({ list, loading }) => {
             <th>Deadline</th>
             <th>Description</th>
             {user.mod ? <th>Edit</th> : null}
+            {user.mod && tableForm === "pending" ? <th>Accept</th> : null}
           </tr>
         </thead>
         <tbody>
@@ -74,6 +76,7 @@ const Table = ({ list, loading }) => {
                   handleDescription={handleDescription}
                   handleEdit={handleEdit}
                   mod={user.mod}
+                  tableForm={tableForm}
                 />
               ))
             : null}

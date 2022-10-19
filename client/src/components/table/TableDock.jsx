@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "../../css/dashboard/table/TableDock.css";
 
 // Hooks
 import fetchList from "../../hooks/fetchList";
 import filterList from "../../hooks/filterList";
+
+// Context
+import TableContext from "../../utils/TableContext";
 
 // Components
 import Table from "./Table";
@@ -17,6 +20,9 @@ const TableDock = () => {
   const [field, setField] = useState();
   const [semester, setSemester] = useState();
 
+  // Context
+  const tableForm = useContext(TableContext);
+
   // Pagination
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,8 +30,8 @@ const TableDock = () => {
 
   // Effects
   useEffect(() => {
-    fetchList(setLoading, setDbList, setCurrentList);
-  }, []);
+    fetchList(setLoading, setDbList, setCurrentList, tableForm);
+  }, [tableForm]);
 
   // Functions
   const indexOfLastPost = currentPage * postsPerPage;
@@ -76,7 +82,7 @@ const TableDock = () => {
           Go
         </button>
       </div>
-      <Table list={paginationList} loading={loading} />
+      <Table list={paginationList} loading={loading} tableForm={tableForm} />
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={currentList.length}

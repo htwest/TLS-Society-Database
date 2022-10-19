@@ -8,18 +8,28 @@ import InputBox from "./InputBox";
 // Api
 import putUpdateInternship from "../../../../api/putUpdateInternship";
 
-const EditModal = ({ modalOpen, setModalOpen, data }) => {
+const EditModal = ({ modalOpen, setModalOpen, data, tableForm }) => {
+  // States
   const [modalData, setModalData] = useState(data);
   const [step, setStep] = useState(1);
 
   const handleUpdate = async () => {
-    await putUpdateInternship(data.id, modalData)
-      .then(() => {
-        stepUp();
-      })
-      .catch((err) => {
-        setStep(4);
-      });
+    switch (tableForm) {
+      case "dashboard":
+        await putUpdateInternship(data.id, modalData)
+          .then(() => {
+            stepUp();
+          })
+          .catch((err) => {
+            setStep(4);
+          });
+        break;
+      case "pending":
+        // do stuff
+        break;
+      default:
+        console.log("Something went wrong: EDIT MODAL -- HandleUpdate()");
+    }
   };
 
   const resetStep = () => {

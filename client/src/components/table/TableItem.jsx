@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
-const TableItem = ({ item, handleDescription, handleEdit, key, mod }) => {
+const TableItem = ({ item, handleDescription, handleEdit, mod, tableForm }) => {
   return (
     <tr>
       <td data-heading="Institute">{item.name}</td>
@@ -25,6 +25,11 @@ const TableItem = ({ item, handleDescription, handleEdit, key, mod }) => {
           <a href="#!" onClick={() => handleEdit(item)}>
             <FontAwesomeIcon icon={faGear} className="icon" />
           </a>
+        </td>
+      ) : null}
+      {mod && tableForm === "pending" ? (
+        <td data-heading="Accept">
+          <button>Accept</button>
         </td>
       ) : null}
     </tr>
