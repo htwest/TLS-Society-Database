@@ -1,27 +1,21 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../../css//table/TableDock.css";
 
 // Hooks
 import fetchList from "../../hooks/fetchList";
 import filterList from "../../hooks/filterList";
 
-// Context
-import TableContext from "../../utils/TableContext";
-
 // Components
 import Table from "./Table";
 import Pagination from "./Pagination";
 
-const TableDock = () => {
+const TableDock = ({ tableForm }) => {
   // States
   const [dbList, setDbList] = useState([]);
   const [currentList, setCurrentList] = useState([]);
   const [search, setSearch] = useState();
   const [field, setField] = useState();
   const [semester, setSemester] = useState();
-
-  // Context
-  const tableForm = useContext(TableContext);
 
   // Pagination
   const [loading, setLoading] = useState(false);

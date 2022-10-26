@@ -8,7 +8,7 @@ const ModBox = () => {
     <div className="mod-container">
       <h3>Pending Applications</h3>
       <h5>Please Review Carefully Before Proceeding</h5>
-      <TableDock />
+      <TableDock tableForm="pending" />
     </div>
   );
 };

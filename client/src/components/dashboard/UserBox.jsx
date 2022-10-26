@@ -1,5 +1,4 @@
 import React from "react";
-import { Text, Heading } from "@chakra-ui/react";
 
 // Components
 import UserUnapproved from "./UserUnapproved";
@@ -9,12 +8,14 @@ const UserBox = ({ userData }) => {
   return (
     <div className="user-container">
       <div className="user-greet">
-        <Heading color="white.100">Welcome</Heading>
-        <Text color="white.100" fontSize="3xl">
-          {userData.f_name}
-        </Text>
+        <h2>Welcome</h2>
+        <h4>{userData.f_name}</h4>
       </div>
-      {userData.approved ? <TableDock /> : <UserUnapproved />}
+      {userData.approved ? (
+        <TableDock tableForm="dashboard" />
+      ) : (
+        <UserUnapproved />
+      )}
     </div>
   );
 };

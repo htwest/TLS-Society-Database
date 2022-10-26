@@ -18,7 +18,7 @@ const fetchList = async (setLoading, setDbList, setCurrentList, tableForm) => {
       });
       break;
     default:
-      console.log("something went wrong");
+      console.log("Something went wrong");
   }
 
   setLoading(false);

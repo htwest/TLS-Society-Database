@@ -1,8 +1,25 @@
-const Navbar = (props) => {
+import React, { useState } from "react";
+
+import "../../css/navigation/ToolBar.css";
+
+import ToolBar from "./ToolBar";
+import SideBar from "./SideBar";
+import Backdrop from "./Backdrop";
+
+const Navbar = () => {
+  const [sidebar, setSidebar] = useState(false);
+
+  const toggleSidebar = () => {
+    console.log("work");
+    setSidebar(!sidebar);
+  };
+
   return (
-    <nav className="navbar">
-      <ul className="navbar-nav">{props.children}</ul>
-    </nav>
+    <div>
+      <ToolBar openSideBar={toggleSidebar} />
+      <Backdrop sidebar={sidebar} closeSidebar={toggleSidebar} />
+      <SideBar sidebar={sidebar} />
+    </div>
   );
 };
 

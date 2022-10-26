@@ -3,10 +3,9 @@ import "../../css/pending/Pending.css";
 
 // Context
 import UserContext from "../../utils/UserContext";
-import TableContext from "../../utils/TableContext";
 
 // Components
-import Navbar from "../navigation-two/Navbar";
+import Navbar from "../navigation/Navbar";
 import ModBox from "./ModBox";
 
 const Pending = () => {
@@ -14,12 +13,10 @@ const Pending = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <TableContext.Provider value="pending">
-      <div className="dashboard-container">
-        {user.mod ? <Navbar /> : null}
-        {user.mod ? <ModBox /> : null}
-      </div>
-    </TableContext.Provider>
+    <div className="dashboard-container">
+      {user.mod ? <Navbar /> : null}
+      {user.mod ? <ModBox /> : null}
+    </div>
   );
 };
 
