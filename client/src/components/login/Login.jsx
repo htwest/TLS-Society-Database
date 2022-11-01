@@ -25,8 +25,8 @@ const Login = () => {
   const { setUser } = useContext(UserContext);
 
   // States
-  const [username, setUsername] = useState();
-  const [pass, setPass] = useState();
+  const [username, setUsername] = useState("");
+  const [pass, setPass] = useState("");
   const [err, setErr] = useState();
 
   const handleSubmit = async (e) => {
