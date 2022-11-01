@@ -12,8 +12,6 @@
 /build
 
 # misc
-/src/images
-/src/icons
 
 .DS_Store
 .env.local
