@@ -75,7 +75,7 @@ const Login = () => {
             placeholder="Enter Username"
             _placeholder={{ color: "black.100" }}
             bg="white.100"
-            color="black.100"
+            color="black"
             autoComplete="off"
             size="lg"
             onChange={(e) => {
@@ -96,7 +96,7 @@ const Login = () => {
             placeholder="Enter Password"
             _placeholder={{ color: "black.100" }}
             bg="white.100"
-            color="black.100"
+            color="black"
             size="lg"
             onChange={(e) => {
               setErr();
