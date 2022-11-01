@@ -1,5 +1,5 @@
-import Logo from "../../images/Logo_V3.png";
-import Name from "../../images/nameLogo.png";
+import Logo from "../../images/logo.png";
+import Name from "../../images/name-logo.png";
 import MarqueeBox from "./MarqueeBox";
 import "../../css/header/Header.css";
 
