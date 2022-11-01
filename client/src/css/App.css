@@ -2,7 +2,7 @@
 
 
 .App {
-  background: url("../images/dark.jpeg");
+  background: url("../images/background.jpeg");
   min-height: 100vh;
   width: auto;
   background-color: black;
@@ -71,6 +71,11 @@
 TESTING
 ***** */
 
+
+
+/* *****
+MEDIA
+***** */
 
 @media(max-width: 767px) {
   .App {
