@@ -4,7 +4,8 @@ import React, { useState, useContext } from "react";
 import UserContext from "../../utils/UserContext";
 
 // Components
-import TableItem from "./TableItem";
+import TableItemDash from "./table-items/TableItemDash";
+import TableItemPending from "./table-items/TableItemPending";
 import DescriptionModal from "./popups/DescriptionModal";
 import EditModal from "./popups/edit-modal/EditModal";
 
@@ -26,6 +27,43 @@ const Table = ({ list, loading, tableForm }) => {
   const handleEdit = (data) => {
     setModalData(data);
     setEditOpen(!editOpen);
+  };
+
+  const dashMap = () => {
+    return list.map((item) => (
+      <TableItemDash
+        item={item}
+        key={item.id}
+        handleDescription={handleDescription}
+        handleEdit={handleEdit}
+        mod={user.mod}
+        tableForm={tableForm}
+      />
+    ));
+  };
+
+  const pendingMap = () => {
+    return list.map((item) => (
+      <TableItemPending
+        item={item}
+        key={item.id}
+        handleDescription={handleDescription}
+        handleEdit={handleEdit}
+        mod={user.mod}
+        tableForm={tableForm}
+      />
+    ));
+  };
+
+  const mapRender = () => {
+    switch (tableForm) {
+      case "dashboard":
+        return dashMap();
+      case "pending":
+        return pendingMap();
+      default:
+        return dashMap();
+    }
   };
 
   if (loading) {
@@ -68,20 +106,7 @@ const Table = ({ list, loading, tableForm }) => {
             {user.mod && tableForm === "pending" ? <th>Select</th> : null}
           </tr>
         </thead>
-        <tbody>
-          {list
-            ? list.map((item) => (
-                <TableItem
-                  item={item}
-                  key={item.id}
-                  handleDescription={handleDescription}
-                  handleEdit={handleEdit}
-                  mod={user.mod}
-                  tableForm={tableForm}
-                />
-              ))
-            : null}
-        </tbody>
+        <tbody>{list ? mapRender() : null}</tbody>
       </table>
     </>
   );
