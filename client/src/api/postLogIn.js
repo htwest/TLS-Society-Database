@@ -1,14 +1,16 @@
-const axios = require("axios");
+import axios from "./api";
 
 const postLogin = (username, password) => {
   return axios
     .post(
-      "/auth/login",
+      `/auth/login`,
       {
         username,
         password,
       },
-      { withCredentials: true }
+      {
+        withCredentials: true,
+      }
     )
     .catch((err) => {
       console.log(err);

@@ -32,6 +32,7 @@ const PORT = process.env.PORT || 3001;
 app.use(
   cors({
     credentials: true,
+    origin: "http://localhost:3000",
   })
 );
 app.use(express.json());
@@ -58,16 +59,16 @@ if (process.env.NODE_ENV === "production") {
 //         ************************
 
 // **** AUTHENTICATION ****
-app.use("/auth", authRouter);
+app.use("/api/auth", authRouter);
 
 // **** DB ****
-app.use("/db", dbRouter);
+app.use("/api/db", dbRouter);
 
 // **** MODERATION ****
-app.use("/mod", modRouter);
+app.use("/api/mod", modRouter);
 
 // **** TEST ****
-app.use("/test", testRouter);
+app.use("/api/test", testRouter);
 
 // **** CATCH ALL ****
 app.get("*", (req, res) => {

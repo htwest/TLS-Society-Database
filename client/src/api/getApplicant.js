@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "./api";
 
 const getApplicant = (id) => {
   return axios

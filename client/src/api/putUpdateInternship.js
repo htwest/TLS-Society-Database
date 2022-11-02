@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "./api";
 
 const putUpdateInternship = (id, data, tableForm) => {
   console.log(id, data, tableForm);
