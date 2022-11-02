@@ -1,8 +1,10 @@
 const axios = require("axios");
 
 const putUpdateInternship = (id, data, tableForm) => {
+  console.log(id, data, tableForm);
+
   switch (tableForm) {
-    case "dashbard":
+    case "dashboard":
       return axios
         .put(`/mod/update/${id}`, data, { withCredentials: true })
         .catch((err) => {
