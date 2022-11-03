@@ -9,6 +9,8 @@ const passport = require("passport");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const bodyParser = require("body-parser");
+const Redis = require("ioredis");
+const RedisStore = require("connect-redis")(session);
 
 const app = express();
 const pool = require("./db");
@@ -29,6 +31,8 @@ const PORT = process.env.PORT || 3001;
 //                  MIDDLEWARE
 //         ************************
 
+const redisClient = new Redis();
+
 app.use(
   cors({
     credentials: true,
@@ -42,6 +46,7 @@ app.use(
     secret: process.env.SECRET,
     resave: true,
     saveUninitialized: true,
+    store: new RedisStore({ client: redisClient }),
   })
 );
 
