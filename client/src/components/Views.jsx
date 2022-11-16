@@ -4,7 +4,8 @@ import { Routes, Route } from "react-router-dom";
 // Page Components
 import Header from "./header/Header";
 import Login from "./login/Login";
-import SignUp from "./signup/Signup";
+// import SignUp from "./signup/Signup";
+import SignUp from "./signupTwo/Signup";
 import Dashboard from "./dashboard/Dashboard";
 import Pending from "./pending/Pending";
 

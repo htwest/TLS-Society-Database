@@ -21,7 +21,7 @@
   --bg-alt: #979b9c;
   --bg-secondary: #d2d3d3;
   --bg-secondary-alt: #868a8a;
-  --bg-accent: #e7ecef;
+  --bg-accent: #fafafa;
   --button-hover: #a3a5a7;
   --text: #dfdede;
   --text-alt: #0c0404;
@@ -41,14 +41,6 @@
   --table-bg-alt: rgb(230, 230, 230, 0.8);
 }
 
-.form-header {
-  margin: 1em;
-}
-
-.form-item {
-  margin: 1em;
-}
-
 /* Profile */
 
 .user-container {
@@ -64,14 +56,6 @@
   align-items: center;
   margin: 20px;
 }
-
-
-
-/* *****
-TESTING
-***** */
-
-
 
 /* *****
 MEDIA

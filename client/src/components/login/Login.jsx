@@ -10,6 +10,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import "../../css/login/Login.css";
+import "../../css/buttons/buttons.css";
 
 // Api
 import postLogin from "../../api/postLogIn";
