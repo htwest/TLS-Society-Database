@@ -1,0 +1,85 @@
+/* Review Styles */
+#review-box {
+  width: 90%;
+  max-width: 700px;
+  background-color: var(--bg-accent);
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Styles */
+#review-box h1, #review-box h3 {
+  color: var(--text-alt);
+  align-self: center;
+}
+
+#review-box h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#review-box h3 {
+  margin-bottom: 10px;
+}
+
+/* Box Styles */
+.signup-info-box {
+  margin: 25px;
+}
+
+/* Box Header Styles */
+.signup-data {
+  display: flex;
+  justify-content:space-between
+}
+
+.signup-data h4 {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.signup-data button {
+  background-color: var(--bg);
+  color: var(--text-secondary);
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
+
+/* Data Elements */
+.signup-info-element label {
+  font-size: 12px;
+  color: gray;
+}
+
+.signup-info-element p {
+  font-size: 18px;
+  color: var(--text-alt);
+  margin-left: 20px;
+}
+
+/* Password Confirm Styles */
+.password-confirm {
+  align-items: flex-start;
+  padding: 0 20px;
+}
+
+.password-confirm label {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.password-confirm input {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+#password-error {
+  font-size: 12px;
+  padding: 3px;
+  color: red;
+}

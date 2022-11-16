@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Silkscreen&family=Teko&display=swap');
 
+/* **************
+  Base Styles
+************** */
 
 .App {
   background: url("../images/background.jpeg");
@@ -15,8 +18,11 @@
   margin-top: -10px;
 }
 
+/* **************
+  Variables
+************** */
+
 .App {
-  /* Color Scheme */
   --bg: #4d4d4e;
   --bg-alt: #979b9c;
   --bg-secondary: #d2d3d3;
@@ -26,6 +32,8 @@
   --text: #dfdede;
   --text-alt: #0c0404;
   --text-secondary:#dfdede;
+
+
 
 
   /* NavBar */
@@ -41,20 +49,40 @@
   --table-bg-alt: rgb(230, 230, 230, 0.8);
 }
 
-/* Profile */
+/* **************
+  Button Styles
+************** */
 
-.user-container {
+.button-group {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 25px;
+  justify-content: space-around;
 }
 
-.user-greet {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
+.button-group button {
+  background-color: var(--bg);
+  border: none;
+  border-radius: 5px;
+  color: var(--text);
+  padding: 10px 25px;
+  margin: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.button-group button:hover {
+  background-color: var(--bg-alt);
+  color: var(--text-alt)
+}
+
+.button-group .alt-button {
+  background-color: var(--bg-secondary);
+  color: var(--text-alt)
+}
+
+.button-group .alt-button:hover {
+  background-color: var(--bg-secondary-alt);
+  color: var(--text)
 }
 
 /* *****

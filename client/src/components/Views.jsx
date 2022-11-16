@@ -4,8 +4,7 @@ import { Routes, Route } from "react-router-dom";
 // Page Components
 import Header from "./header/Header";
 import Login from "./login/Login";
-// import SignUp from "./signup/Signup";
-import SignUp from "./signupTwo/Signup";
+import Signup from "./signup/Signup";
 import Dashboard from "./dashboard/Dashboard";
 import Pending from "./pending/Pending";
 
@@ -38,7 +37,7 @@ const Views = () => {
           </Route>
         </Route>
         <Route path="/" element={<Login />} />
-        <Route path="/register" element={<SignUp />} />
+        <Route path="/register" element={<Signup />} />
         <Route path="*" element={<Login />} />
       </Routes>
     </UserContext.Provider>

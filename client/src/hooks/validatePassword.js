@@ -1,6 +1,6 @@
-const validatePassword = (pass, check, setErr) => {
+const validatePassword = (pass, check, setPassErr) => {
   if (pass !== check) {
-    setErr("Your Password Does Not Match");
+    setPassErr(true);
     return false;
   }
   return true;

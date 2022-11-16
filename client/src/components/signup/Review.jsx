@@ -1,30 +1,17 @@
 import React, { useState } from "react";
-import {
-  VStack,
-  Input,
-  Divider,
-  Text,
-  Button,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  Box,
-} from "@chakra-ui/react";
-import { Table, Tbody, Tr, Th, Td } from "react-super-responsive-table";
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-
 import postApplicant from "../../api/postApplicant";
 import validatePassword from "../../hooks/validatePassword";
+import "../../css/signup/Review.css";
 
-const Review = ({ userData, institute, step, setStep, nextStep }) => {
+const Review = ({ userData, institute, step, setStep, prevStep, nextStep }) => {
   // States
-  const [pass, setPass] = useState();
-  const [err, setErr] = useState();
+  const [pass, setPass] = useState("");
+  const [passErr, setPassErr] = useState(false);
 
   // Methods
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validate = validatePassword(userData.password, pass, setErr);
+    const validate = validatePassword(userData.password, pass, setPassErr);
     if (validate) {
       const data = {
         userData,
@@ -36,114 +23,105 @@ const Review = ({ userData, institute, step, setStep, nextStep }) => {
     }
   };
 
+  console.log(userData.l_name);
   return (
-    <VStack
-      justify="center"
-      spacing="1rem"
-      w={{ base: "250px", sm: "250px", md: "500px", lg: "700px" }}
-    >
-      <Text color="white.200">
-        Please Make Sure All Information is Correct Before Submitting
-      </Text>
+    <div id="review-box">
+      <h1>Almost There!</h1>
+      <h3>Please Make sure All Infomration is Correct Before Submitting</h3>
 
-      <Box h="30px" />
-      <Divider />
-      <Box h="30px" />
+      <hr />
 
-      <Text color="white.200">User Information</Text>
-      <Table className="content-table">
-        <Tbody className="table-body">
-          <Tr className="table-row">
-            <Th className="table-head">Username</Th>
-            <Td className="table-data">{userData.username}</Td>
-          </Tr>
-          <Tr className="table-row">
-            <Th className="table-head">Name</Th>
-            <Td className="table-data">
-              {userData.f_name} {userData.l_name}
-            </Td>
-          </Tr>
-          <Tr className="table-row">
-            <Th className="table-head">Email</Th>
-            <Td className="table-data">{userData.email}</Td>
-          </Tr>
-        </Tbody>
-      </Table>
-      <Button onClick={() => setStep(0)}>Edit</Button>
+      <div className="signup-info-box">
+        <div className="signup-data">
+          <h4>User Information</h4>
+          <button onClick={() => setStep(0)}>Edit</button>
+        </div>
 
-      <Box h="30px" />
-      <Divider />
-      <Box h="30px" />
+        <div className="signup-info-element">
+          <label htmlFor="username">Username</label>
+          <p name="username">{userData.username}</p>
+        </div>
+        <div className="signup-info-element">
+          <label htmlFor="name">Name</label>
+          <p name="name">
+            {userData.f_name} {userData.l_name}
+          </p>
+        </div>
+        <div className="signup-info-element">
+          <label htmlFor="email">Email</label>
+          <p name="email">{userData.email}</p>
+        </div>
+      </div>
 
-      <Text color="white.200">Institute Information</Text>
-      <Table className="content-table">
-        <Tbody>
-          <Tr>
-            <Th>Institute</Th>
-            <Td>{institute.name}</Td>
-          </Tr>
-          <Tr>
-            <Th>Semester</Th>
-            <Td>{institute.semester}</Td>
-          </Tr>
-          <Tr>
-            <Th>Position</Th>
-            <Td>{institute.position}</Td>
-          </Tr>
-          <Tr>
-            <Th>Type</Th>
-            <Td>{institute.type}</Td>
-          </Tr>
-          <Tr>
-            <Th>Point of Contact</Th>
-            <Td>{institute.poc_name}</Td>
-          </Tr>
-          <Tr>
-            <Th>P.O.C Email</Th>
-            <Td>{institute.poc_email}</Td>
-          </Tr>
-          <Tr>
-            <Th>Start Date</Th>
-            <Td>{institute.app_open}</Td>
-          </Tr>
-          <Tr>
-            <Th>Deadline</Th>
-            <Td>{institute.app_deadline}</Td>
-          </Tr>
-          <Tr>
-            <Th>Description</Th>
-            <Td>{institute.description}</Td>
-          </Tr>
-        </Tbody>
-      </Table>
-      <Button onClick={() => setStep(1)}>Edit</Button>
+      <hr />
 
-      <Box h="30px" />
-      <Divider />
-      <Box h="30px" />
+      <div className="signup-info-box">
+        <div className="signup-data">
+          <h4>Institute Information</h4>
+          <button className="edit-info-button" onClick={() => setStep(1)}>
+            Edit
+          </button>
+        </div>
 
-      <FormControl isInvalid={err}>
-        <VStack justify="center">
-          <FormLabel>Enter Your Password</FormLabel>
-        </VStack>
-        <Input
+        <div className="signup-info-element">
+          <label htmlFor="institute">Institute</label>
+          <p name="institute">{institute.name}</p>
+        </div>
+        <div className="signup-info-element">
+          <label htmlFor="semester">Semester</label>
+          <p name="semseter">{institute.semester}</p>
+        </div>
+        <div className="signup-info-element">
+          <label htmlFor="position">Position</label>
+          <p name="position">{institute.position}</p>
+        </div>
+        <div className="signup-info-element">
+          <label htmlFor="type">Position</label>
+          <p name="type">{institute.type}</p>
+        </div>
+        <div className="signup-info-element">
+          <label htmlFor="poc_name">Point of Contact</label>
+          <p name="poc_name">{institute.poc_name}</p>
+        </div>
+        <div className="signup-info-element">
+          <label htmlFor="poc_email">Email</label>
+          <p name="poc_email">{institute.poc_email}</p>
+        </div>
+        <div className="signup-info-element">
+          <label htmlFor="app_open">Application Start Date</label>
+          <p name="app_open">{institute.app_open}</p>
+        </div>
+        <div className="signup-info-element">
+          <label htmlFor="app_deadline">Application Deadline</label>
+          <p name="app_deadline">{institute.app_deadline}</p>
+        </div>
+        <div className="signup-info-element">
+          <label htmlFor="description">Description</label>
+          <p name="description">{institute.description}</p>
+        </div>
+      </div>
+
+      <hr />
+
+      <form className="password-confirm">
+        <label>Confirm Password</label>
+        <input
           type="password"
-          name="password"
           placeholder="Enter Password"
-          value={pass}
-          autoComplete="off"
-          size="lg"
           onChange={(e) => {
+            setPassErr(false);
             setPass(e.target.value);
-            setErr(false);
           }}
         />
-        <FormErrorMessage>Your Password Does Not Match</FormErrorMessage>
-      </FormControl>
-      <Button colorScheme="teal" onClick={(e) => handleSubmit(e)}>
-        Submit
-      </Button>
-    </VStack>
+        {passErr ? (
+          <span id="password-error">Your Passwords Do Not Match</span>
+        ) : null}
+      </form>
+      <div className="button-group">
+        <button onClick={() => prevStep()}>Back</button>
+        <button onClick={handleSubmit}>Submit</button>
+      </div>
+    </div>
   );
 };
 

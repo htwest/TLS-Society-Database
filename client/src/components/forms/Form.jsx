@@ -35,7 +35,7 @@ const Form = ({
           onChange={handleChange}
         />
       ))}
-      <div className="form-buttons">
+      <div className="button-group">
         {secondaryTitle ? (
           <button onClick={secondary}>{secondaryTitle}</button>
         ) : null}

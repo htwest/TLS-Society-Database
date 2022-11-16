@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { VStack, Heading, Box } from "@chakra-ui/react";
 import "../../css/signup/Signup.css";
 
 // Components
 import UserForm from "./UserForm";
 import InstituteForm from "./InstituteForm";
 import Review from "./Review";
-import Review2 from "./Review2";
 import Thanks from "./Thanks";
 
 const SignUp = () => {
@@ -54,11 +52,12 @@ const SignUp = () => {
         );
       case 2:
         return (
-          <Review2
+          <Review
             userData={userData}
             institute={institute}
             step={step}
             setStep={setStep}
+            prevStep={setStep}
             nextStep={nextStep}
           />
         );
@@ -69,8 +68,6 @@ const SignUp = () => {
     }
   };
 
-  const formTitles = ["Sign Up", "Institute Information", "Almost There!"];
-
   // Methods
   const nextStep = () => {
     setStep((currentStep) => currentStep + 1);
@@ -80,19 +77,7 @@ const SignUp = () => {
     setStep((currentStep) => currentStep - 1);
   };
 
-  return (
-    <VStack
-      w={{ base: "90%", md: "500px" }}
-      m="auto"
-      justify="center"
-      spacing="1rem"
-    >
-      <Box h="10vh" w="100%" />
-      <Heading color="white.200">{formTitles[step]}</Heading>
-      <div className="register-body">{FormDisplay()}</div>
-      <Box h="5vh" />
-    </VStack>
-  );
+  return <div className="register-body">{FormDisplay()}</div>;
 };
 
 export default SignUp;
