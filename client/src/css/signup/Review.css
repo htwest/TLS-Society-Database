@@ -5,7 +5,7 @@
   background-color: var(--bg-accent);
   margin: 20px auto;
   padding: 20px;
-  border-radius: 3px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
 }

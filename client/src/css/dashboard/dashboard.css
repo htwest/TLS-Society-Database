@@ -4,7 +4,9 @@
 }
 
 .user-greet {
-  color: var(--text)
+  color: var(--text);
+  text-align: center ;
+  margin: 20px;
 }
 
 .user-greet h2 {

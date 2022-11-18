@@ -1,5 +1,5 @@
-import "../../css/forms/Form.css";
 import FormItem from "./FormItem";
+import "../../css/forms/Form.css";
 
 const Form = ({
   title,
@@ -17,7 +17,10 @@ const Form = ({
   };
 
   const handleChange = (e) => {
-    setState({ ...state, [e.target.name]: e.target.value });
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const secondary = (e) => {
@@ -27,14 +30,16 @@ const Form = ({
   return (
     <form onSubmit={handleSubmit}>
       <h1>{title}</h1>
-      {inputs.map((input) => (
-        <FormItem
-          key={input.id}
-          {...input}
-          value={state[input.name]}
-          onChange={handleChange}
-        />
-      ))}
+      {inputs.map((input) => {
+        return (
+          <FormItem
+            key={input.id}
+            {...input}
+            value={state[input.name]}
+            onChange={handleChange}
+          />
+        );
+      })}
       <div className="button-group">
         {secondaryTitle ? (
           <button onClick={secondary}>{secondaryTitle}</button>

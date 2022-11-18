@@ -58,7 +58,7 @@
   justify-content: space-around;
 }
 
-.button-group button {
+.button-group button, .button-group input {
   background-color: var(--bg);
   border: none;
   border-radius: 5px;
@@ -68,9 +68,10 @@
   text-align: center;
   text-decoration: none;
   font-size: 16px;
+  cursor: pointer;
 }
 
-.button-group button:hover {
+.button-group button:hover, .button-group input[type="submit"].btn:hover{
   background-color: var(--bg-alt);
   color: var(--text-alt)
 }

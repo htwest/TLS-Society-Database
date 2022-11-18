@@ -10,7 +10,6 @@ const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
 
   const toggleSidebar = () => {
-    console.log("work");
     setSidebar(!sidebar);
   };
 

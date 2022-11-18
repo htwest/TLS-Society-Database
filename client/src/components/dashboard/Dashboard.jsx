@@ -7,7 +7,7 @@ import UserContext from "../../utils/UserContext";
 // Components
 import UserBox from "./UserBox";
 import Navbar from "../navigation/Navbar";
-import ReduxTest from "../test/ReduxTest";
+// import ReduxTest from "../test/ReduxTest";
 
 const Dashboard = () => {
   // Context

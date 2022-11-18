@@ -43,6 +43,8 @@ router.post("/logout", (req, res, next) => {
       }
       res.send("logged out");
     });
+  } else {
+    res.send("logged out");
   }
 });
 
