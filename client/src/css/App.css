@@ -23,18 +23,22 @@
 ************** */
 
 .App {
+  /* Primary */
   --bg: #4d4d4e;
   --bg-alt: #979b9c;
   --bg-secondary: #d2d3d3;
   --bg-secondary-alt: #868a8a;
   --bg-accent: #fafafa;
   --button-hover: #a3a5a7;
+
+  /* Accents */
+  --accent-primary: #275da3;
+  --accent-secondary: #9fcfe6;
+
+  /* Text */
   --text: #dfdede;
   --text-alt: #0c0404;
   --text-secondary:#dfdede;
-
-
-
 
   /* NavBar */
   --nav-size: 60px;
@@ -45,7 +49,7 @@
   --button-size-mobile: 30px;
 
   /* Table */
-  --table-bg: rgb(55, 55, 55, 0.5);
+  --table-bg: rgb(55, 55, 55, 0.8);
   --table-bg-alt: rgb(230, 230, 230, 0.8);
 }
 
@@ -85,6 +89,57 @@
   background-color: var(--bg-secondary-alt);
   color: var(--text)
 }
+
+/* **************
+  Checkbox Styles
+************** */
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-container label {
+  cursor: pointer;
+  display: flex;
+}
+
+.checkbox-container input[type='checkbox'] {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox-container label::before {
+  content: '';
+  width: 1.3em;
+  height: 1.3em;
+  border: 0.05em solid black;
+  border-radius: 0.15em;
+  margin-right: 0.05em;
+  align-self: center;
+}
+
+.checkbox-container label:hover::before,
+.checkbox-container input[type="checkbox"]:hover + label::before {
+  background-color: var(--accent-secondary);
+}
+
+.checkbox-container input[type="checkbox"]:focus + label::before {
+  box-shadow: 0 0 20px black;
+}
+
+.checkbox-container input[type='checkbox']:checked + label::before {
+  content: '\002714';
+  background-color: var(--accent-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+
 
 /* *****
 MEDIA

@@ -14,9 +14,13 @@ const TableItemPending = ({
   mod,
   tableForm,
 }) => {
+  // State
   const [checked, setChecked] = useState(false);
 
+  // List of Selected Items by Id
   const pendingList = useSelector((state) => state.pending);
+
+  const dispatch = useDispatch();
 
   // Checks if Item is already selected
   useEffect(() => {
@@ -24,8 +28,6 @@ const TableItemPending = ({
       setChecked(true);
     }
   }, [item.id, pendingList]);
-
-  const dispatch = useDispatch();
 
   const handleCheck = () => {
     if (!checked) {
@@ -59,12 +61,16 @@ const TableItemPending = ({
           <FontAwesomeIcon icon={faGear} className="icon" />
         </a>
       </td>
-      <td data-heading="Check">
-        <input
-          type="checkbox"
-          onChange={() => handleCheck()}
-          checked={checked}
-        />
+      <td data-heading="Select">
+        <div className="checkbox-container">
+          <input
+            type="checkbox"
+            id={item.id}
+            onChange={() => handleCheck()}
+            checked={checked}
+          />
+          <label htmlFor={item.id}></label>
+        </div>
       </td>
     </tr>
   );
