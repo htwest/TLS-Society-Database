@@ -11,9 +11,9 @@ import EditModal from "./popups/edit-modal/EditModal";
 
 const Table = ({ list, loading, tableForm }) => {
   // State
-  const [modalData, setModalData] = useState();
-  const [descriptionOpen, setDescriptionOpen] = useState(false);
-  const [editOpen, setEditOpen] = useState(false);
+  const [modalData, setModalData] = useState(); // Data for Modal
+  const [descriptionOpen, setDescriptionOpen] = useState(false); // Sets Description-Modal open/close
+  const [editOpen, setEditOpen] = useState(false); // Sets Edit-Modal open/close
 
   // Context
   const { user } = useContext(UserContext);
@@ -29,6 +29,7 @@ const Table = ({ list, loading, tableForm }) => {
     setEditOpen(!editOpen);
   };
 
+  // Renders Dashboard Table
   const dashMap = () => {
     return list.map((item) => (
       <TableItemDash
@@ -42,6 +43,7 @@ const Table = ({ list, loading, tableForm }) => {
     ));
   };
 
+  // Renders Pending Table
   const pendingMap = () => {
     return list.map((item) => (
       <TableItemPending

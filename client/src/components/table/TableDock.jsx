@@ -17,6 +17,10 @@ const TableDock = ({ tableForm }) => {
   const [field, setField] = useState();
   const [semester, setSemester] = useState();
 
+  // Checked
+  // This would be a good place to use storage thingy without drilling
+  const [checkedList, setCheckedList] = useState([])
+
   // Pagination
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);

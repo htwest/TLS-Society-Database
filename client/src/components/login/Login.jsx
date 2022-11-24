@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router";
-
 import "../../css/login/Login.css";
 
 // Api
@@ -20,10 +19,7 @@ const Login = () => {
   const { setUser } = useContext(UserContext);
 
   // States
-  // const [username, setUsername] = useState("");
-  // const [pass, setPass] = useState("");
   const [err, setErr] = useState(false);
-
   const [userData, setUserData] = useState({
     username: "",
     password: "",

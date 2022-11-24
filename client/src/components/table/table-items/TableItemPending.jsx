@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { add, remove } from "../../../actions/pendingActions";
+
+// Redux
+import { useSelector } from "react-redux";
+import { add, remove } from "../../../redux/actions/pendingActions";
 
 const TableItemPending = ({
   item,
@@ -13,26 +16,24 @@ const TableItemPending = ({
 }) => {
   const [checked, setChecked] = useState(false);
 
-  useEffect(() => {
-    setChecked(JSON.parse(window.localStorage.getItem(item.id)));
-  }, []);
+  const pendingList = useSelector((state) => state.pending);
 
-  // useEffect(() => {
-  //   window.localStorage.setItem(item.id, checked);
-  // }, [checked]);
+  // Checks if Item is already selected
+  useEffect(() => {
+    if (pendingList.indexOf(item.id) > -1) {
+      setChecked(true);
+    }
+  }, [item.id, pendingList]);
 
   const dispatch = useDispatch();
 
   const handleCheck = () => {
     if (!checked) {
       dispatch(add(item.id));
-      window.localStorage.setItem(item.id, !checked);
-      setChecked(!checked);
     } else {
       dispatch(remove(item.id));
-      window.localStorage.removeItem(item.id);
-      setChecked(!checked);
     }
+    setChecked(!checked);
   };
 
   return (
@@ -59,7 +60,11 @@ const TableItemPending = ({
         </a>
       </td>
       <td data-heading="Check">
-        <input type="checkbox" onClick={() => handleCheck()} />
+        <input
+          type="checkbox"
+          onChange={() => handleCheck()}
+          checked={checked}
+        />
       </td>
     </tr>
   );

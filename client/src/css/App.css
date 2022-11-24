@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Silkscreen&family=Teko&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
 /* **************
   Base Styles
@@ -14,7 +14,7 @@
   -o-background-size: cover;
   background-size: cover;
   background-position: center;
-  font-family: Copperplate, "Copperplate Gothic Light", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   margin-top: -10px;
 }
 
