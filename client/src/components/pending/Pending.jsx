@@ -13,7 +13,7 @@ const Pending = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <div className="dashboard-container">
+    <div className="pending-container">
       {user.mod ? <Navbar /> : null}
       {user.mod ? <ModBox /> : null}
     </div>

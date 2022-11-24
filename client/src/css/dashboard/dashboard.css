@@ -3,12 +3,23 @@
   margin: auto;
 }
 
-.user-greet {
-  color: var(--text);
-  text-align: center ;
-  margin: 20px;
+.user-box {
+  background-color: var(--bg);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 30px;
 }
 
-.user-greet h2 {
-  font-size: 2em;
+.user-greet {
+  color: var(--text);
+  margin-left: 4vw;
+}
+
+.user-greet h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+.user-greet h3 {
+  font-size: 1.5em;
+  font-weight: bold;
 }

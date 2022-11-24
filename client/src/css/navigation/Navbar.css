@@ -71,6 +71,7 @@
   width: 200px;
   transform: translate(-45%);
   background-color: var(--bg);
+  /* background-color: red; */
   border: var(--border);
   border-radius: var(--border-radius);
   padding: 1rem;

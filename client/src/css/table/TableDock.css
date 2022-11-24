@@ -3,14 +3,13 @@
   flex-direction: column;
   align-items: center;
   color: var(--text);
-  /* max-width: 900px; */
   margin: 20px auto;
 }
 
 .search-box {
   padding-top: 10px;
   display: flex;
-  width: 79vw;
+  width: 80vw;
   padding-bottom: 10px;
   color: var(--text-alt);
 }
@@ -33,13 +32,12 @@
 }
 
 .content-table thead {
-  background-color: var(--bg);
+  background-color: var(--bg-alt);
   color: var(--text);
-  font-size: 1.2em;
-  font-weight: bold;
+  font-size: 1.3em;
   text-align: left;
   white-space: nowrap;
-  margin-bottom: 10px;
+  height: 100px;
 }
 
 .content-table th, .content-table td {
@@ -63,7 +61,6 @@
 .content-table input {
   color: black;
   padding: 10px;
-
 }
 
 .content-table select {
@@ -77,16 +74,18 @@
   margin-left: 20px;
   padding: 8px 12px;
   color: var(--text);
-  background-color: var(--bg);
+  background-color: var(--accent-primary);
   cursor: pointer;
   border-radius: 5px;
 }
 
 .search-box select:hover {
-  background:var(--button-hover)
+  background:var(--accent-secondary);
+  color: var(--text-alt)
 }
+
 .search-button {
-  background-color: var(--bg);
+  background-color: var(--accent-primary);
   border-radius: 5px;
   color: var(--text);
   padding: 8px 30px;
@@ -98,11 +97,12 @@
 }
 
 .search-button:hover {
-  background:var(--button-hover);
+  background:var(--accent-secondary);
+  color: var(--text-alt)
 }
 
 .description-button {
-  background-color: var(--bg);
+  background-color: var(--accent-primary);
   border: none;
   border-radius: 3px;
   color: var(--text);
@@ -115,11 +115,12 @@
 }
 
 .description-button:hover {
-  background:var(--button-hover);
+  background:var(--accent-secondary);
+  color: var(--text-alt)
 }
 
 tr a {
-  background-color: var(--bg);
+  background-color: var(--accent-primary);
   color: var(--text);
   border-radius: 3px;
   padding: 7px 25px;
@@ -129,7 +130,8 @@ tr a {
 }
 
 tr a:hover {
-  background-color: var(--button-hover);
+  background-color: var(--accent-secondary);
+  color: var(--text-alt)
 }
 
 .icon {
@@ -150,6 +152,11 @@ tr a:hover {
   display: hidden;
 }
 
+@media (max-width: 1200px) {
+  .content-table th, .content-table td {
+    padding: 20px 5px;
+  }
+}
 
 @media (max-width: 900px) {
 
@@ -161,6 +168,10 @@ tr a:hover {
 
   .filter-box {
     margin: 10px;
+  }
+
+  .content-table thead {
+    height: 0;
   }
 
   .content-table tbody tr td:last-of-type {
@@ -179,6 +190,7 @@ tr a:hover {
   .content-table td {
     display: block;
     text-align: left;
+    padding: 5px;
   }
 
   .content-table td::before{
@@ -187,4 +199,5 @@ tr a:hover {
     width: 8.5em;
     display: inline-block;
   }
+
 }

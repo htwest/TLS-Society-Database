@@ -14,7 +14,7 @@
 
 .sidebar {
   position: absolute;
-  background-color: #222f3e;
+  background-color: var(--accent-four);
   color: #fff;
   top: 0;
   left: 0;
