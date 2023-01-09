@@ -51,7 +51,7 @@
   --button-size-mobile: 30px;
 
   /* Table */
-  --table-bg: rgb(55, 55, 55, 0.8);
+  --table-bg: rgba(60, 90, 103, 0.8);
   --table-bg-alt: rgb(230, 230, 230, 0.8);
 }
 
